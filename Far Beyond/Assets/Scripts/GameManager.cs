@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
     //a este game manager se le denomina PERSISTENTE. y significa que NO SE DESTRUYE. 
     //esto nos permite que el GameManager se CREE a si mismo siempre que lo necesite. ESTA ES LA MEJOR MANERA DE HACER UN GAME MANAGER.
     private static GameManager instance;

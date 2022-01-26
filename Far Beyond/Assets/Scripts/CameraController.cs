@@ -16,21 +16,22 @@ public class CameraController : MonoBehaviour
         transform.position = new Vector3(player.position.x + offset.x, player.position.y + offset.y, offset.z); // Camera follows the player with specified offset position
         if (transform.position.x < minX)
         {
-            transform.position = new Vector3(minX, transform.position.y, transform.position.z); // el minimo de "X" es la cordenada que aparece cuando la camara esta lo mas a la izquierda posible. 
+            transform.position = new Vector3(minX, transform.position.y, transform.position.z); // el minimo de "X" es la cordenada que aparece cuando la camara esta lo mas a la izquierda posible.
+        }
 
-            if (transform.position.x > maxX)
-            {
-                transform.position = new Vector3(maxX, transform.position.y, transform.position.z); // el maximo de "X" es la cordenada que aparece cuando la camara esta lo mas a la derecha posible.
-            }
-            if (transform.position.y > minY)
-            {
-                transform.position = new Vector3(transform.position.x, minY, transform.position.z); //  el minimo de "Y" es la cordenada que aparece cuando la camara esta lo mas bajo que tu quieras. 
-            }
-            if (transform.position.y < maxY)
-            {
-                transform.position = new Vector3(transform.position.x, maxY, transform.position.z); // el maximo de "Y" es la cordenada que aparece cuando la camara esta lo mas alto que tu quieres asignar.
-            }
+        if (transform.position.x > maxX)
+        {
+            transform.position = new Vector3(maxX, transform.position.y, transform.position.z); // el maximo de "X" es la cordenada que aparece cuando la camara esta lo mas a la derecha posible.
+        }
+        if (transform.position.y > minY)
+        {
+            transform.position = new Vector3(transform.position.x, minY, transform.position.z); //  el minimo de "Y" es la cordenada que aparece cuando la camara esta lo mas bajo que tu quieras. 
+        }
+        if (transform.position.y < maxY)
+        {
+            transform.position = new Vector3(transform.position.x, maxY, transform.position.z); // el maximo de "Y" es la cordenada que aparece cuando la camara esta lo mas alto que tu quieres asignar.
         }
     }
 }
+
 

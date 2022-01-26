@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class IllayPlayer : MonoBehaviour
 {
+
     private Rigidbody2D rbody;
     public float speed = 3.0f;
     public float jumpSpeed = 5.0f;
@@ -128,11 +129,11 @@ public class IllayPlayer : MonoBehaviour
         {
             floors.Add(collision.collider);
         }
-        if (collision.GetContact(0).normal.x < -0.5f) //Aqui usamos normal.x porque determinamos que es la pared DERECHA mediante el rebote que haria al chocar con ella. 
+        if (collision.GetContact(0).normal.x < -0.5f && collision.collider.GetComponent<PlatformEffector2D>() == null) //Aqui usamos normal.x porque determinamos que es la pared DERECHA mediante el rebote que haria al chocar con ella. 
         {
             wallOnRight.Add(collision.collider); //como es la derecha, rebotaria hacia la izquierda, por eso, el 0.5 ESTA EN NEGATIVO. 
         }
-        if (collision.GetContact(0).normal.x > +0.5f) //Aqui usamos normal.x porque determinamos que es la pared IZQUIERDA mediante el rebote que haria al chocar con ella. 
+        if (collision.GetContact(0).normal.x > +0.5f && collision.collider.GetComponent<PlatformEffector2D>() == null) //Aqui usamos normal.x porque determinamos que es la pared IZQUIERDA mediante el rebote que haria al chocar con ella. SI NO TIENE EFFECTOR PLATAFORM SE CONSIDERA SUELO O PARED
         {
             wallOnLeft.Add(collision.collider); //como es la izquierda, rebotaria hacia la derecha, por eso, el 0.5 ESTA EN POSITIVO. 
         }
