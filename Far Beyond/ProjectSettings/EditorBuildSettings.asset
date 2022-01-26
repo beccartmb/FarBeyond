@@ -4,5 +4,29 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/StartMenu.unity
+    guid: 4c3408040e9a1f1478a2fca779a370cb
+  - enabled: 1
+    path: Assets/Scenes/Graveyard.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/FinalBoss.unity
+    guid: d029736009929cd4e8c38e98598db0d8
+  - enabled: 1
+    path: Assets/Scenes/EndMenu.unity
+    guid: 0ce7bf2654361c74ba55dcd4036f1a81
+  - enabled: 1
+    path: Assets/Scenes/CinematicStart.unity
+    guid: 85b871a18b47b84439ef01a4e8b97d7a
+  - enabled: 1
+    path: Assets/Scenes/Hallway.unity
+    guid: 807811d7f1f2e894f83591dfa1009206
+  - enabled: 1
+    path: Assets/Scenes/Pantheon.unity
+    guid: 616b99e4438a144498b97515e3d01da1
+  - enabled: 1
+    path: Assets/Scenes/Water.unity
+    guid: 2b653f991230dd94baf6c0564865e031
   m_configObjects: {}
