@@ -6,10 +6,10 @@ public class CameraController : MonoBehaviour
 {
     public Transform player;
     public Vector3 offset;
-    public float minX = -301.1f;
-    public float maxX = -8.1f;
-    public float minY = 79.9f;
-    public float maxY = 38f; //hemos puesto aqui el maximo y el minimo tanto de la Y como de la "X" para que no pete, mueve la camara para ver cual es el maximo y el minimo.. 
+    public float minX; //ESTO LO CONTROLAREMOS DESDE EL EDITOR CADA VEZ QUE LO NECESIMOS. es decir, pondremos los valores de la camara desde la vista del juego. 
+    public float maxX;
+    public float minY;
+    public float maxY; //hemos puesto aqui el maximo y el minimo tanto de la Y como de la "X" para que no pete, mueve la camara para ver cual es el maximo y el minimo.. 
 
     void Update()
     {
