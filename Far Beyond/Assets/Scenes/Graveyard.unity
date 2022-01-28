@@ -4459,6 +4459,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1373834788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7901869231615769571, guid: 01581e9771e4a0e4d9f18e4c3c81c8c5, type: 3}
+  m_PrefabInstance: {fileID: 7901869230841722311}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &1373834789
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373834788}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.86
+--- !u!114 &1373834793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373834788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0db0f8cbd2deab4429e66605c2c6cb00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseRange: 8.55
+  attackRange: 1.18
 --- !u!1001 &1422687038
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8055,17 +8090,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3292624329524796194, guid: 01581e9771e4a0e4d9f18e4c3c81c8c5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7901869231615769568, guid: 01581e9771e4a0e4d9f18e4c3c81c8c5, type: 3}
       propertyPath: m_RootOrder
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7901869231615769568, guid: 01581e9771e4a0e4d9f18e4c3c81c8c5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.978
+      value: 1.77
       objectReference: {fileID: 0}
     - target: {fileID: 7901869231615769568, guid: 01581e9771e4a0e4d9f18e4c3c81c8c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 69.331
+      value: 69.19
       objectReference: {fileID: 0}
     - target: {fileID: 7901869231615769568, guid: 01581e9771e4a0e4d9f18e4c3c81c8c5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8103,7 +8142,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3292624329524796194, guid: 01581e9771e4a0e4d9f18e4c3c81c8c5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 01581e9771e4a0e4d9f18e4c3c81c8c5, type: 3}
 --- !u!1001 &8353057997768267808
 PrefabInstance:
