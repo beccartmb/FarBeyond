@@ -1,11 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+public enum EnemyStates //un enum es un conjunto de valores del que solo podra elegir uno. Se escriben empezando por mayuscula
+{
+    Patrol,Chase,Attack //podrás elegir cualquiera de los estados que tu metas, PERO solo y exclusivamente uno. (por ejemplo, a mele y a distancia, serian dos distintos)
+}
 
 public class SlimesCode : MonoBehaviour
 {
     public float chaseRange;
     public float attackRange;
+
+    public EnemyStates currentState = EnemyStates.Patrol; //siempre que queramos referenciar un ENUM sera mediante .algo
 
     void OnTriggerEnter2D(Collider2D other) //eso nos va a permitir detectar dentro de un empty vacio con un collider que genere un area. 
     {
