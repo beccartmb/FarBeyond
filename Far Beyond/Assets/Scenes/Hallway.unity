@@ -747,8 +747,8 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: -10}
   minX: -81.7
   maxX: 47
-  minY: 50.5
-  maxY: 10
+  minY: 50
+  maxY: 22
 --- !u!1 &448116470
 GameObject:
   m_ObjectHideFlags: 0
