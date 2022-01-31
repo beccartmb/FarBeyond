@@ -8,9 +8,7 @@ public class MenuController : MonoBehaviour
    
     public void LoadScene(string nextScene)
     {
-        //aqui pegalo
-
-        SceneManager.LoadScene(nextScene); //esto sirve para que cargue la escena que tu designes dentro de los botones. Tendras que escribir a la perfeccion dicho nombre. 
+        StartCoroutine(ShakeAndLoadScene(nextScene));
     }
     public void QuitMenu()
     {
@@ -20,4 +18,17 @@ public class MenuController : MonoBehaviour
     {
         Application.OpenURL(newUrl); //esto sirve para que nos abra los url identificados mediante el apartado OnClick de los botones. Copia y pega el url que quieres visitar.
     }
+    IEnumerator ShakeAndLoadScene(string nextScene) //esto es un coroutine que sirve para esperar X tiempo. ES COMO UN CONTADOR.
+    {
+        CameraController.Instance.shakeTime = 0.65f;
+        CameraController.Instance.maxShakeTime = 0.65f;
+        CameraController.Instance.shakeAmount = 0.015f;
+
+        yield return new WaitForSeconds(0.8f); //esto es para esperar un tiempo determinado, en este caso, 0.1f segundos.
+        // yield return null; // Espera 1 frame
+        SceneManager.LoadScene(nextScene); //esto sirve para que cargue la escena que tu designes dentro de los botones. Tendras que escribir a la perfeccion dicho nombre. 
+    }
+
+
+
 }

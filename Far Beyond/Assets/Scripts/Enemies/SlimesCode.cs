@@ -27,7 +27,6 @@ public class SlimesCode : MonoBehaviour
         if (illayBullet != null)
         {
             StartCoroutine(FlashColor(this.GetComponent<SpriteRenderer>()));
-            
         }
 
     }

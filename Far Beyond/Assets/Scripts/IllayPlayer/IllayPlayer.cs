@@ -49,10 +49,12 @@ public class IllayPlayer : MonoBehaviour
         if (Keyboard.current.rightArrowKey.isPressed && wallOnRight.Count == 0 || isSlidingRight) //esto me permite no volver a saltar una segunda vez, ademas, si esta dentro del area de desliz,
                                                                                                   //deslizara solo, como si estuviese pulsando siempre la tecla derecha. 
         {
+            this.transform.localScale = new Vector3(1f, transform.localScale.y, transform.localScale.z); //esto lo ponemos para que gira de derecha a izquierda el vector, volteandolo.
             velocity.x = speed; //esto me permite MOVERME en 2D, dado que NO ES IGUAL que en 3D. 
         }
         else if (Keyboard.current.leftArrowKey.isPressed && wallOnLeft.Count == 0) //esto me permite no volver a saltar una segunda vez. 
         {
+            this.transform.localScale = new Vector3(-1f,transform.localScale.y, transform.localScale.z);
             velocity.x = -speed; //necesitamos que sea negativo para que te muevas hacia la izquierda, es la manera de moverte en 2D. 
         }
         else
@@ -79,7 +81,6 @@ public class IllayPlayer : MonoBehaviour
         }
         else if (Keyboard.current.leftArrowKey.isPressed) //esto me permite no volver a saltar una segunda vez. 
         {
-            this.transform.localScale = new Vector3(-1f, 0f, 0f);
             velocity.x = -speed; //necesitamos que sea negativo para que te muevas hacia la izquierda, es la manera de moverte en 2D. 
         }
         else if (Keyboard.current.upArrowKey.isPressed) //esto me permite no volver a saltar una segunda vez. 
