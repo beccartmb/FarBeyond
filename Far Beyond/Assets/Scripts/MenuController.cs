@@ -5,19 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-
-
+   
     public void LoadScene(string nextScene)
     {
-
-
-
-        /*CameraController.Instance.shakeTime = 0.65f;
-        CameraController.Instance.maxShakeTime = 0.65f;
-        CameraController.Instance.shakeAmount = 0.015f;*/
-
-
-
+        //aqui pegalo
 
         SceneManager.LoadScene(nextScene); //esto sirve para que cargue la escena que tu designes dentro de los botones. Tendras que escribir a la perfeccion dicho nombre. 
     }
