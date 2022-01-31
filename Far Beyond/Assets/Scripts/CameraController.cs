@@ -31,7 +31,34 @@ public class CameraController : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, maxY, transform.position.z); // el maximo de "Y" es la cordenada que aparece cuando la camara esta lo mas alto que tu quieres asignar.
         }
+
+        // esta es la orden para sacudir la cámara.
+        shakeTime -= Time.deltaTime;
+        if (shakeTime > 0f)
+        {
+            this.transform.position += Vector3.right
+                * Mathf.Sin(Time.time * 80.0f) * shakeAmount;
+        }
     }
+
+
+    //Hacer temblar la cámara
+
+    public float shakeTime = 0f;
+    public float shakeAmount = 0f;
+    public float maxShakeTime = 0f;
+
+    #region Singleton
+    public static CameraController Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+    #endregion
+
+
+   
 }
 
 
