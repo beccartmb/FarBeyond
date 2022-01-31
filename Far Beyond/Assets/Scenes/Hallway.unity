@@ -725,7 +725,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 372885750}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -82, y: 51.8, z: -10}
+  m_LocalPosition: {x: 43.1, y: 51.8, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -745,10 +745,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 539539618}
   offset: {x: 0, y: 0, z: -10}
-  minX: -81.7
-  maxX: 47
+  minX: -78.5
+  maxX: 43
   minY: 50
   maxY: 22
+  shakeTime: 0
+  shakeAmount: 0
+  maxShakeTime: 0
 --- !u!1 &448116470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1936,6 +1939,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7201162863788085872, guid: d8ede3005df6e5f4288576eec60a3bc3, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7201162863788085873, guid: d8ede3005df6e5f4288576eec60a3bc3, type: 3}
       propertyPath: m_RootOrder
       value: 17

@@ -201,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227175349}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 66, y: 8.9, z: -10}
+  m_LocalPosition: {x: 155.49, y: 10.49, z: -10}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -221,10 +221,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 397136476}
   offset: {x: 0, y: 0, z: -10}
-  minX: 9
-  maxX: 155.6
+  minX: 10.8
+  maxX: 155.5
   minY: 31.2
   maxY: 9.5
+  shakeTime: 0
+  shakeAmount: 0
+  maxShakeTime: 0
 --- !u!1001 &264701150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -637,6 +640,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7201162863788085872, guid: d8ede3005df6e5f4288576eec60a3bc3, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7201162863788085873, guid: d8ede3005df6e5f4288576eec60a3bc3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -825,7 +832,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -60
+  m_SortingOrder: -59
   m_Sprite: {fileID: 21300000, guid: 85ba0815df4e7da4ea4d613ff59fdbf5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
