@@ -288,8 +288,9 @@ GameObject:
   - component: {fileID: 492828594}
   - component: {fileID: 492828593}
   - component: {fileID: 492828592}
+  - component: {fileID: 492828595}
   m_Layer: 5
-  m_Name: PlayGame
+  m_Name: continueGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -409,6 +410,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492828590}
   m_CullTransparentMesh: 1
+--- !u!114 &492828595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492828590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29e5b21d81c853742805cfde55f6063d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &512269467
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +513,7 @@ GameObject:
   - component: {fileID: 623017379}
   - component: {fileID: 623017378}
   - component: {fileID: 623017377}
+  - component: {fileID: 623017380}
   m_Layer: 5
   m_Name: ExitFarBeyond
   m_TagString: Untagged
@@ -621,6 +635,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623017375}
   m_CullTransparentMesh: 1
+--- !u!114 &623017380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623017375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29e5b21d81c853742805cfde55f6063d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &667686727
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,6 +659,7 @@ GameObject:
   - component: {fileID: 667686731}
   - component: {fileID: 667686730}
   - component: {fileID: 667686729}
+  - component: {fileID: 667686732}
   m_Layer: 5
   m_Name: NewGame
   m_TagString: Untagged
@@ -754,6 +781,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667686727}
   m_CullTransparentMesh: 1
+--- !u!114 &667686732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667686727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29e5b21d81c853742805cfde55f6063d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &929805879
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,7 +1018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1542,7 +1581,7 @@ GameObject:
   - component: {fileID: 1693441015}
   - component: {fileID: 1693441014}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: logo far beyond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2004,7 +2043,7 @@ GameObject:
   - component: {fileID: 2138554842}
   - component: {fileID: 2138554841}
   m_Layer: 5
-  m_Name: Image
+  m_Name: sombra logo far beyond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

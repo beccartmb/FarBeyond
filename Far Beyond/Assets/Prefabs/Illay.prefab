@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1042939611453497468}
   - component: {fileID: 4984655728690529214}
   - component: {fileID: 8692166213739415693}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Illay
   m_TagString: Untagged
   m_Icon: {fileID: 0}

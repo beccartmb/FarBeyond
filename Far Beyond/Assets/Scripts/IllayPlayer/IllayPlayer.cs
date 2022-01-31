@@ -172,4 +172,5 @@ public class IllayPlayer : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); //
     }
+    //animator.play para acceder a las animaciones. 
 }

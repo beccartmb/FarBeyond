@@ -16,21 +16,28 @@ public class SlimesCode : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) //eso nos va a permitir detectar dentro de un empty vacio con un collider que genere un area. 
     {
         IllayPlayer player = other.GetComponent<IllayPlayer>();
+        IllayBullet illayBullet = other.GetComponent<IllayBullet>();
         if (player != null)
         {
             this.transform.position = new Vector3(transform.position.x-1, this.transform.position.y, this.transform.position.z); //esto hace que se mueva uno hacia atras cuando COLISIONAN. 
                                                                                                                                  //debera cambiarse en vez de player, bola de fuego.
-            StartCoroutine(FlashColor());//aqui lo llamos como si fuese un metodo dentro de un coroutine.
+            StartCoroutine(FlashColor(player.GetComponent<SpriteRenderer>()));//aqui lo llamos como si fuese un metodo dentro de un coroutine.
+            //si el jugador entra dentro del daño, el jugador se pone rojo.
+        }
+        if (illayBullet != null)
+        {
+            StartCoroutine(FlashColor(this.GetComponent<SpriteRenderer>()));
+            //animator.play para acceder a las animaciones. 
         }
 
     }
 
-    IEnumerator FlashColor() //esto es un coroutine que sirve para esperar X tiempo. ES COMO UN CONTADOR.
+    IEnumerator FlashColor(SpriteRenderer spriteRender) //esto es un coroutine que sirve para esperar X tiempo. ES COMO UN CONTADOR.
     {
-        GetComponent<SpriteRenderer>().color = Color.red;
+        spriteRender.color = Color.red;
         yield return new WaitForSeconds(0.1f); //esto es para esperar un tiempo determinado, en este caso, 0.1f segundos.
         // yield return null; // Espera 1 frame
-        GetComponent<SpriteRenderer>().color = Color.white;
+        spriteRender.color = Color.white;
     }
 
     private void OnDrawGizmos() //esto nos hace ayudas visuales para el rango de ataque y el rango de perseguir del enemigo. SOLO SIRVEN COMO AYUDA VISUAL Y NO SE VEN EN LA PANTALLA DE GAME.
