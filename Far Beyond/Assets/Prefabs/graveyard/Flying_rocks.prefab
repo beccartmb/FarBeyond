@@ -916,6 +916,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8591720997114068708}
   - component: {fileID: 5885907357677155403}
+  - component: {fileID: 2931631931249278240}
   m_Layer: 0
   m_Name: Little_rock-5
   m_TagString: Untagged
@@ -988,6 +989,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2931631931249278240
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4731407870172720935}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6ed6dfdf3fe184648a95a4108de1c4bd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5342153025838064583
 GameObject:
   m_ObjectHideFlags: 0
