@@ -256,6 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1710062176970359208}
   - component: {fileID: 5026911588517910257}
+  - component: {fileID: 3692386102009532419}
   m_Layer: 0
   m_Name: Little_rock-3
   m_TagString: Untagged
@@ -328,6 +329,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3692386102009532419
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743855921901200465}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3fdaf3a9cb859b74381757587b85f97e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1411186790496255808
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,6 +604,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5008273210194579710}
   - component: {fileID: 2828633776676372911}
+  - component: {fileID: 1814438091670658063}
   m_Layer: 0
   m_Name: Little_rock-1
   m_TagString: Untagged
@@ -656,6 +677,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1814438091670658063
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4128652052707227629}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d8f5516a307630549b8d321402eaa546, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4153660213559185302
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,6 +1244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5135633804497992123}
   - component: {fileID: 2696215405118315775}
+  - component: {fileID: 2925239515135619043}
   m_Layer: 0
   m_Name: Little_rock-2
   m_TagString: Untagged
@@ -1276,6 +1317,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2925239515135619043
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8354861087357753651}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8475dd9354b5d2e409c7265e457eeb6b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8944739960810143097
 GameObject:
   m_ObjectHideFlags: 0
