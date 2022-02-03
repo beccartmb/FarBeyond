@@ -12,6 +12,7 @@ public class IllayPlayer : MonoBehaviour
     public float jumpSpeed = 5.0f;
     public float jumpSpeedWater = 2.0f;
     public Vector3 newSaveZone;
+    private Animation anim; //ESTO NOS VA A PERMITIR METER Y MODIFICAR ANIMACIONES.
 
     private List<Collider2D> floors = new List<Collider2D>(); //necesaria para detectar los suelos. 
     private List<Collider2D> wallOnRight = new List<Collider2D>(); //necesaria para detectar las paredes a la derecha. 
@@ -21,6 +22,7 @@ public class IllayPlayer : MonoBehaviour
     public bool isInWater; //aqui permite hace un codigo de booleana que detecte si esta en el agua o no. 
     public bool isInTeleportGraveyard; //aqui designamos los teleport para otras escenas. 
     public bool passedSaveZone;
+
 
     private void Start()
     {
@@ -45,6 +47,13 @@ public class IllayPlayer : MonoBehaviour
         Vector2 velocity = rbody.velocity; //aqui determinamos la velocidad del movimiento. 
         rbody.gravityScale = 2.0f; //aqui designamos LA GRAVEDAD EN TIERRA. (para que no nos de problema saltar en el agua. 
 
+        
+        if (!Keyboard.current.rightArrowKey.isPressed && !Keyboard.current.leftArrowKey.isPressed) //cuando ponemos la EXCLAMACION antes de algo, estamos poniendo que no se haga dicha cosa.
+        {
+            anim = gameObject.GetComponent<Animation>(); //esto es para cambiar las animaciones, sin embargo tienes que tenerlas metidas en windows> animation >animation para que el personaje tenga todo.
+            anim.Play("Fire_movement"); //aqui designaremos la animacion a la que quiere cambiar. RECUERDA QUE LA VARIABLE SE TIENE QUE DECLARAR ARRIBA.
+        }
+
         //movimiento horizontal
         if (Keyboard.current.rightArrowKey.isPressed && wallOnRight.Count == 0 || isSlidingRight) //esto me permite no volver a saltar una segunda vez, ademas, si esta dentro del area de desliz,
                                                                                                   //deslizara solo, como si estuviese pulsando siempre la tecla derecha. 
@@ -54,13 +63,17 @@ public class IllayPlayer : MonoBehaviour
         }
         else if (Keyboard.current.leftArrowKey.isPressed && wallOnLeft.Count == 0) //esto me permite no volver a saltar una segunda vez. 
         {
-            this.transform.localScale = new Vector3(-1f,transform.localScale.y, transform.localScale.z);
+            this.transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z);
             velocity.x = -speed; //necesitamos que sea negativo para que te muevas hacia la izquierda, es la manera de moverte en 2D. 
         }
+
+
+
         else
         {
             velocity.x *= 0.9f; //esto hace que cada frame que no se mueve, se deslice menos. Si el numero es mayor (el 0.9) el deslizamiento es MAYOR.
         }
+
 
         //movimiento del salto. 
         if (Keyboard.current.spaceKey.wasPressedThisFrame && floors.Count > 0) //cuando pulse la tecla espacio y el numero de suelos sea MAYOR que 0, SALTA!
@@ -68,6 +81,8 @@ public class IllayPlayer : MonoBehaviour
             velocity.y = jumpSpeed;
         }
         rbody.velocity = velocity; //esto lo utilizamos para RESETEAR el movimiento, es decir, que si no estas pulsando las flechas, que no se mueva. 
+
+
     }
     #endregion
     public void MovementIllayWater()
