@@ -6,13 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class IllayPlayer : MonoBehaviour
 {
-
+    
     private Rigidbody2D rbody;
     public float speed = 3.0f;
     public float jumpSpeed = 5.0f;
     public float jumpSpeedWater = 2.0f;
     public Vector3 newSaveZone;
-    private Animation anim; //ESTO NOS VA A PERMITIR METER Y MODIFICAR ANIMACIONES.
+    Animator anim; //ESTO NOS VA A PERMITIR METER Y MODIFICAR ANIMACIONES.
+
+    #region SINGLETON
+    public static IllayPlayer Instance { get; private set; }
+
+    private void Awake() //esto junto con el intance de arriba convierte nuestro personaje en un singleton (mucho mas comodo para juegos de un jugador) ya que nos permite acceder a este codigo desde otros codigos. 
+    {
+        Instance = this;
+    }
+    #endregion
 
     private List<Collider2D> floors = new List<Collider2D>(); //necesaria para detectar los suelos. 
     private List<Collider2D> wallOnRight = new List<Collider2D>(); //necesaria para detectar las paredes a la derecha. 
@@ -27,6 +36,7 @@ public class IllayPlayer : MonoBehaviour
     private void Start()
     {
         rbody = GetComponent<Rigidbody2D>(); //esto permite que te detecte el RIGIDBODY para detectar suelos y paredes desde el minuto 0.
+        anim = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -39,7 +49,26 @@ public class IllayPlayer : MonoBehaviour
             MovementIllay();
             DigThroughFloor();
         }
+        Animate();
         //aqui dentro ira el metodo de movimiento. 
+    }
+
+    void Animate() //Vamos a crear un void separado para configurar las animaciones. Debe ser llamado en el Update
+    {
+        anim = gameObject.GetComponent<Animator>(); //esto es para cambiar las animaciones, sin embargo tienes que tenerlas metidas en windows> animation >animation para que el personaje tenga todo.
+        //El orden es importante. Lo que vaya arriba va a tener prioridad sobre lo que va debajo.
+        if (Mathf.Abs(rbody.velocity.y) > 0.001f) // si la velocidad en y es mayor que 0.1 significa que está saltando. 
+        {
+            anim.Play("Illay_jump");  //El salto tiene prioridad porque si se está desplazando en y es siempre porque está saltando.
+        }
+        else if (Mathf.Abs(rbody.velocity.x) > 0.001f)
+        {
+            anim.Play("Illay_running");
+        }
+        else
+        {
+            anim.Play("Illay_idle"); //aqui designaremos la animacion a la que quiere cambiar. RECUERDA QUE LA VARIABLE SE TIENE QUE DECLARAR ARRIBA.
+        }
     }
     #region MovementIllay
     public void MovementIllay()
@@ -47,27 +76,19 @@ public class IllayPlayer : MonoBehaviour
         Vector2 velocity = rbody.velocity; //aqui determinamos la velocidad del movimiento. 
         rbody.gravityScale = 2.0f; //aqui designamos LA GRAVEDAD EN TIERRA. (para que no nos de problema saltar en el agua. 
 
-        
-        if (!Keyboard.current.rightArrowKey.isPressed && !Keyboard.current.leftArrowKey.isPressed) //cuando ponemos la EXCLAMACION antes de algo, estamos poniendo que no se haga dicha cosa.
-        {
-            anim = gameObject.GetComponent<Animation>(); //esto es para cambiar las animaciones, sin embargo tienes que tenerlas metidas en windows> animation >animation para que el personaje tenga todo.
-            anim.Play("Fire_movement"); //aqui designaremos la animacion a la que quiere cambiar. RECUERDA QUE LA VARIABLE SE TIENE QUE DECLARAR ARRIBA.
-        }
-
         //movimiento horizontal
         if (Keyboard.current.rightArrowKey.isPressed && wallOnRight.Count == 0 || isSlidingRight) //esto me permite no volver a saltar una segunda vez, ademas, si esta dentro del area de desliz,
                                                                                                   //deslizara solo, como si estuviese pulsando siempre la tecla derecha. 
         {
             this.transform.localScale = new Vector3(1f, transform.localScale.y, transform.localScale.z); //esto lo ponemos para que gira de derecha a izquierda el vector, volteandolo.
             velocity.x = speed; //esto me permite MOVERME en 2D, dado que NO ES IGUAL que en 3D. 
+
         }
         else if (Keyboard.current.leftArrowKey.isPressed && wallOnLeft.Count == 0) //esto me permite no volver a saltar una segunda vez. 
         {
             this.transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z);
             velocity.x = -speed; //necesitamos que sea negativo para que te muevas hacia la izquierda, es la manera de moverte en 2D. 
         }
-
-
 
         else
         {
@@ -79,7 +100,9 @@ public class IllayPlayer : MonoBehaviour
         if (Keyboard.current.spaceKey.wasPressedThisFrame && floors.Count > 0) //cuando pulse la tecla espacio y el numero de suelos sea MAYOR que 0, SALTA!
         {
             velocity.y = jumpSpeed;
+
         }
+
         rbody.velocity = velocity; //esto lo utilizamos para RESETEAR el movimiento, es decir, que si no estas pulsando las flechas, que no se mueva. 
 
 
