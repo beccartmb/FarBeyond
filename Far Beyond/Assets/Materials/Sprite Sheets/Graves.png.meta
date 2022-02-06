@@ -1,49 +1,49 @@
 fileFormatVersion: 2
-guid: fd3c34c6864f8af4c82c44d030315230
+guid: 5a5238caa4936ec47b62f181ca762a3b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 403208247147482157
-    second: Flame_0
+      213: 7032554716221941038
+    second: Graves_0
   - first:
-      213: -376618679879410969
-    second: Flame_1
+      213: -950371815448254290
+    second: Graves_1
   - first:
-      213: 8380166570636649795
-    second: Flame_2
+      213: -6367614522140921428
+    second: Graves_2
   - first:
-      213: 7903980933308901794
-    second: Flame_3
+      213: -1582098636282948072
+    second: Graves_3
   - first:
-      213: 7447725825961841008
-    second: Flame_4
+      213: 49981825027616467
+    second: Graves_4
   - first:
-      213: -5439600369339344090
-    second: Flame_5
+      213: -3592331345388220603
+    second: Graves_5
   - first:
-      213: -2540415838489662824
-    second: Flame_6
+      213: 1472537120265569156
+    second: Graves_6
   - first:
-      213: 5338284842835012558
-    second: Flame_7
+      213: -5795524997245889538
+    second: Graves_7
   - first:
-      213: 2864937601137935926
-    second: Flame_8
+      213: 4037496102859891190
+    second: Graves_8
   - first:
-      213: 8519909974603880484
-    second: Flame_9
+      213: 8366168374898726935
+    second: Graves_9
   - first:
-      213: -3114188084293079610
-    second: Flame_10
+      213: 9106960257366147505
+    second: Graves_10
   - first:
-      213: 3281689648847620236
-    second: Flame_11
+      213: -1303503082180849849
+    second: Graves_11
   - first:
-      213: 2625653836871332490
-    second: Flame_12
+      213: 7941038435172530789
+    second: Graves_12
   - first:
-      213: -7230700057192742924
-    second: Flame_13
+      213: 7322876749275361258
+    second: Graves_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -88,7 +88,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 35
+  spritePixelsToUnits: 13
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -107,7 +107,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -119,7 +119,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -133,13 +133,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Flame_0
+      name: Graves_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1536
-        width: 512
-        height: 512
+        y: 3240
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2ccbb5b3cb789500800000000000000
-      internalID: 403208247147482157
+      spriteID: e2528eb1147a89160800000000000000
+      internalID: 7032554716221941038
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flame_1
+      name: Graves_1
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1536
-        width: 512
-        height: 512
+        x: 1920
+        y: 3240
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ead20a5e4bf5caf0800000000000000
-      internalID: -376618679879410969
+      spriteID: ea8e9af7ed99fc2f0800000000000000
+      internalID: -950371815448254290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flame_2
+      name: Graves_2
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 1536
-        width: 512
-        height: 512
+        x: 3840
+        y: 3240
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,20 +189,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 345a66198155c4470800000000000000
-      internalID: 8380166570636649795
+      spriteID: ca1fb254450b1a7a0800000000000000
+      internalID: -6367614522140921428
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flame_3
+      name: Graves_3
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 1536
-        width: 512
-        height: 512
+        x: 5760
+        y: 3240
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,104 +210,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a9665128c490bd60800000000000000
-      internalID: 7903980933308901794
+      spriteID: 81699b03ca14b0ae0800000000000000
+      internalID: -1582098636282948072
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flame_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1024
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 07155f0dd23ab5760800000000000000
-      internalID: 7447725825961841008
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flame_5
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 1024
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 62bd179c848a284b0800000000000000
-      internalID: -5439600369339344090
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flame_6
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 1024
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 89a2c0d2141aebcd0800000000000000
-      internalID: -2540415838489662824
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flame_7
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 1024
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ecb6807f7c5651a40800000000000000
-      internalID: 5338284842835012558
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flame_8
+      name: Graves_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 512
-        width: 512
-        height: 512
+        y: 2160
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -315,20 +231,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6368c73b19d42c720800000000000000
-      internalID: 2864937601137935926
+      spriteID: 3de2ffd743291b000800000000000000
+      internalID: 49981825027616467
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flame_9
+      name: Graves_5
       rect:
         serializedVersion: 2
-        x: 512
-        y: 512
-        width: 512
-        height: 512
+        x: 1920
+        y: 2160
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -336,20 +252,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42852924bfccc3670800000000000000
-      internalID: 8519909974603880484
+      spriteID: 54f42a2aca9752ec0800000000000000
+      internalID: -3592331345388220603
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flame_10
+      name: Graves_6
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 512
-        width: 512
-        height: 512
+        x: 3840
+        y: 2160
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -357,20 +273,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6cde4ffdf6e28c4d0800000000000000
-      internalID: -3114188084293079610
+      spriteID: 483810485b08f6410800000000000000
+      internalID: 1472537120265569156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flame_11
+      name: Graves_7
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 512
-        width: 512
-        height: 512
+        x: 5760
+        y: 2160
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -378,20 +294,104 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8883a63957ea8d20800000000000000
-      internalID: 3281689648847620236
+      spriteID: ef3134498b8229fa0800000000000000
+      internalID: -5795524997245889538
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flame_12
+      name: Graves_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1080
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f1ecf06051180830800000000000000
+      internalID: 4037496102859891190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Graves_9
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1080
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71812f4afc99a1470800000000000000
+      internalID: 8366168374898726935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Graves_10
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 1080
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b1c8e37a1c626e70800000000000000
+      internalID: 9106960257366147505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Graves_11
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 1080
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74fcbfe5ad609ede0800000000000000
+      internalID: -1303503082180849849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Graves_12
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 512
-        height: 512
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -399,20 +399,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a827bd9d042307420800000000000000
-      internalID: 2625653836871332490
+      spriteID: 56abe24226c343e60800000000000000
+      internalID: 7941038435172530789
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flame_13
+      name: Graves_13
       rect:
         serializedVersion: 2
-        x: 512
+        x: 1920
         y: 0
-        width: 512
-        height: 512
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -420,8 +420,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ff31ad9b9467ab90800000000000000
-      internalID: -7230700057192742924
+      spriteID: aef668eea9510a560800000000000000
+      internalID: 7322876749275361258
       vertices: []
       indices: 
       edges: []

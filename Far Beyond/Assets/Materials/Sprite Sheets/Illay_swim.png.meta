@@ -1,49 +1,43 @@
 fileFormatVersion: 2
-guid: fd3c34c6864f8af4c82c44d030315230
+guid: b901e290e9071e54c9d0b02c00e61b1c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 403208247147482157
-    second: Flame_0
+      213: 337656898919390563
+    second: Illay_swim_0
   - first:
-      213: -376618679879410969
-    second: Flame_1
+      213: 4937689469821631933
+    second: Illay_swim_1
   - first:
-      213: 8380166570636649795
-    second: Flame_2
+      213: 591939074388920014
+    second: Illay_swim_2
   - first:
-      213: 7903980933308901794
-    second: Flame_3
+      213: 4136597072993940480
+    second: Illay_swim_3
   - first:
-      213: 7447725825961841008
-    second: Flame_4
+      213: -278085761075019545
+    second: Illay_swim_4
   - first:
-      213: -5439600369339344090
-    second: Flame_5
+      213: -9045643704210090330
+    second: Illay_swim_5
   - first:
-      213: -2540415838489662824
-    second: Flame_6
+      213: -7691461971084720976
+    second: Illay_swim_6
   - first:
-      213: 5338284842835012558
-    second: Flame_7
+      213: -2554650432799531925
+    second: Illay_swim_7
   - first:
-      213: 2864937601137935926
-    second: Flame_8
+      213: -5164227981761170451
+    second: Illay_swim_8
   - first:
-      213: 8519909974603880484
-    second: Flame_9
+      213: 6888442025120331623
+    second: Illay_swim_9
   - first:
-      213: -3114188084293079610
-    second: Flame_10
+      213: -3480930558994287856
+    second: Illay_swim_10
   - first:
-      213: 3281689648847620236
-    second: Flame_11
-  - first:
-      213: 2625653836871332490
-    second: Flame_12
-  - first:
-      213: -7230700057192742924
-    second: Flame_13
+      213: 504778929102225215
+    second: Illay_swim_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -88,7 +82,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 35
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -107,7 +101,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -119,7 +113,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -133,13 +127,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Flame_0
+      name: Illay_swim_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1536
-        width: 512
-        height: 512
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +141,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2ccbb5b3cb789500800000000000000
-      internalID: 403208247147482157
+      spriteID: 36ddc0c19299fa400800000000000000
+      internalID: 337656898919390563
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flame_1
+      name: Illay_swim_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbdb7eb6962368440800000000000000
+      internalID: 4937689469821631933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Illay_swim_2
       rect:
         serializedVersion: 2
         x: 512
-        y: 1536
-        width: 512
-        height: 512
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ead20a5e4bf5caf0800000000000000
-      internalID: -376618679879410969
+      spriteID: ec600a1b37df63800800000000000000
+      internalID: 591939074388920014
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flame_2
+      name: Illay_swim_3
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 1536
-        width: 512
-        height: 512
+        x: 768
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,125 +204,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 345a66198155c4470800000000000000
-      internalID: 8380166570636649795
+      spriteID: 00479ba0f15286930800000000000000
+      internalID: 4136597072993940480
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flame_3
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 1536
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2a9665128c490bd60800000000000000
-      internalID: 7903980933308901794
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flame_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1024
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 07155f0dd23ab5760800000000000000
-      internalID: 7447725825961841008
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flame_5
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 1024
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 62bd179c848a284b0800000000000000
-      internalID: -5439600369339344090
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flame_6
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 1024
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 89a2c0d2141aebcd0800000000000000
-      internalID: -2540415838489662824
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flame_7
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 1024
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ecb6807f7c5651a40800000000000000
-      internalID: 5338284842835012558
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flame_8
+      name: Illay_swim_4
       rect:
         serializedVersion: 2
         x: 0
         y: 512
-        width: 512
-        height: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -315,20 +225,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6368c73b19d42c720800000000000000
-      internalID: 2864937601137935926
+      spriteID: 7e08702497a042cf0800000000000000
+      internalID: -278085761075019545
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flame_9
+      name: Illay_swim_5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a61fc51afa677280800000000000000
+      internalID: -9045643704210090330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Illay_swim_6
       rect:
         serializedVersion: 2
         x: 512
         y: 512
-        width: 512
-        height: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -336,20 +267,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42852924bfccc3670800000000000000
-      internalID: 8519909974603880484
+      spriteID: 0b4c112a610724590800000000000000
+      internalID: -7691461971084720976
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flame_10
+      name: Illay_swim_7
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 768
         y: 512
-        width: 512
-        height: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -357,41 +288,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6cde4ffdf6e28c4d0800000000000000
-      internalID: -3114188084293079610
+      spriteID: b6c9fab67fe0c8cd0800000000000000
+      internalID: -2554650432799531925
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flame_11
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 512
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c8883a63957ea8d20800000000000000
-      internalID: 3281689648847620236
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flame_12
+      name: Illay_swim_8
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 512
-        height: 512
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -399,20 +309,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a827bd9d042307420800000000000000
-      internalID: 2625653836871332490
+      spriteID: de33ef7030af458b0800000000000000
+      internalID: -5164227981761170451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flame_13
+      name: Illay_swim_9
       rect:
         serializedVersion: 2
-        x: 512
-        y: 0
-        width: 512
-        height: 512
+        x: 256
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -420,8 +330,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ff31ad9b9467ab90800000000000000
-      internalID: -7230700057192742924
+      spriteID: 7677b2b7689a89f50800000000000000
+      internalID: 6888442025120331623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Illay_swim_10
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 013f75f691041bfc0800000000000000
+      internalID: -3480930558994287856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Illay_swim_11
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3f7d37f2c5510700800000000000000
+      internalID: 504778929102225215
       vertices: []
       indices: 
       edges: []
