@@ -13,6 +13,8 @@ public class SlimesCode : MonoBehaviour
     public float attackRange;
     public float speedSlime = 2f;
     public List<Transform> PatrolPoints = new List<Transform>();
+    int nextPatrolPoint = 0; //el contador empieza en 0, asi no nos dara problemas de movimiento.
+    bool hasAttackFinished = false; //por defecto no ha acabado el ataque, asi nos sera mas facil programarlo.
 
     public EnemyStates currentState = EnemyStates.Patrol; //siempre que queramos referenciar un ENUM sera mediante .algo
 
@@ -90,21 +92,46 @@ public class SlimesCode : MonoBehaviour
         return true;
     }
 
+    void MoveTowardsPoint(Vector3 target) //aqui hemos agrupado el codigo de movimiento que utilizaremos para movernos, inclusive en instance del jugador. para no andar repitiendo codigo lo metemos en un metodo
+
+    {
+        this.transform.position = Vector3.MoveTowards(this.transform.position, target, speedSlime * Time.deltaTime);
+    }
 
     IEnumerator Patrol()
     {
+        MoveTowardsPoint(PatrolPoints[nextPatrolPoint].position);
+        //si hemos llegado al punto, cambiar al siguiente punto para hacer patrullaje. 
+        if (Vector3.Distance(this.transform.position, PatrolPoints[nextPatrolPoint].position) < 0.1f) //que sea menor de 1 metro. habra que ajustar esta distancia para lo de patruyaje.
 
-        yield return null;
+        {
+            nextPatrolPoint++;
+            if (nextPatrolPoint >= PatrolPoints.Count)
+            {
+                nextPatrolPoint = 0; //en caso de no haber ningun punto de patrullaje nuevo, vuelvo al del principio.
+                yield return null;
+            }
+
+        }
         //aqui tendremos que asignar que si no esta dentro del rango de chase, volver a una zona de patrullaje. 
     }
     IEnumerator Chase()
     {
-        this.transform.position = Vector3.MoveTowards(this.transform.position, IllayPlayer.Instance.transform.position, speedSlime * Time.deltaTime);
+        MoveTowardsPoint(IllayPlayer.Instance.transform.position);
         //esto permite perseguir al jugador, mediante la velocidad asignada en las variables de arriba y luego esperar un fotograma.
         yield return null; //si el siguiente fotograma sigue en chase el jugador, perseguir. 
     }
     IEnumerator Attack()
     {
+        hasAttackFinished = false;
+        GetComponent<SpriteRenderer>().color = Color.green; // AQUI METEREMOS LAS ANIMACIONES por ahora cambiamos a verde
+        yield return new WaitForSeconds(2.0f);
+        GetComponent<SpriteRenderer>().color = Color.white; //cuando termine el ataque, vuelve a blanco (color predeterminado)
+        while (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 0.98f)
+        {
+            yield return null;
+        }
+        hasAttackFinished = true;
         yield return null;
     }
 
