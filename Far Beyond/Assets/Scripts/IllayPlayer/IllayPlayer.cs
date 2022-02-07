@@ -31,7 +31,7 @@ public class IllayPlayer : MonoBehaviour
     public bool isInWater; //aqui permite hace un codigo de booleana que detecte si esta en el agua o no. 
     public bool isInTeleportGraveyard; //aqui designamos los teleport para otras escenas. 
     public bool passedSaveZone;
-
+    
 
     private void Start()
     {
@@ -71,6 +71,11 @@ public class IllayPlayer : MonoBehaviour
         }
     }
     #region MovementIllay
+
+
+    public GameObject Illay_jump; // Aquí ponemos el sonido como un gameObject para poder meterselo en unity. En unity hemos hecho un empty al que hemos metido el sonido.
+                                  // Quitar el awake en el sonido de unity porque eso hace que se ejecute nada más empezar. Hay que hacer un código en un script para matar el sonido del hierarchy.
+
     public void MovementIllay()
     {
         Vector2 velocity = rbody.velocity; //aqui determinamos la velocidad del movimiento. 
@@ -100,6 +105,7 @@ public class IllayPlayer : MonoBehaviour
         if (Keyboard.current.spaceKey.wasPressedThisFrame && floors.Count > 0) //cuando pulse la tecla espacio y el numero de suelos sea MAYOR que 0, SALTA!
         {
             velocity.y = jumpSpeed;
+            Instantiate(Illay_jump); //Esto es para que cuando se pulse el salto se reproduzca el sonido.
 
         }
 
