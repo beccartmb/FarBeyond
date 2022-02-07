@@ -18,7 +18,7 @@ public class SlimesCode : MonoBehaviour
 
     public EnemyStates currentState = EnemyStates.Patrol; //siempre que queramos referenciar un ENUM sera mediante .algo
 
-    public void start()
+    public void Start()
     {
         StartCoroutine(FMSCoroutine());
     }
@@ -89,12 +89,19 @@ public class SlimesCode : MonoBehaviour
 
     bool HasAttackFinished()
     {
-        return true;
+        return hasAttackFinished;
     }
 
     void MoveTowardsPoint(Vector3 target) //aqui hemos agrupado el codigo de movimiento que utilizaremos para movernos, inclusive en instance del jugador. para no andar repitiendo codigo lo metemos en un metodo
-
     {
+        if (target.x > this.transform.position.x) //si el punto esta mas a la derecha del personaje, la escala esta normal. 
+        {
+            this.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        else //sino, si el target esta a la izquierda de este, el enemigo se voltea en X.
+        {
+            this.transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
         this.transform.position = Vector3.MoveTowards(this.transform.position, target, speedSlime * Time.deltaTime);
     }
 
@@ -102,7 +109,7 @@ public class SlimesCode : MonoBehaviour
     {
         MoveTowardsPoint(PatrolPoints[nextPatrolPoint].position);
         //si hemos llegado al punto, cambiar al siguiente punto para hacer patrullaje. 
-        if (Vector3.Distance(this.transform.position, PatrolPoints[nextPatrolPoint].position) < 0.1f) //que sea menor de 1 metro. habra que ajustar esta distancia para lo de patruyaje.
+        if (Vector3.Distance(this.transform.position, PatrolPoints[nextPatrolPoint].position) < 1.0f) //que sea menor de 1 metro. habra que ajustar esta distancia para lo de patruyaje.
 
         {
             nextPatrolPoint++;
