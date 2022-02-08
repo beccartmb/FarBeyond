@@ -6,11 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class IllayPlayer : MonoBehaviour
 {
-    
+
     private Rigidbody2D rbody;
     public float speed = 3.0f;
     public float jumpSpeed = 5.0f;
     public float jumpSpeedWater = 2.0f;
+    public GameObject IllayPrefab;
+    public GameObject bulletIllayPrefab;
+    public GameObject flameBulletPrefab;
+    public float munitionFlame = 4.0f; //quiero que la llamarada (flame) dure 4 segundos en vez de tener X disparos. 
     public Vector3 newSaveZone;
     Animator anim; //ESTO NOS VA A PERMITIR METER Y MODIFICAR ANIMACIONES.
 
@@ -31,7 +35,7 @@ public class IllayPlayer : MonoBehaviour
     public bool isInWater; //aqui permite hace un codigo de booleana que detecte si esta en el agua o no. 
     public bool isInTeleportGraveyard; //aqui designamos los teleport para otras escenas. 
     public bool passedSaveZone;
-    
+
 
     private void Start()
     {
@@ -50,7 +54,8 @@ public class IllayPlayer : MonoBehaviour
             DigThroughFloor();
         }
         Animate();
-        //aqui dentro ira el metodo de movimiento. 
+        //aqui dentro ira el metodo de movimiento.
+        Shoot();
     }
 
     void Animate() //Vamos a crear un void separado para configurar las animaciones. Debe ser llamado en el Update
@@ -212,6 +217,25 @@ public class IllayPlayer : MonoBehaviour
         floors.Remove(collision.collider);
         wallOnRight.Remove(collision.collider);
         wallOnLeft.Remove(collision.collider);
+    }
+    void Shoot()
+    {
+        if (Keyboard.current.wKey.wasPressedThisFrame) //PARA DISPARAR TECLA W.
+        {
+            Instantiate(bulletIllayPrefab, this.transform.position, Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
+        }
+        //las rotaciones se hablan con Quaternion, el identity que le sigue es la rotación por defecto.
+
+        if (Keyboard.current.eKey.wasPressedThisFrame && munitionFlame > 0) //si la municion de la estamina es 1, disparar un segundo por estamina recogida. 
+        {
+            FlameShoot();
+            munitionFlame--; //que al disparar se reste una. QUIERO PONERLE TIEMPO A DICHO DISPARO
+        }
+    }
+    void FlameShoot()
+    {
+        Instantiate(flameBulletPrefab, this.transform.position, Quaternion.identity); //designamos el rayo como bala en RayShoot.
+
     }
 
     public void ResetScene()

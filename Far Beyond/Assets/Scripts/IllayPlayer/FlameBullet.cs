@@ -2,22 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IllayBullet : MonoBehaviour
+public class FlameBullet : MonoBehaviour
 {
     //si la bala sale de los limites, que se destruya. 
-    public float speedBullet = 50.0f;
     public float lifeTime = 7.0f;
-
 
     void Update()
     {
-        this.transform.position += new Vector3(speedBullet * Time.deltaTime,0f, 0f);
         lifeTime -= Time.deltaTime;
         if (lifeTime <= 0)
         {
             Destroy(this.gameObject);
         }
-
     }
     public void Die()
     {
@@ -25,7 +21,7 @@ public class IllayBullet : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)//esto es por si es una colision en area.
     {
-        
+
         SlimesCode slimes = other.GetComponent<SlimesCode>(); //desde aqui vamos a gestionar la muerte del slime. 
 
         if (slimes != null) //si la bala del jugador impacta contra el ALIEN éste muere. 
@@ -33,6 +29,5 @@ public class IllayBullet : MonoBehaviour
             slimes.Die();
             Destroy(this.gameObject);
         }
-
     }
 }

@@ -70,6 +70,7 @@ public class SlimesCode : MonoBehaviour
     }
 
 
+
     //si estoy en un estado, ejecuto dicho estado, y asi los tenemos totalmente separado de las demas cosas. 
 
     bool CurrentStateIs(EnemyStates stateToCheck) //esto chequea a cuanto esta del estado. 
@@ -175,5 +176,9 @@ public class SlimesCode : MonoBehaviour
         Gizmos.color = new Color(1f, 0f, 1f, 0.3f); // y esto es una especie de morado.
         Gizmos.DrawSphere(this.transform.position, chaseRange);
 
+    }
+    public void Die()
+    {
+        Destroy(this.gameObject);
     }
 }
