@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3409685391694293103}
   - component: {fileID: 586595548142919309}
+  - component: {fileID: 6584319755673567186}
   m_Layer: 0
   m_Name: Illay_jump
   m_TagString: Untagged
@@ -127,3 +128,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6584319755673567186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859644098232402331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60eae45c156f5c7419a54944e854a346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundDie: 1
