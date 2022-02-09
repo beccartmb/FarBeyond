@@ -130,6 +130,7 @@ public class IllayPlayer : MonoBehaviour
             GameManager.Instance.playerLife--;
             transform.position = newSaveZone;
             rbody.velocity = Vector2.zero;
+            GameManager.Instance.staminaO2 = 0.1f; //esto hara que vuelvas a tener estamina. hara que no mueran 18 veces seguidas. 
         }
         else
         {

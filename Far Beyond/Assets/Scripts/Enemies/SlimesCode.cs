@@ -109,7 +109,7 @@ public class SlimesCode : MonoBehaviour
 
     IEnumerator Patrol()
     {
-        MoveTowardsPoint(PatrolPoints[nextPatrolPoint].position);
+        MoveTowardsPoint(PatrolPoints[nextPatrolPoint].position); //para la sirena SOLO NECESITAMOS ESTA LINEA. 
         //si hemos llegado al punto, cambiar al siguiente punto para hacer patrullaje. 
         if (Vector3.Distance(this.transform.position, PatrolPoints[nextPatrolPoint].position) < 1.0f) //que sea menor de 1 metro. habra que ajustar esta distancia para lo de patruyaje.
 
