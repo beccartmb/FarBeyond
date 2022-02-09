@@ -5,9 +5,9 @@ using UnityEngine;
 public class IllayBullet : MonoBehaviour
 {
     //si la bala sale de los limites, que se destruya. 
-    public float speedBullet = 50.0f;
-    public float lifeTime = 7.0f;
-
+    public float speedBullet = 5.0f;
+    public float lifeTime = 3.0f;
+    public Animator anim;
 
     void Update()
     {
@@ -15,15 +15,19 @@ public class IllayBullet : MonoBehaviour
         lifeTime -= Time.deltaTime;
         if (lifeTime <= 0)
         {
+            //anim.Play("Bullet_die");
             Destroy(this.gameObject);
+            
         }
 
     }
     public void Die()
     {
         Destroy(this.gameObject); //esto nos permite destruir la bala. 
+        
     }
-    void OnTriggerEnter(Collider other)//esto es por si es una colision en area.
+    
+    /*void OnTriggerEnter2D(Collider2D other)//esto es por si es una colision en area.
     {
         
         SlimesCode slimes = other.GetComponent<SlimesCode>(); //desde aqui vamos a gestionar la muerte del slime. 
@@ -32,7 +36,9 @@ public class IllayBullet : MonoBehaviour
         {
             slimes.Die();
             Destroy(this.gameObject);
-        }
+            
+        } //Quitamos esto de aquí porque para que funcione la muerte de la bala se tiene que dar solo en un script.
+          //Si lo ponemos en los dos peta y no lo hace. Está todo puesto en el código del slime.
 
-    }
+    }*/
 }

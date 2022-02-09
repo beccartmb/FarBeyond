@@ -15,6 +15,7 @@ public class SlimesCode : MonoBehaviour
     public List<Transform> PatrolPoints = new List<Transform>();
     int nextPatrolPoint = 0; //el contador empieza en 0, asi no nos dara problemas de movimiento.
     bool hasAttackFinished = false; //por defecto no ha acabado el ataque, asi nos sera mas facil programarlo.
+    public Animator anim; //esto es por si queremos que el slime cambie de animación. Por ahora no está en uso.
 
     public EnemyStates currentState = EnemyStates.Patrol; //siempre que queramos referenciar un ENUM sera mediante .algo
 
@@ -158,7 +159,13 @@ public class SlimesCode : MonoBehaviour
         }
         if (illayBullet != null)
         {
+         
             Destroy(this.gameObject);
+            illayBullet.anim.Play("Bullet_die");
+            Destroy(illayBullet.gameObject, 1.0f); //Esto es para que la bala deje de exixtir.
+                                                   //Para que le de tiempo a hacerse la animación ponemos ese tiempo de espera antes de que muera.
+
+
         }
 
     }
