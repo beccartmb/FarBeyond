@@ -161,7 +161,7 @@ public class SlimesCode : MonoBehaviour
         {
          
             Destroy(this.gameObject);
-            illayBullet.anim.Play("Bullet_die");
+            illayBullet.anim.Play("Bullet_die"); //Esto es para llamar el anim desde la bala. Como es una animacion creada en bullet la tenemos que llamar desde allí.
             Destroy(illayBullet.gameObject, 1.0f); //Esto es para que la bala deje de exixtir.
                                                    //Para que le de tiempo a hacerse la animación ponemos ese tiempo de espera antes de que muera.
 
