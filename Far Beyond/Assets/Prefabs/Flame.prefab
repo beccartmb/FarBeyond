@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8822460312724468739}
   - component: {fileID: 415424266549860789}
   - component: {fileID: 5787069219514708807}
-  m_Layer: 0
+  - component: {fileID: 572976870762353512}
+  m_Layer: 6
   m_Name: Flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 14.6285715, y: 14.6285715}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -115,4 +116,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0781bbaa052e74ea19d6e0a3a6de57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 7
+  lifeTime: 5
+  anim: {fileID: 415424266549860789}
+--- !u!61 &572976870762353512
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997688504291724833}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.5650482, y: 4.674797}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 14.6285715, y: 14.6285715}
+    newSize: {x: 14.6285715, y: 14.6285715}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5854797, y: 2.6830292}
+  m_EdgeRadius: 0

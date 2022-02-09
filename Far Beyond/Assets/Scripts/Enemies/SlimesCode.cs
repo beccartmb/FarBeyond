@@ -148,6 +148,7 @@ public class SlimesCode : MonoBehaviour
     {
         IllayPlayer player = other.GetComponent<IllayPlayer>();
         IllayBullet illayBullet = other.GetComponent<IllayBullet>();
+        IllayFlame illayFlame = other.GetComponent<IllayFlame>();
         if (player != null)
         {
             //this.transform.position = new Vector3(transform.position.x - 1, this.transform.position.y, this.transform.position.z); //esto hace que se mueva EL SLIME uno hacia atras cuando COLISIONAN. 
@@ -162,7 +163,17 @@ public class SlimesCode : MonoBehaviour
          
             Destroy(this.gameObject);
             illayBullet.anim.Play("Bullet_die"); //Esto es para llamar el anim desde la bala. Como es una animacion creada en bullet la tenemos que llamar desde allí.
-            Destroy(illayBullet.gameObject, 1.0f); //Esto es para que la bala deje de exixtir.
+            Destroy(illayBullet.gameObject, 0.6f); //Esto es para que la bala deje de exixtir.
+                                                   //Para que le de tiempo a hacerse la animación ponemos ese tiempo de espera antes de que muera.
+
+            //Para que se pueda llamar las animaciones hay que arrastrar el animator de unity al script del cual llamamos por ejm aqui en el de bala o flame.
+        }
+        if (illayFlame != null)
+        {
+
+            Destroy(this.gameObject);
+            illayFlame.anim.Play("Flame_die"); //Esto es para llamar el anim desde la bala. Como es una animacion creada en bullet la tenemos que llamar desde allí.
+            Destroy(illayFlame.gameObject, 1.0f); //Esto es para que la bala deje de exixtir.
                                                    //Para que le de tiempo a hacerse la animación ponemos ese tiempo de espera antes de que muera.
 
 

@@ -10,8 +10,7 @@ AnimatorState:
   m_Name: Flame_die
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: -8494678942317373334}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -59,8 +58,7 @@ AnimatorState:
   m_Name: Flame_movement
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: -4905314425824532233}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -153,16 +151,13 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 4176408629898289675}
-    m_Position: {x: 260, y: -60, z: 0}
+    m_Position: {x: 250, y: -190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8053565352301516413}
-    m_Position: {x: 330, y: 20, z: 0}
+    m_Position: {x: 340, y: -50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8516553105229371045}
     m_Position: {x: 380, y: 110, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 6952556075573923133}
-    m_Position: {x: 684.1324, y: 72.01892, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
