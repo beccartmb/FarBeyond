@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
    
-    public void LoadScene(string nextScene)
+    public void LoadSceneWithVibrate(string nextScene) //PARA HACER ESTE SE NECESITA QUE EL CANVAS ESTE PUESTO COMO WORLD SPACE.
     {
         StartCoroutine(ShakeAndLoadScene(nextScene));
     }
@@ -28,7 +28,10 @@ public class MenuController : MonoBehaviour
         // yield return null; // Espera 1 frame
         SceneManager.LoadScene(nextScene); //esto sirve para que cargue la escena que tu designes dentro de los botones. Tendras que escribir a la perfeccion dicho nombre. 
     }
-
+    public void LoadScene(string nextScene) //hemos hecho dos metodos distintos para cambar de escena porque con la vibracion SE NECESITA EL CANVAS EN WORLD SPACE. para evitar problemas, usa esto.
+    {
+        SceneManager.LoadScene(nextScene);//esto sirve para que cargue la escena que tu designes dentro de los botones. Tendras que escribir a la perfeccion dicho nombre. 
+    }
 
 
 }

@@ -221,7 +221,7 @@ public class IllayPlayer : MonoBehaviour
     { //se me echa para atras el jugador ¿por que?
         if (Keyboard.current.wKey.wasPressedThisFrame) //PARA DISPARAR TECLA W.
         {
-            Instantiate(bulletIllayPrefab, this.transform.position+new Vector3(1.8f, -2f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
+            Instantiate(bulletIllayPrefab, this.transform.position + new Vector3(1.8f, -2f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
             //hemos puesto que tenga un vector 3 porque la bala nos salia muy arriba, con esto la estamos desplazando un poco para que salga en donde nosotros consideramos. 
         }
         //las rotaciones se hablan con Quaternion, el identity que le sigue es la rotación por defecto.

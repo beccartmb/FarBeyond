@@ -733,7 +733,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2114139953}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: LoadScene
+        m_MethodName: LoadSceneWithVibrate
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
