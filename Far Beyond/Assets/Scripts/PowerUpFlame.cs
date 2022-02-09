@@ -14,7 +14,7 @@ public class PowerUpFlame : MonoBehaviour
         if (player != null)
         {
             Die();
-            GameManager.Instance.stamina++; //cuando el powe up muere, stamine + 1 con la posibilidad de llegar a 4. 
+            GameManager.Instance.stamina+=4; //cuando el powe up muere, stamine + 1 con la posibilidad de llegar a 4. 
         }
     }
 }
