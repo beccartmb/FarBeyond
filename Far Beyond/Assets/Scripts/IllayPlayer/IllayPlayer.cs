@@ -46,7 +46,7 @@ public class IllayPlayer : MonoBehaviour
     {
         if (isInWater) //si esta en el agua, que haga este movimiento. 
         {
-            MovementIllayWater();
+            MovementIllayWater(); //AQUI SE LLAMA SI ESTA EN EL AGUA.
         }
         else //sino, que haga el movimiento que hace cuando esta en suelo.
         {
@@ -123,29 +123,39 @@ public class IllayPlayer : MonoBehaviour
     {
         rbody.gravityScale = 0.099f; //esto significa que dentro del agua NO VA A HABER GRAVEDAD. 
         Vector2 velocity = rbody.velocity; //aqui volvemos a determinar la velocidad para el movimiento. 
+        if (GameManager.Instance.staminaO2 == 0) //si ILLAY entra dentro del agua y la estamina esta a 0, muere y le manda a la zona segura. 
+        {
 
-        if (Keyboard.current.rightArrowKey.isPressed) //esto me permite no volver a saltar una segunda vez. 
-        {
-            velocity.x = speed; //esto me permite MOVERME en 2D, dado que NO ES IGUAL que en 3D. 
-        }
-        else if (Keyboard.current.leftArrowKey.isPressed) //esto me permite no volver a saltar una segunda vez. 
-        {
-            velocity.x = -speed; //necesitamos que sea negativo para que te muevas hacia la izquierda, es la manera de moverte en 2D. 
-        }
-        else if (Keyboard.current.upArrowKey.isPressed) //esto me permite no volver a saltar una segunda vez. 
-        {
-            velocity.y = speed; //necesitamos que sea negativo para que te muevas hacia la izquierda, es la manera de moverte en 2D. 
+            GameManager.Instance.playerLife--;
+            transform.position = newSaveZone;
+            rbody.velocity = Vector2.zero;
         }
         else
         {
-            velocity.x *= 0.99f; //esto hace que cada frame que no se mueve, se deslice menos. Si el numero es mayor (el 0.9) el deslizamiento es MAYOR.
-        }
+            GameManager.Instance.staminaO2 -= Time.deltaTime;
+            if (Keyboard.current.rightArrowKey.isPressed) //esto me permite no volver a saltar una segunda vez. 
+            {
+                velocity.x = speed; //esto me permite MOVERME en 2D, dado que NO ES IGUAL que en 3D. 
+            }
+            else if (Keyboard.current.leftArrowKey.isPressed) //esto me permite no volver a saltar una segunda vez. 
+            {
+                velocity.x = -speed; //necesitamos que sea negativo para que te muevas hacia la izquierda, es la manera de moverte en 2D. 
+            }
+            else if (Keyboard.current.upArrowKey.isPressed) //esto me permite no volver a saltar una segunda vez. 
+            {
+                velocity.y = speed; //necesitamos que sea negativo para que te muevas hacia la izquierda, es la manera de moverte en 2D. 
+            }
+            else
+            {
+                velocity.x *= 0.99f; //esto hace que cada frame que no se mueve, se deslice menos. Si el numero es mayor (el 0.9) el deslizamiento es MAYOR.
+            }
 
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            velocity.y = jumpSpeedWater;
+            if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                velocity.y = jumpSpeedWater;
+            }
+            rbody.velocity = velocity;
         }
-        rbody.velocity = velocity;
     }
     #region GoThrought //CODIGO PARA ATRAVESAR PLATAFORMAS. MEDIANTE "PlatforEffector2D"
     public void DigThroughFloor() //para que pueda atravesar ciertos suelos, como por ejemplo, escaleras una detras de otras. 
@@ -195,6 +205,8 @@ public class IllayPlayer : MonoBehaviour
     {
         SaveZone saveZone = other.GetComponent<SaveZone>(); //aqui hemos detectado los colisionadores que tengan el script indicado como deathzone y saveZone.
         DeathZone deathZone = other.GetComponent<DeathZone>();
+        InWater inWater = other.GetComponent<InWater>();
+
         if (saveZone != null) //null significa algo que no existe //esto permite que al colisionar contra la pared derecha. vaya a la cordenada en X -9,4 apareciendo asi por el otro lado.
         {
             newSaveZone = saveZone.transform.position; //hemos hecho una variable ARRIBA que me permite guardar la informacion del vector 3 del objeto. 
@@ -206,6 +218,8 @@ public class IllayPlayer : MonoBehaviour
             transform.position = newSaveZone; //si toca una deathzone que tenga metido el script, te llevara a la posicion del ultimo SaveZone guardado por la variable de arriba.
             rbody.velocity = Vector2.zero; //asi quitamos la deceleracion para que no se te cuele por el mapa.
         }
+        //LA FALTA DE ESTAMINA DENTRO DEL AGUA ESTÁ DENTRO DEL MOVIMIENTO EN EL AGUA DE ILLAY. 
+
     }
 
     #endregion
@@ -224,21 +238,21 @@ public class IllayPlayer : MonoBehaviour
         {
             if (this.transform.localScale.x > 0) //si la tranformacion del local scale EN X es mayor que 0 inmediatamente se lee como derecha. Sino, es izquierda. NECESITARAS DOS IMAGENES DISTINTAS, bala derecha y bala izquierda. 
             {
-                Instantiate(bulletIllayPrefab, this.transform.position + new Vector3(2f, -2f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
+                Instantiate(bulletIllayPrefab, this.transform.position + new Vector3(3f, -2f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
             }
             else //como hemos designado arriba que la derecha es mayor que 0, <0 es inmediatamente izquierda. 
             {
                 Instantiate(bulletLeftIllayPrefab, this.transform.position + new Vector3(-3, -2f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
-                                                                                                                         //hemos puesto que tenga un vector 3 porque la bala nos salia muy arriba, con esto la estamos desplazando un poco para que salga en donde nosotros consideramos. 
+                                                                                                                             //hemos puesto que tenga un vector 3 porque la bala nos salia muy arriba, con esto la estamos desplazando un poco para que salga en donde nosotros consideramos. 
             }
 
         }
         //las rotaciones se hablan con Quaternion, el identity que le sigue es la rotación por defecto.
 
-        if (Keyboard.current.eKey.wasPressedThisFrame && GameManager.Instance.stamina > 0) //si la municion de la estamina es 1, disparar un segundo por estamina recogida. 
+        if (Keyboard.current.eKey.isPressed && GameManager.Instance.stamina > 0) //si la municion de la estamina es 1, disparar MANTENIENDO PULSADO PARA GASTARSE. 
         {
             FlameShoot();
-            GameManager.Instance.stamina--; //que al disparar se reste una. QUIERO PONERLE TIEMPO A DICHO DISPARO
+            GameManager.Instance.stamina -= Time.deltaTime; //que al disparar se reste una. QUIERO PONERLE TIEMPO A DICHO DISPARO
         }
     }
     void FlameShoot()

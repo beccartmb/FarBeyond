@@ -25,8 +25,11 @@ public class GameManager : MonoBehaviour
     }
 
     public int playerLife = 3; //Y aqui hemos designado que el jugador tendra 3 vidas. 
-    public int maxStamina = 4; //ESTE ES EL MAXIMO DE ESTAMINA QUE DEBERA TENER.
-    public int stamina = 0;
+    public float maxStamina = 4f; //ESTE ES EL MAXIMO DE ESTAMINA QUE DEBERA TENER PARA LANZAR LA LLAMARADA. SE PONDRA COMO FLOAT PARA QUE PUEDAS RESTARLE EL TIEMPO.
+    public float stamina = 0;
+    public float maxStaminaO2 = 6.0f; //esto debera ser decimal para que baje con el tiempo, es decir, time.deltatime. 
+    public float staminaO2 = 0;
+
 
     public SaveData currentSave = new SaveData(); //esto permite tener TODA la informacion de la partida GUARDADA. Esto permitirá poder acceder a ello en cualquier momento. 
 
@@ -52,17 +55,19 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); //esto sirve para reinciar la escena EN LA QUE EL PERSONAJE DESAPAREZCA/muera.
             playerLife = 3;
         }
-        if (stamina > maxStamina) //si stamina es menor que maximo estamine, sumar stamine
+        if (stamina > maxStamina) //esto permite sumar estamina hasta llegar al maximo. Si llega al maximo de estamina SIEMPRE SERA EL MAXIMO.
         {
             stamina = maxStamina;
         }
-        /*else if (stamine == maxStamine)
+        if (staminaO2>maxStaminaO2) // esto permite sumar estamina hasta llegar al maximo.Si llega al maximo de estamina SIEMPRE SERA EL MAXIMO.
         {
-            //quiero poner que cuando sea igual que maxStamine NO PUEDA GUARDAR MAS ESTAMINAS.
-        }*/
+            staminaO2 = maxStaminaO2; 
+        }
+
     }
 }
-//este GameManager solo aparece si le das al PLAY y lo usas. Si no lo usas NO APARECE.
+
+
 //if (keyboard.current.sKey.wasPressedThisFrame ) //esto lo utilizamos para guardar al pulsar la S. Se debera meter en el codigo que queramos guardar.
 //   {
 //        GameManager.Instance.SaveGame

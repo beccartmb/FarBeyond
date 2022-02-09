@@ -11,6 +11,7 @@ public class InWater : MonoBehaviour
         {
             player.isInWater = true;//si esta dentro del agua. 
             player.GetComponent<Rigidbody2D>().velocity /= 5.0f; //aqui detectamos que si entra al agua desde un lugar muy alto, que la velocidad se divida entre 5.
+            GameManager.Instance.staminaO2 -=Time.deltaTime;
         }
     }
 
