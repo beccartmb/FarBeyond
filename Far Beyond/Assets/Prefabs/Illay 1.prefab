@@ -151,8 +151,8 @@ MonoBehaviour:
   jumpSpeedWater: 2
   IllayPrefab: {fileID: 7670538073248881573}
   bulletIllayPrefab: {fileID: 1407445409140749276, guid: 9cbffd7b414183640909140372722255, type: 3}
+  bulletLeftIllayPrefab: {fileID: 1407445409140749276, guid: af68236a01548de49864ed3946ac2ac4, type: 3}
   flameBulletPrefab: {fileID: 1997688504291724833, guid: 2860a473c6b72694abb4cdaea42be614, type: 3}
-  munitionFlame: 4
   newSaveZone: {x: 0, y: 0, z: 0}
   isSlidingRight: 0
   isInWater: 0

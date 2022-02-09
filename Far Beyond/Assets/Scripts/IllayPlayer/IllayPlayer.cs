@@ -13,6 +13,7 @@ public class IllayPlayer : MonoBehaviour
     public float jumpSpeedWater = 2.0f;
     public GameObject IllayPrefab;
     public GameObject bulletIllayPrefab;
+    public GameObject bulletLeftIllayPrefab; //esto será necesario para mover la bala del jugador hacia la izquierda. 
     public GameObject flameBulletPrefab;
     public Vector3 newSaveZone;
     Animator anim; //ESTO NOS VA A PERMITIR METER Y MODIFICAR ANIMACIONES.
@@ -218,11 +219,19 @@ public class IllayPlayer : MonoBehaviour
         wallOnLeft.Remove(collision.collider);
     }
     void Shoot()
-    { //se me echa para atras el jugador ¿por que?
+    { //si se echa para atras el jugador al disparar, mueve la bala, el collider esta haciendo que se mueva. 
         if (Keyboard.current.wKey.wasPressedThisFrame) //PARA DISPARAR TECLA W.
         {
-            Instantiate(bulletIllayPrefab, this.transform.position + new Vector3(1.8f, -2f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
-            //hemos puesto que tenga un vector 3 porque la bala nos salia muy arriba, con esto la estamos desplazando un poco para que salga en donde nosotros consideramos. 
+            if (this.transform.localScale.x > 0) //si la tranformacion del local scale EN X es mayor que 0 inmediatamente se lee como derecha. Sino, es izquierda. NECESITARAS DOS IMAGENES DISTINTAS, bala derecha y bala izquierda. 
+            {
+                Instantiate(bulletIllayPrefab, this.transform.position + new Vector3(2f, -2f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
+            }
+            else //como hemos designado arriba que la derecha es mayor que 0, <0 es inmediatamente izquierda. 
+            {
+                Instantiate(bulletLeftIllayPrefab, this.transform.position + new Vector3(-3, -2f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
+                                                                                                                         //hemos puesto que tenga un vector 3 porque la bala nos salia muy arriba, con esto la estamos desplazando un poco para que salga en donde nosotros consideramos. 
+            }
+
         }
         //las rotaciones se hablan con Quaternion, el identity que le sigue es la rotación por defecto.
 
