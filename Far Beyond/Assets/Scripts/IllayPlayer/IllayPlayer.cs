@@ -14,7 +14,6 @@ public class IllayPlayer : MonoBehaviour
     public GameObject IllayPrefab;
     public GameObject bulletIllayPrefab;
     public GameObject flameBulletPrefab;
-    public float munitionFlame = 4.0f; //quiero que la llamarada (flame) dure 4 segundos en vez de tener X disparos. 
     public Vector3 newSaveZone;
     Animator anim; //ESTO NOS VA A PERMITIR METER Y MODIFICAR ANIMACIONES.
 
@@ -222,19 +221,21 @@ public class IllayPlayer : MonoBehaviour
     {
         if (Keyboard.current.wKey.wasPressedThisFrame) //PARA DISPARAR TECLA W.
         {
-            Instantiate(bulletIllayPrefab, this.transform.position, Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
+            Instantiate(bulletIllayPrefab, this.transform.position+new Vector3(1.8f, -2f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
+            //hemos puesto que tenga un vector 3 porque la bala nos salia muy arriba, con esto la estamos desplazando un poco para que salga en donde nosotros consideramos. 
         }
         //las rotaciones se hablan con Quaternion, el identity que le sigue es la rotación por defecto.
 
-        if (Keyboard.current.eKey.wasPressedThisFrame && munitionFlame > 0) //si la municion de la estamina es 1, disparar un segundo por estamina recogida. 
+        if (Keyboard.current.eKey.wasPressedThisFrame && GameManager.Instance.stamina > 0) //si la municion de la estamina es 1, disparar un segundo por estamina recogida. 
         {
             FlameShoot();
-            munitionFlame--; //que al disparar se reste una. QUIERO PONERLE TIEMPO A DICHO DISPARO
+            GameManager.Instance.stamina--; //que al disparar se reste una. QUIERO PONERLE TIEMPO A DICHO DISPARO
         }
     }
     void FlameShoot()
     {
-        Instantiate(flameBulletPrefab, this.transform.position, Quaternion.identity); //designamos el rayo como bala en RayShoot.
+        Instantiate(flameBulletPrefab, this.transform.position + new Vector3(6f, -4f, 0f), Quaternion.identity); //designamos el rayo como bala en RayShoot.
+        //aqui hemos designado, al igual que en bala, la posicion de la llamarada dado que nos salia muy arriba. 
 
     }
 

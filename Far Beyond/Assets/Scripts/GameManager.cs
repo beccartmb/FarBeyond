@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
     }
 
     public int playerLife = 3; //Y aqui hemos designado que el jugador tendra 3 vidas. 
-    public int maxStamine = 4; //ESTE ES EL MAXIMO DE ESTAMINA QUE DEBERA TENER.
-    public int stamine = 0;
+    public int maxStamina = 4; //ESTE ES EL MAXIMO DE ESTAMINA QUE DEBERA TENER.
+    public int stamina = 0;
 
     public SaveData currentSave = new SaveData(); //esto permite tener TODA la informacion de la partida GUARDADA. Esto permitirá poder acceder a ello en cualquier momento. 
 
@@ -52,14 +52,14 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); //esto sirve para reinciar la escena EN LA QUE EL PERSONAJE DESAPAREZCA/muera.
             playerLife = 3;
         }
-        if (stamine < maxStamine) //si stamina es menor que maximo estamine, sumar stamine
+        if (stamina > maxStamina) //si stamina es menor que maximo estamine, sumar stamine
         {
-            stamine++;
+            stamina = maxStamina;
         }
-        else if (stamine == maxStamine)
+        /*else if (stamine == maxStamine)
         {
             //quiero poner que cuando sea igual que maxStamine NO PUEDA GUARDAR MAS ESTAMINAS.
-        }
+        }*/
     }
 }
 //este GameManager solo aparece si le das al PLAY y lo usas. Si no lo usas NO APARECE.

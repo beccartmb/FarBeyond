@@ -149,14 +149,16 @@ public class SlimesCode : MonoBehaviour
         IllayBullet illayBullet = other.GetComponent<IllayBullet>();
         if (player != null)
         {
-            this.transform.position = new Vector3(transform.position.x - 1, this.transform.position.y, this.transform.position.z); //esto hace que se mueva uno hacia atras cuando COLISIONAN. 
-                                                                                                                                   //debera cambiarse en vez de player, bola de fuego.
+            //this.transform.position = new Vector3(transform.position.x - 1, this.transform.position.y, this.transform.position.z); //esto hace que se mueva EL SLIME uno hacia atras cuando COLISIONAN. 
+            //debera cambiarse en vez de player, bola de fuego.
+            Vector3 direction = (player.transform.position - this.transform.position).normalized; //esto nos va a permitir empujar AL JUGADOR si choca contra el slime.
+            player.transform.position += direction * 1.0f;//el 1.0 es la distancia que empuja al jugador, cuanto mas grande, mas le va a empujar. 
             StartCoroutine(FlashColor(player.GetComponent<SpriteRenderer>()));//aqui lo llamos como si fuese un metodo dentro de un coroutine.
                                                                               //si el jugador entra dentro del daño, el jugador se pone rojo.
         }
         if (illayBullet != null)
         {
-            StartCoroutine(FlashColor(this.GetComponent<SpriteRenderer>()));
+            Destroy(this.gameObject);
         }
 
     }
