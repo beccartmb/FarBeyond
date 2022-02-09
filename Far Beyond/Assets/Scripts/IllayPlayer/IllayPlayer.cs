@@ -218,7 +218,7 @@ public class IllayPlayer : MonoBehaviour
         wallOnLeft.Remove(collision.collider);
     }
     void Shoot()
-    {
+    { //se me echa para atras el jugador ¿por que?
         if (Keyboard.current.wKey.wasPressedThisFrame) //PARA DISPARAR TECLA W.
         {
             Instantiate(bulletIllayPrefab, this.transform.position+new Vector3(1.8f, -2f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
