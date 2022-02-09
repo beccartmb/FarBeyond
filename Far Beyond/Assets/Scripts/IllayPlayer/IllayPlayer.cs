@@ -254,12 +254,12 @@ public class IllayPlayer : MonoBehaviour
         {
             //FlameShoot();
 
-            flameObject.SetActive(true);
+            flameObject.SetActive(true); //Esto nos sirve para que no salga de dentro sino que active la animacion mediante una imagen ya impuesta. 
             GameManager.Instance.stamina -= Time.deltaTime; //que al disparar se reste una. QUIERO PONERLE TIEMPO A DICHO DISPARO
         }
         else
         {
-            flameObject.SetActive(false);
+            flameObject.SetActive(false); //cuando no tienes estamina ni tampoco mantienes pulsada la E cuando la tienes, la animacion para. 
         }
     }
     void FlameShoot()
