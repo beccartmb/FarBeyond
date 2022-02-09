@@ -15,6 +15,7 @@ public class IllayPlayer : MonoBehaviour
     public GameObject bulletIllayPrefab;
     public GameObject bulletLeftIllayPrefab; //esto será necesario para mover la bala del jugador hacia la izquierda. 
     public GameObject flameBulletPrefab;
+    public GameObject flameObject;
     public Vector3 newSaveZone;
     Animator anim; //ESTO NOS VA A PERMITIR METER Y MODIFICAR ANIMACIONES.
 
@@ -123,9 +124,9 @@ public class IllayPlayer : MonoBehaviour
     {
         rbody.gravityScale = 0.099f; //esto significa que dentro del agua NO VA A HABER GRAVEDAD. 
         Vector2 velocity = rbody.velocity; //aqui volvemos a determinar la velocidad para el movimiento. 
-        if (GameManager.Instance.staminaO2 == 0) //si ILLAY entra dentro del agua y la estamina esta a 0, muere y le manda a la zona segura. 
+        if (GameManager.Instance.staminaO2 <= 0) //si ILLAY entra dentro del agua y la estamina esta a 0, muere y le manda a la zona segura. 
         {
-
+             //ESTO ME PERMITIRA RESTARLE UNO DE VIDA Y 
             GameManager.Instance.playerLife--;
             transform.position = newSaveZone;
             rbody.velocity = Vector2.zero;
@@ -251,8 +252,14 @@ public class IllayPlayer : MonoBehaviour
 
         if (Keyboard.current.eKey.isPressed && GameManager.Instance.stamina > 0) //si la municion de la estamina es 1, disparar MANTENIENDO PULSADO PARA GASTARSE. 
         {
-            FlameShoot();
+            //FlameShoot();
+
+            flameObject.SetActive(true);
             GameManager.Instance.stamina -= Time.deltaTime; //que al disparar se reste una. QUIERO PONERLE TIEMPO A DICHO DISPARO
+        }
+        else
+        {
+            flameObject.SetActive(false);
         }
     }
     void FlameShoot()

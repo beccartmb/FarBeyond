@@ -15,7 +15,7 @@ public class PowerUpO2 : MonoBehaviour
         if (player != null)
         {
             Die();
-            GameManager.Instance.staminaO2+=5; //cuando se quiere añadir un numero mayor a 1 (lo que seria ++) hay que poner += X. TENDRAS 5 segundos para nadar a toda pastilla .
+            GameManager.Instance.staminaO2+=6; //cuando se quiere añadir un numero mayor a 1 (lo que seria ++) hay que poner += X. TENDRAS 5 segundos para nadar a toda pastilla .
         }
     }
 }
