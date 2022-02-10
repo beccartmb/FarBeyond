@@ -22,12 +22,12 @@ public class FlameBullet : MonoBehaviour
     void OnTriggerEnter(Collider other)//esto es por si es una colision en area.
     {
 
-        SlimesCode slimes = other.GetComponent<SlimesCode>(); //desde aqui vamos a gestionar la muerte del slime. 
+        /*SlimesCode slimes = other.GetComponent<SlimesCode>(); //desde aqui vamos a gestionar la muerte del slime. 
 
         if (slimes != null) //si la bala del jugador impacta contra el ALIEN éste muere. 
         {
-            slimes.Die();
-            Destroy(this.gameObject);
+            SlimesCode.Instance.SlimeLife -= 3;
         }
+        */
     }
 }

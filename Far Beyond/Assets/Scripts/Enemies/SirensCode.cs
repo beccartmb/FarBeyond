@@ -11,7 +11,7 @@ public class SirensCode : MonoBehaviour
 {
     public float chaseRange;
     public float attackRange;
-    public float speedSirens = 3f;
+    public float speedSirens = 6f;
     bool hasAttackFinished = false; // de manera predeterminada siempre estara en false, hasta que ataque que se activara el true.
     public Animator anim;
     public Vector3 secureZoneSirens;
@@ -119,6 +119,7 @@ public class SirensCode : MonoBehaviour
     }
     IEnumerator Chase()
     {
+        /*yield return new WaitForSeconds(0.2f);*/
         MoveTowardsPoint(IllayPlayer.Instance.transform.position); //esto nos permitira seguir al jugador a su posicion.
         yield return null;
     }

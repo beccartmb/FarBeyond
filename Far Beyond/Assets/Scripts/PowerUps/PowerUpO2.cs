@@ -14,13 +14,12 @@ public class PowerUpO2 : MonoBehaviour
         IllayPlayer player = other.GetComponent<IllayPlayer>();
         if (player != null)
         {
-            //Die();
             GameManager.Instance.StartCoroutine(Respawn()); //como en la linea de abajo (en la courtine) desactivamos las cosas, vamos a pedir al game manager que nos reactive esto, evitando problemas.
             GameManager.Instance.staminaO2+=6; //cuando se quiere añadir un numero mayor a 1 (lo que seria ++) hay que poner += X. TENDRAS 5 segundos para nadar a toda pastilla .
         }
     }
 
-    IEnumerator Respawn()
+    IEnumerator Respawn() //en vez de que muera, hacemos que se desactive y luego se active GRACIAS AL GAME MANAGER.
     {
         gameObject.SetActive(false);
         yield return new WaitForSeconds(12.0f);

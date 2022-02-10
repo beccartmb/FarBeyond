@@ -20,11 +20,21 @@ public class SlimesCode : MonoBehaviour
 
     public EnemyStates currentState = EnemyStates.Patrol; //siempre que queramos referenciar un ENUM sera mediante .algo
 
+    #region SINGLETON
+    public static SlimesCode Instance { get; private set; }
+
+    private void Awake() //esto junto con el intance de arriba convierte nuestro personaje en un singleton (mucho mas comodo para juegos de un jugador) ya que nos permite acceder a este codigo desde otros codigos. 
+    {
+        Instance = this;
+    }
+    #endregion
+
     public void Start()
     {
         anim = GetComponent<Animator>(); //SIEMPRE HAY QUE PONER ESTO EN LOS ESTAR SIEMPRE Y CUANDO HAYA ANIMACIONES DE POR MEDIO.
         StartCoroutine(FMSCoroutine());
     }
+
 
     IEnumerator FMSCoroutine()
     {
@@ -159,6 +169,7 @@ public class SlimesCode : MonoBehaviour
             player.transform.position += direction * 1.0f;//el 1.0 es la distancia que empuja al jugador, cuanto mas grande, mas le va a empujar. 
             StartCoroutine(FlashColor(player.GetComponent<SpriteRenderer>()));//aqui lo llamos como si fuese un metodo dentro de un coroutine.
                                                                               //si el jugador entra dentro del daño, el jugador se pone rojo.
+            GameManager.Instance.playerLife--;
         }
         if (illayBullet != null)
         {
