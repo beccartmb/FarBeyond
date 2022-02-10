@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3613561395461201544, guid: 4e0a579e731db7c499b25da4132a9b48, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -61.699177
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3613561395461201544, guid: 4e0a579e731db7c499b25da4132a9b48, type: 3}
       propertyPath: m_LocalRotation.w
@@ -209,7 +209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3613561395461201544, guid: 4e0a579e731db7c499b25da4132a9b48, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -61.699177
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3613561395461201544, guid: 4e0a579e731db7c499b25da4132a9b48, type: 3}
       propertyPath: m_LocalRotation.w
@@ -667,7 +667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3613561395461201544, guid: 4e0a579e731db7c499b25da4132a9b48, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -61.699177
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3613561395461201544, guid: 4e0a579e731db7c499b25da4132a9b48, type: 3}
       propertyPath: m_LocalRotation.w
@@ -714,6 +714,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -8100338308336029728, guid: f543460fa33114b48b03b7275ffc4116, type: 3}
+    - target: {fileID: 5130672023644514251, guid: 8a1b0edbbcafda34f882addb6b3b10ed, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5682312835751986629, guid: 8a1b0edbbcafda34f882addb6b3b10ed, type: 3}
       propertyPath: m_Name
       value: Siren
@@ -1067,7 +1071,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1098,7 +1102,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -3939,7 +3943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3613561395461201544, guid: 4e0a579e731db7c499b25da4132a9b48, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -61.699177
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3613561395461201544, guid: 4e0a579e731db7c499b25da4132a9b48, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4769,7 +4773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3613561395461201544, guid: 4e0a579e731db7c499b25da4132a9b48, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -61.699177
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3613561395461201544, guid: 4e0a579e731db7c499b25da4132a9b48, type: 3}
       propertyPath: m_LocalRotation.w

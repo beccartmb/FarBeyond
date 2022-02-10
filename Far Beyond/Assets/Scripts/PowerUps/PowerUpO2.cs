@@ -14,8 +14,17 @@ public class PowerUpO2 : MonoBehaviour
         IllayPlayer player = other.GetComponent<IllayPlayer>();
         if (player != null)
         {
-            Die();
+            //Die();
+            GameManager.Instance.StartCoroutine(Respawn());
             GameManager.Instance.staminaO2+=6; //cuando se quiere añadir un numero mayor a 1 (lo que seria ++) hay que poner += X. TENDRAS 5 segundos para nadar a toda pastilla .
         }
+    }
+
+    IEnumerator Respawn()
+    {
+        gameObject.SetActive(false);
+        yield return new WaitForSeconds(12.0f);
+        gameObject.SetActive(true);
+
     }
 }

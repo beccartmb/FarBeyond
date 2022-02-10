@@ -21,6 +21,7 @@ public class SirensCode : MonoBehaviour
 
     public void Start()
     {
+        anim = GetComponent<Animator>();
         StartCoroutine(FMSCoroutine());
     }
 
@@ -52,7 +53,7 @@ public class SirensCode : MonoBehaviour
             }
             else if (CurrentStatesIs(SirensStates.Chase))
             {
-                if (DistanceToPlayer() > chaseRange)
+                if (DistanceToPlayer() > chaseRange || !IllayPlayer.Instance.isInWater)
                 {
                     SwitchStateTo(SirensStates.Patrol);
                 }
@@ -124,13 +125,14 @@ public class SirensCode : MonoBehaviour
     IEnumerator Attack()
     {
         hasAttackFinished = false; //es una comprobacion redundante pero nos sirve para evitar fallos futuros. 
-        GetComponent<SpriteRenderer>().color = Color.green; //aqui meteremos las animaciones de ataque, por ahora cambian a verde. 
+        /*GetComponent<SpriteRenderer>().color = Color.green; //aqui meteremos las animaciones de ataque, por ahora cambian a verde. 
         yield return new WaitForSeconds(2.0f);
         GetComponent<SpriteRenderer>().color = Color.white;
         while (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime>0.98f)
         {
             yield return null;
-        }
+        }*/
+        GameManager.Instance.playerLife = 0;
         hasAttackFinished = true;
         yield return null;
     }

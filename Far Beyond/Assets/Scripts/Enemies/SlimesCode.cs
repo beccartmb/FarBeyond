@@ -163,7 +163,7 @@ public class SlimesCode : MonoBehaviour
         {
 
             SlimeLife--; //si le toca la bala, -1 de vida.
-            Vector3 direction = (player.transform.position - this.transform.position).normalized;
+            Vector3 direction = (illayBullet.transform.position - this.transform.position).normalized;
             this.gameObject.transform.position += direction * 1.0f;//el 1.0 es la distancia que empuja al jugador, cuanto mas grande, mas le va a empujar. 
             StartCoroutine(FlashColor(this.GetComponent<SpriteRenderer>()));//aqui lo llamos como si fuese un metodo dentro de un coroutine.
                                                                               //si la bala choca contra el slime, este se pondra rojo??.
