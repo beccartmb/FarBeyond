@@ -49,6 +49,8 @@ public class IllayPlayer : MonoBehaviour
         if (isInWater) //si esta en el agua, que haga este movimiento. 
         {
             MovementIllayWater(); //AQUI SE LLAMA SI ESTA EN EL AGUA.
+            
+
         }
         else //sino, que haga el movimiento que hace cuando esta en suelo.
         {
@@ -72,10 +74,15 @@ public class IllayPlayer : MonoBehaviour
     void Animate() //Vamos a crear un void separado para configurar las animaciones. Debe ser llamado en el Update
     {
         anim = gameObject.GetComponent<Animator>(); //esto es para cambiar las animaciones, sin embargo tienes que tenerlas metidas en windows> animation >animation para que el personaje tenga todo.
-        //El orden es importante. Lo que vaya arriba va a tener prioridad sobre lo que va debajo.
+                                                    //El orden es importante. Lo que vaya arriba va a tener prioridad sobre lo que va debajo.
+        if (isInWater)
+        {
+            anim.Play("Illay_swim");
+        }
         if (Mathf.Abs(rbody.velocity.y) > 0.001f) // si la velocidad en y es mayor que 0.1 significa que está saltando. 
         {
-            anim.Play("Illay_jump");  //El salto tiene prioridad porque si se está desplazando en y es siempre porque está saltando.
+            //anim.Play("Illay_jump"); Lo he puesto en el movimiento del jugador porque como cuando nada no había suelo ambas animaciones se hacían a la vez.
+            //El salto tiene prioridad porque si se está desplazando en y es siempre porque está saltando.
         }
         else if (Mathf.Abs(rbody.velocity.x) > 0.001f)
         {
@@ -122,7 +129,7 @@ public class IllayPlayer : MonoBehaviour
         {
             velocity.y = jumpSpeed;
             Instantiate(Illay_jump); //Esto es para que cuando se pulse el salto se reproduzca el sonido.
-
+            anim.Play("Illay_jump");
         }
 
         rbody.velocity = velocity; //esto lo utilizamos para RESETEAR el movimiento, es decir, que si no estas pulsando las flechas, que no se mueva. 
@@ -147,11 +154,14 @@ public class IllayPlayer : MonoBehaviour
             GameManager.Instance.staminaO2 -= Time.deltaTime;
             if (Keyboard.current.rightArrowKey.isPressed) //esto me permite no volver a saltar una segunda vez. 
             {
+                this.transform.localScale = new Vector3(1f, transform.localScale.y, transform.localScale.z);
                 velocity.x = speed; //esto me permite MOVERME en 2D, dado que NO ES IGUAL que en 3D. 
             }
             else if (Keyboard.current.leftArrowKey.isPressed) //esto me permite no volver a saltar una segunda vez. 
             {
+                this.transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z); //Esto es para que se gire.
                 velocity.x = -speed; //necesitamos que sea negativo para que te muevas hacia la izquierda, es la manera de moverte en 2D. 
+
             }
             else if (Keyboard.current.upArrowKey.isPressed) //esto me permite no volver a saltar una segunda vez. 
             {
@@ -220,6 +230,7 @@ public class IllayPlayer : MonoBehaviour
         InWater inWater = other.GetComponent<InWater>();
         CameraZoomZone cameraZoomOut = other.GetComponent<CameraZoomZone>();
 
+
         if (saveZone != null) //null significa algo que no existe //esto permite que al colisionar contra la pared derecha. vaya a la cordenada en X -9,4 apareciendo asi por el otro lado.
         {
             newSaveZone = saveZone.transform.position; //hemos hecho una variable ARRIBA que me permite guardar la informacion del vector 3 del objeto. 
@@ -244,6 +255,7 @@ public class IllayPlayer : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         CameraZoomZone cameraZoomIn = other.GetComponent<CameraZoomZone>();
+          
         if (cameraZoomIn != null)
             isInCameraZoomZone = false;
 

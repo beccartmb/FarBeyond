@@ -1712,6 +1712,63 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1001 &478819376
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1914429985289651464, guid: 05500c7f52022bf40ae3864835b5d69a, type: 3}
+      propertyPath: m_Name
+      value: Plant (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914429985289651470, guid: 05500c7f52022bf40ae3864835b5d69a, type: 3}
+      propertyPath: m_RootOrder
+      value: 78
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914429985289651470, guid: 05500c7f52022bf40ae3864835b5d69a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -216.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914429985289651470, guid: 05500c7f52022bf40ae3864835b5d69a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 69.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914429985289651470, guid: 05500c7f52022bf40ae3864835b5d69a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914429985289651470, guid: 05500c7f52022bf40ae3864835b5d69a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914429985289651470, guid: 05500c7f52022bf40ae3864835b5d69a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914429985289651470, guid: 05500c7f52022bf40ae3864835b5d69a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914429985289651470, guid: 05500c7f52022bf40ae3864835b5d69a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914429985289651470, guid: 05500c7f52022bf40ae3864835b5d69a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914429985289651470, guid: 05500c7f52022bf40ae3864835b5d69a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914429985289651470, guid: 05500c7f52022bf40ae3864835b5d69a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 05500c7f52022bf40ae3864835b5d69a, type: 3}
 --- !u!1 &522310860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2160,7 +2217,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 7
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8a319f82ecdd261418e5acfcccfe3149, type: 3}
   m_Color: {r: 0.31944466, g: 1, b: 0, a: 0.6}
   m_FlipX: 0
@@ -5410,7 +5467,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 24.109726, y: 6.134037}

@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     public int playerLife = 3; //Y aqui hemos designado que el jugador tendra 3 vidas. 
     public float maxStamina = 4f; //ESTE ES EL MAXIMO DE ESTAMINA QUE DEBERA TENER PARA LANZAR LA LLAMARADA. SE PONDRA COMO FLOAT PARA QUE PUEDAS RESTARLE EL TIEMPO.
     public float stamina = 0;
-    public float maxStaminaO2 = 6.0f; //esto debera ser decimal para que baje con el tiempo, es decir, time.deltatime. 
+    public float maxStaminaO2 = 10.0f; //esto debera ser decimal para que baje con el tiempo, es decir, time.deltatime. 
     public float staminaO2 = 0;
 
 
