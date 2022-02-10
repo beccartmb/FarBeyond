@@ -162,7 +162,7 @@ public class SlimesCode : MonoBehaviour
         if (illayBullet != null)
         {
 
-            SlimeLife--; //si le toca la bala, -1 de vida.
+            SlimeLife--; //si le toca la bala, -1 de vida. //recuerda que en vector 3 hay que cambiar quien choca con el. 
             Vector3 direction = (illayBullet.transform.position - this.transform.position).normalized;
             this.gameObject.transform.position += direction * 1.0f;//el 1.0 es la distancia que empuja al jugador, cuanto mas grande, mas le va a empujar. 
             StartCoroutine(FlashColor(this.GetComponent<SpriteRenderer>()));//aqui lo llamos como si fuese un metodo dentro de un coroutine.
@@ -172,20 +172,22 @@ public class SlimesCode : MonoBehaviour
             illayBullet.anim.Play("Bullet_die"); //Esto es para llamar el anim desde la bala. Como es una animacion creada en bullet la tenemos que llamar desde allí.
             Destroy(illayBullet.gameObject, 0.6f); //Esto es para que la bala deje de exixtir.
                                                    //Para que le de tiempo a hacerse la animación ponemos ese tiempo de espera antes de que muera.
+            Die();
 
             //Para que se pueda llamar las animaciones hay que arrastrar el animator de unity al script del cual llamamos por ejm aqui en el de bala o flame.
         }
         if (illayFlame != null)
         {
             SlimeLife -= 3; //si le toca la llamarada, menos 3 de vida. 
-            Vector3 direction = (player.transform.position - this.transform.position).normalized;
+            Vector3 direction = (illayFlame.transform.position - this.transform.position).normalized; //he cambiado para que la LLAMARADA lo mate. 
             this.gameObject.transform.position += direction * 1.0f;//el 1.0 es la distancia que empuja al jugador, cuanto mas grande, mas le va a empujar. 
             StartCoroutine(FlashColor(this.GetComponent<SpriteRenderer>()));//aqui lo llamos como si fuese un metodo dentro de un coroutine.
                                                                             //si la bala choca contra el slime, este se pondra rojo??.
 
             illayFlame.anim.Play("Flame_die"); //Esto es para llamar el anim desde la bala. Como es una animacion creada en bullet la tenemos que llamar desde allí.
             Destroy(illayFlame.gameObject, 1.0f); //Esto es para que la bala deje de exixtir.
-                                                   //Para que le de tiempo a hacerse la animación ponemos ese tiempo de espera antes de que muera.
+                                                  //Para que le de tiempo a hacerse la animación ponemos ese tiempo de espera antes de que muera.
+            Die();
 
 
         }
