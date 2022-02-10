@@ -847,7 +847,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180569777}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.21, y: 72.62, z: -10}
+  m_LocalPosition: {x: -282, y: 72.62, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -867,7 +867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1271412753}
   offset: {x: 0, y: 0, z: -10}
-  minX: -278.5
+  minX: -282
   maxX: 11.21
   minY: 89.9
   maxY: 48.37
@@ -1055,7 +1055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a63a93cb9fc1c4740827a3ac016788d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseRange: 13.37
+  chaseRange: 24.34
   attackRange: 2.72
   speedSirens: 3
   anim: {fileID: 0}
