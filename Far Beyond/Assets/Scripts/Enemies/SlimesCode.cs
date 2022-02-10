@@ -182,6 +182,7 @@ public class SlimesCode : MonoBehaviour
             this.gameObject.transform.position += direction * 1.0f;//el 1.0 es la distancia que empuja al jugador, cuanto mas grande, mas le va a empujar. 
             StartCoroutine(FlashColor(this.GetComponent<SpriteRenderer>()));//aqui lo llamos como si fuese un metodo dentro de un coroutine.
                                                                             //si la bala choca contra el slime, este se pondra rojo??.
+
             illayFlame.anim.Play("Flame_die"); //Esto es para llamar el anim desde la bala. Como es una animacion creada en bullet la tenemos que llamar desde allí.
             Destroy(illayFlame.gameObject, 1.0f); //Esto es para que la bala deje de exixtir.
                                                    //Para que le de tiempo a hacerse la animación ponemos ese tiempo de espera antes de que muera.
