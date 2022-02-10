@@ -60,7 +60,8 @@ public class IllayPlayer : MonoBehaviour
         Shoot();
         if(isInCameraZoomZone)
         {
-            //mete la animacion grande
+            //mete la animacion grande.
+            //CameraZoomZone.anim.Play("Big_camera_water");
         }
         else
         {
@@ -234,7 +235,8 @@ public class IllayPlayer : MonoBehaviour
         if(cameraZoomOut!=null)
         {
             isInCameraZoomZone = true;
-            
+            //CameraZoomZone.anim.Play("Big_camera_water");
+
         }
 
     }
