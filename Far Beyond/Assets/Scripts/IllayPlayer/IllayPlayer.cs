@@ -18,6 +18,7 @@ public class IllayPlayer : MonoBehaviour
     public GameObject flameObject;
     public Vector3 newSaveZone;
     Animator anim; //ESTO NOS VA A PERMITIR METER Y MODIFICAR ANIMACIONES.
+    bool isInCameraZoomZone;
 
     #region SINGLETON
     public static IllayPlayer Instance { get; private set; }
@@ -57,6 +58,14 @@ public class IllayPlayer : MonoBehaviour
         Animate();
         //aqui dentro ira el metodo de movimiento.
         Shoot();
+        if(isInCameraZoomZone)
+        {
+            //mete la animacion grande
+        }
+        else
+        {
+            //mete la animacion hacia la camara pequeña.
+        }
     }
 
     void Animate() //Vamos a crear un void separado para configurar las animaciones. Debe ser llamado en el Update
@@ -208,6 +217,7 @@ public class IllayPlayer : MonoBehaviour
         SaveZone saveZone = other.GetComponent<SaveZone>(); //aqui hemos detectado los colisionadores que tengan el script indicado como deathzone y saveZone.
         DeathZone deathZone = other.GetComponent<DeathZone>();
         InWater inWater = other.GetComponent<InWater>();
+        CameraZoomZone cameraZoomOut = other.GetComponent<CameraZoomZone>();
 
         if (saveZone != null) //null significa algo que no existe //esto permite que al colisionar contra la pared derecha. vaya a la cordenada en X -9,4 apareciendo asi por el otro lado.
         {
@@ -221,6 +231,19 @@ public class IllayPlayer : MonoBehaviour
             rbody.velocity = Vector2.zero; //asi quitamos la deceleracion para que no se te cuele por el mapa.
         }
         //LA FALTA DE ESTAMINA DENTRO DEL AGUA ESTÁ DENTRO DEL MOVIMIENTO EN EL AGUA DE ILLAY. 
+        if(cameraZoomOut!=null)
+        {
+            isInCameraZoomZone = true;
+            
+        }
+
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        CameraZoomZone cameraZoomIn = other.GetComponent<CameraZoomZone>();
+        if (cameraZoomIn != null)
+            isInCameraZoomZone = false;
 
     }
 
