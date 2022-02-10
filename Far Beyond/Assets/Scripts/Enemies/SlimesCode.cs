@@ -22,6 +22,7 @@ public class SlimesCode : MonoBehaviour
 
     public void Start()
     {
+        anim = GetComponent<Animator>(); //SIEMPRE HAY QUE PONER ESTO EN LOS ESTAR SIEMPRE Y CUANDO HAYA ANIMACIONES DE POR MEDIO.
         StartCoroutine(FMSCoroutine());
     }
 

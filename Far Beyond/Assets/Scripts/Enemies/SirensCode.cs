@@ -21,7 +21,7 @@ public class SirensCode : MonoBehaviour
 
     public void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>(); //para que se ejecuten todas las animaciones nada mas empezar debera de estar esto aqui. 
         StartCoroutine(FMSCoroutine());
     }
 
