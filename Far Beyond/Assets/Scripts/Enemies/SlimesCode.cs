@@ -197,7 +197,7 @@ public class SlimesCode : MonoBehaviour
                                                                             //si la bala choca contra el slime, este se pondra rojo??.
 
             illayFlame.anim.Play("Flame_die"); //Esto es para llamar el anim desde la bala. Como es una animacion creada en bullet la tenemos que llamar desde allí.
-            Destroy(illayFlame.gameObject, 1.0f); //Esto es para que la bala deje de exixtir.
+            //Destroy(illayFlame.gameObject, 1.0f); //Esto es para que la bala deje de exixtir.
                                                   //Para que le de tiempo a hacerse la animación ponemos ese tiempo de espera antes de que muera.
             Die();
 

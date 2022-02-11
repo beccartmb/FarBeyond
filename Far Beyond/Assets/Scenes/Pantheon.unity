@@ -590,11 +590,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7670538073248881627, guid: cfbc09e9ecabcb541af8fd4786fc4c04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 61.28
+      value: 91.5
       objectReference: {fileID: 0}
     - target: {fileID: 7670538073248881627, guid: cfbc09e9ecabcb541af8fd4786fc4c04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7670538073248881627, guid: cfbc09e9ecabcb541af8fd4786fc4c04, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1398,6 +1398,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 3242926043527927470, guid: 6f95ba16757392049b86e6b56855c6aa, type: 3}
+    - target: {fileID: 4690115836175899037, guid: 4b553e27041c1f94ba7cfb40c68554d8, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690115836175899037, guid: 4b553e27041c1f94ba7cfb40c68554d8, type: 3}
+      propertyPath: m_AngularDrag
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4690115836175899037, guid: 4b553e27041c1f94ba7cfb40c68554d8, type: 3}
       propertyPath: m_Constraints
       value: 4

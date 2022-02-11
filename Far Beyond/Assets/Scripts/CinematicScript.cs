@@ -13,7 +13,7 @@ public class CinematicScript : MonoBehaviour
         cooldown += Time.deltaTime; //eso controla que el tiempo que pasa sea el correcto, como en la vida real.
         if (cooldown >= timeToPlayCinematic) //esto es para que cuente cuanto tiempo va a estar la animacion en marcha. una vez acabada dicha animacion, pasa a la escena.
         {
-            SceneManager.LoadScene("Graveyard");
+            SceneManager.LoadScene("Hallway");
         }
     }
 

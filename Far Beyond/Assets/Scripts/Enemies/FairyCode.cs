@@ -159,7 +159,7 @@ public class FairyCode : MonoBehaviour
         }
 
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(Random.Range(4f, 8f));
         hasAttackFinished = true; //y se termina el ataque. 
         yield return null; //y volvemos a empezar. 
     }
