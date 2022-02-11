@@ -106,7 +106,7 @@ public class FinalBossesCode : MonoBehaviour
         this.transform.position = Vector3.MoveTowards(this.transform.position, target, speedBoss * Time.deltaTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) //Esto lo ponemos aquí para que el jugador se ponga rojo cuando COLISIONE y para que muera.
     {
         IllayPlayer player = collision.collider.GetComponent<IllayPlayer>();
         if (player != null)
