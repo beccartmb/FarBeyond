@@ -105,12 +105,18 @@ public class SirensCode : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)//esto es para las colisiones EN AREA 2D. 
     {
         SecureZoneSirens nestSiren = other.GetComponent<SecureZoneSirens>(); //aqui hemos detectado los colisionadores que tengan el script indicado como SecureZoneSirens.
+        IllayPlayer player = other.GetComponent<IllayPlayer>();
 
         if (nestSiren != null) //null significa algo que no existe //esto permite que al colisionar contra la pared derecha. vaya a la cordenada en X -9,4 apareciendo asi por el otro lado.
         {
             secureZoneSirens = nestSiren.transform.position; //hemos hecho una variable ARRIBA que me permite guardar la informacion del vector 3 del objeto. 
                                                              //cada vez que pase por un "saveZone" se guardará la nueva posicion.
         }
+        if(player!=null)
+        {
+            GameManager.Instance.playerLife--;
+        }
+
     }
     IEnumerator Patrol()
     {
