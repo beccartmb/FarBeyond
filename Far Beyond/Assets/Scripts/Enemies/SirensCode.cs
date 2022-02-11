@@ -100,7 +100,7 @@ public class SirensCode : MonoBehaviour
         {
             this.transform.localScale = new Vector3(-1f, 1f, 1f);
         }
-        this.transform.position = Vector3.MoveTowards(this.transform.position, target, speedSirens * Time.deltaTime);
+        this.transform.position = Vector3.MoveTowards(this.transform.position, target, speedSirens * Time.deltaTime); //esto es para que se mueva en direccion al JUGADOR
     }
     void OnTriggerEnter2D(Collider2D other)//esto es para las colisiones EN AREA 2D. 
     {

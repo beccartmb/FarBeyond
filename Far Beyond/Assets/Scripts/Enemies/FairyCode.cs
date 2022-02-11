@@ -120,8 +120,8 @@ public class FairyCode : MonoBehaviour
     IEnumerator Patrol()
     {
 
-        MoveTowardsPoint(PatroPointsFairy[nextPatrolPointFairy].position); //para la sirena SOLO NECESITAMOS ESTA LINEA. 
-        //si hemos llegado al punto, cambiar al siguiente punto para hacer patrullaje. 
+        MoveTowardsPoint(PatroPointsFairy[nextPatrolPointFairy].position);
+
         if (Vector3.Distance(this.transform.position, PatroPointsFairy[nextPatrolPointFairy].position) < 1.0f) //que sea menor de 1 metro. habra que ajustar esta distancia para lo de patruyaje.
 
         {
@@ -137,30 +137,71 @@ public class FairyCode : MonoBehaviour
     }
     IEnumerator Chase()
     {
-        MoveTowardsPoint(IllayPlayer.Instance.transform.position);
-        //esto permite perseguir al jugador mediante las velocidades impuestas en las variables de arriba.
-        yield return null;
+        if (Vector3.Distance(this.transform.position, IllayPlayer.Instance.transform.position) > 2) //aqui hemos pedido que la distancia entre PLAYER y Fairy sea al menos de 2 metros para poder hacer el perseguir
+        {
+            MoveTowardsPoint(IllayPlayer.Instance.transform.position);
+            //esto permite perseguir al jugador mediante las velocidades impuestas en las variables de arriba.
+            yield return null;
+        }
     }
     IEnumerator Attack()
     {
         hasAttackFinished = false;
-        if (illayTransform.position.y < this.transform.position.y && bulletFairyPrefab.transform.position.y > -4.2) //este es el codigo para que el enemigo baje si la pelota esta por debajo de la posicion Y. 
-        {
-            this.transform.position += speedFairy * Time.deltaTime * Vector3.down;
-        } //quiero que la bala vaya hacia el jugador. ¿estoy haciendo esto correctamente ?  (NO DISPARA LA BOLA)
 
         if (this.transform.localScale.x > 0) //si la tranformacion del local scale EN X es mayor que 0 inmediatamente se lee como derecha. Sino, es izquierda. NECESITARAS DOS IMAGENES DISTINTAS, bala derecha y bala izquierda. 
         {
-            Instantiate(bulletFairyPrefab, this.transform.position + new Vector3(3f, -2f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
+            Instantiate(bulletFairyPrefab, this.transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
         }
         else //como hemos designado arriba que la derecha es mayor que 0, <0 es inmediatamente izquierda. 
         {
-            Instantiate(bulletLeftFairyPrefab, this.transform.position + new Vector3(-3, -2f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
-                                                                                                                         //hemos puesto que tenga un vector 3 porque la bala nos salia muy arriba, con esto la estamos desplazando un poco para que salga en donde nosotros consideramos. 
+            Instantiate(bulletFairyPrefab, this.transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
+                                                                                                                     //hemos puesto que tenga un vector 3 porque la bala nos salia muy arriba, con esto la estamos desplazando un poco para que salga en donde nosotros consideramos. 
         }
+
+
         yield return new WaitForSeconds(1.0f);
         hasAttackFinished = true; //y se termina el ataque. 
         yield return null; //y volvemos a empezar. 
+    }
+
+    void OnTriggerEnter2D(Collider2D other) //eso nos va a permitir detectar dentro de un empty vacio con un collider que genere un area. 
+    {
+        IllayPlayer player = other.GetComponent<IllayPlayer>();
+        IllayBullet illayBullet = other.GetComponent<IllayBullet>();
+        IllayFlame illayFlame = other.GetComponent<IllayFlame>();
+
+        if (illayBullet != null)
+        {
+
+            FairyLife--; //si le toca la bala, -1 de vida. //recuerda que en vector 3 hay que cambiar quien choca con el. 
+            Vector3 direction = (illayBullet.transform.position - this.transform.position).normalized;
+            this.gameObject.transform.position += direction * 1.0f;//el 1.0 es la distancia que empuja al jugador, cuanto mas grande, mas le va a empujar. 
+            StartCoroutine(FlashColor(this.GetComponent<SpriteRenderer>()));//aqui lo llamos como si fuese un metodo dentro de un coroutine.
+                                                                            //si la bala choca contra el slime, este se pondra rojo??.
+
+
+            illayBullet.anim.Play("Bullet_die"); //Esto es para llamar el anim desde la bala. Como es una animacion creada en bullet la tenemos que llamar desde allí.
+            Destroy(illayBullet.gameObject, 0.6f); //Esto es para que la bala deje de exixtir.
+                                                   //Para que le de tiempo a hacerse la animación ponemos ese tiempo de espera antes de que muera.
+            Die();
+
+            //Para que se pueda llamar las animaciones hay que arrastrar el animator de unity al script del cual llamamos por ejm aqui en el de bala o flame.
+        }
+        if (illayFlame != null)
+        {
+            FairyLife -= 3; //si le toca la llamarada, menos 3 de vida. 
+            Vector3 direction = (illayFlame.transform.position - this.transform.position).normalized; //he cambiado para que la LLAMARADA lo mate. 
+            this.gameObject.transform.position += direction * 1.0f;//el 1.0 es la distancia que empuja al jugador, cuanto mas grande, mas le va a empujar. 
+            StartCoroutine(FlashColor(this.GetComponent<SpriteRenderer>()));//aqui lo llamos como si fuese un metodo dentro de un coroutine.
+                                                                            //si la bala choca contra el slime, este se pondra rojo??.
+
+            illayFlame.anim.Play("Flame_die"); //Esto es para llamar el anim desde la bala. Como es una animacion creada en bullet la tenemos que llamar desde allí.
+            Destroy(illayFlame.gameObject, 1.0f); //Esto es para que la bala deje de exixtir.
+                                                  //Para que le de tiempo a hacerse la animación ponemos ese tiempo de espera antes de que muera.
+            Die();
+
+
+        }
     }
     IEnumerator FlashColor(SpriteRenderer spriteRender) //esto es un coroutine que sirve para esperar X tiempo. ES COMO UN CONTADOR.
     {
@@ -177,6 +218,13 @@ public class FairyCode : MonoBehaviour
         Gizmos.color = new Color(1f, 0f, 1f, 0.3f); // y esto es una especie de morado.
         Gizmos.DrawSphere(this.transform.position, chaseRange);
 
+    }
+    public void Die()
+    {
+        if (FairyLife < 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 }

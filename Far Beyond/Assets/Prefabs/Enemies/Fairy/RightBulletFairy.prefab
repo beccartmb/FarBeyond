@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 785741070864763184}
   - component: {fileID: 1660887899378672080}
   - component: {fileID: 886182095401226903}
-  - component: {fileID: 7517690705544688103}
   - component: {fileID: 4823518014238352979}
+  - component: {fileID: 7821744530999645424}
   m_Layer: 0
   m_Name: RightBulletFairy
   m_TagString: Untagged
@@ -104,21 +104,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7517690705544688103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1407445409140749276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66ab8157e391f4641938597c63ddeed4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedBullet: 5
-  lifeTime: 3
-  anim: {fileID: 886182095401226903}
 --- !u!70 &4823518014238352979
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -129,9 +114,24 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.43, y: 2.22}
+  m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.03, y: 0.61}
   m_Direction: 1
+--- !u!114 &7821744530999645424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407445409140749276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9ca847f278fbf4298aebaa058207cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedBullet: 5
+  lifeTime: 3
+  anim: {fileID: 886182095401226903}

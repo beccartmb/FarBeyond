@@ -49,7 +49,7 @@ public class IllayPlayer : MonoBehaviour
         if (isInWater) //si esta en el agua, que haga este movimiento. 
         {
             MovementIllayWater(); //AQUI SE LLAMA SI ESTA EN EL AGUA.
-            
+
 
         }
         else //sino, que haga el movimiento que hace cuando esta en suelo.
@@ -60,7 +60,7 @@ public class IllayPlayer : MonoBehaviour
         Animate();
         //aqui dentro ira el metodo de movimiento.
         Shoot();
-        if(isInCameraZoomZone)
+        if (isInCameraZoomZone)
         {
             //mete la animacion grande.
             //CameraZoomZone.anim.Play("Big_camera_water");
@@ -143,7 +143,7 @@ public class IllayPlayer : MonoBehaviour
         Vector2 velocity = rbody.velocity; //aqui volvemos a determinar la velocidad para el movimiento. 
         if (GameManager.Instance.staminaO2 <= 0) //si ILLAY entra dentro del agua y la estamina esta a 0, muere y le manda a la zona segura. 
         {
-             //ESTO ME PERMITIRA RESTARLE UNO DE VIDA Y 
+            //ESTO ME PERMITIRA RESTARLE UNO DE VIDA Y 
             GameManager.Instance.playerLife--;
             transform.position = newSaveZone;
             rbody.velocity = Vector2.zero;
@@ -242,24 +242,9 @@ public class IllayPlayer : MonoBehaviour
             transform.position = newSaveZone; //si toca una deathzone que tenga metido el script, te llevara a la posicion del ultimo SaveZone guardado por la variable de arriba.
             rbody.velocity = Vector2.zero; //asi quitamos la deceleracion para que no se te cuele por el mapa.
         }
-        //LA FALTA DE ESTAMINA DENTRO DEL AGUA ESTÁ DENTRO DEL MOVIMIENTO EN EL AGUA DE ILLAY. 
-        if(cameraZoomOut!=null)
-        {
-            isInCameraZoomZone = true;
-            //CameraZoomZone.anim.Play("Big_camera_water");
-
-        }
-
     }
+    //LA FALTA DE ESTAMINA DENTRO DEL AGUA ESTÁ DENTRO DEL MOVIMIENTO EN EL AGUA DE ILLAY. 
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        CameraZoomZone cameraZoomIn = other.GetComponent<CameraZoomZone>();
-          
-        if (cameraZoomIn != null)
-            isInCameraZoomZone = false;
-
-    }
 
     #endregion
     //ontrigger sirve para cuando los objetos se van a atravesar y oncollision cuando colisionan y se empujan. (ambos deberan tener collision)
@@ -277,12 +262,12 @@ public class IllayPlayer : MonoBehaviour
         {
             if (this.transform.localScale.x > 0) //si la tranformacion del local scale EN X es mayor que 0 inmediatamente se lee como derecha. Sino, es izquierda. NECESITARAS DOS IMAGENES DISTINTAS, bala derecha y bala izquierda. 
             {
-                Instantiate(bulletIllayPrefab, this.transform.position + new Vector3(3f, -2f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
+                Instantiate(bulletIllayPrefab, this.transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
             }
             else //como hemos designado arriba que la derecha es mayor que 0, <0 es inmediatamente izquierda. 
             {
-                Instantiate(bulletLeftIllayPrefab, this.transform.position + new Vector3(-3, -2f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
-                                                                                                                             //hemos puesto que tenga un vector 3 porque la bala nos salia muy arriba, con esto la estamos desplazando un poco para que salga en donde nosotros consideramos. 
+                Instantiate(bulletLeftIllayPrefab, this.transform.position + new Vector3(0, 0f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
+                                                                                                                           //hemos puesto que tenga un vector 3 porque la bala nos salia muy arriba, con esto la estamos desplazando un poco para que salga en donde nosotros consideramos. 
             }
 
         }
