@@ -10,6 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 639304951293335490}
   - component: {fileID: 982449390512765751}
+  - component: {fileID: 1639919069758427166}
+  - component: {fileID: 4690115836175899037}
+  - component: {fileID: 7421711355143986815}
+  - component: {fileID: 8460297868083753280}
   m_Layer: 0
   m_Name: Fairy
   m_TagString: Untagged
@@ -82,3 +86,93 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1639919069758427166
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5310031773658909989}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.81, y: -0.18}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.56, y: 4.68}
+  m_EdgeRadius: 0
+--- !u!50 &4690115836175899037
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5310031773658909989}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &7421711355143986815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5310031773658909989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 152c2b7e5a7747e4c8dd0448cbf91452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseRange: 24.6
+  attackRange: 20.07
+  speedFairy: 8
+  anim: {fileID: 0}
+  PatroPointsFairy:
+  - {fileID: 0}
+  - {fileID: 0}
+  FairyLife: 16
+  bulletFairyPrefab: {fileID: 1407445409140749276, guid: 50d781e0682514149885e3a9f6f4b429, type: 3}
+  bulletLeftFairyPrefab: {fileID: 1407445409140749276, guid: 5da6a7827cb667743bb412ca941d8f37, type: 3}
+  illayTransform: {fileID: 0}
+  currentStates: 0
+--- !u!95 &8460297868083753280
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5310031773658909989}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0c5077abe90990d4c8fc00310d1bcc24, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
