@@ -2,20 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public enum FairyStates //recordamos de nuevo que el enum sirve para hacer estados.
 {
     Patrol, Chase, Attack //si quieres mas estados, añade mas, podras acceder de uno en uno en ellos. 
 }
+public class FairyCode : MonoBehaviour
+{ 
 
-public class FairysCode : MonoBehaviour
-{
     public float chaseRange;
     public float attackRange;
     public float speedFairy = 8;
     bool hasAttackFinished = false; //ponemos que el ataque no esta acabado por ahora, para que se pueda activar con facilidad. 
     public Animator anim;
-    public List<transform> PatroPointsFairy = new List<transform>(); //punto de patruyaje del hada. 
+    public List<Transform> PatroPointsFairy = new List<Transform>(); //punto de patruyaje del hada. 
     int nextPatrolPointFairy = 0; //el contador empieza en 0 ¿recuerdas?
     public int FairyLife = 16;
 
@@ -53,12 +52,38 @@ public class FairysCode : MonoBehaviour
                     yield return Attack();
                     break;
             }
+            //ahora vamos a ejecutar las transiciones. 
+            if (currentStatesIs(FairyStates.Patrol))
+            {
+                if (DistanceToPlayer() < chaseRange)
+                {
+                    SwitchStateTo(FairyStates.Chase);
+                }
+                else if (CurrentStatesIs(FairyStates.Chase))
+                {
+                    if (DistanceToPlayer() > chaseRange)
+                    {
+                        SwitchStateTo(FairyStates.Patrol);
+                    }
+                    else if (DistanceToPlayer() < attackRange)
+                    {
+                        SwitchStateTo(FairyStates.Attack);
+                    }
+                }
+                else if (currentStatesIs(FairyStates.Attack))
+                {
+                    if (HasAttackFinished())
+                    {
+                        SwithStateTo(FairyStates.Chase);
+                    }
+                }
+            }
         }
+        //ahora mismo tienes infinidad de errores, dont worry. Cuando termines de programar preocupate por ellos. 
 
-
-
-    }
-
-
-
+        bool CurrentStatesIs(FairyStates stateToCheck)
+        {
+            return currentStates == stataToCheck)
+        }
+}
 }
