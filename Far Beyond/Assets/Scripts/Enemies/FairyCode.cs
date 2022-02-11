@@ -9,6 +9,7 @@ public enum FairyStates //recordamos de nuevo que el enum sirve para hacer estad
 public class FairyCode : MonoBehaviour
 {
 
+
     public float chaseRange;
     public float attackRange;
     public float speedFairy = 8;
@@ -23,7 +24,7 @@ public class FairyCode : MonoBehaviour
     public FairyStates currentStates = FairyStates.Patrol; //vamos a necesitar referenciar el enum poniendo .algo
 
     #region SINGLETON
-    public static SlimesCode Instance { get; private set; }
+    public static FairyCode Instance { get; private set; }
 
     private void Awake() //esto junto con el intance de arriba convierte nuestro personaje en un singleton (mucho mas comodo para juegos de un jugador) ya que nos permite acceder a este codigo desde otros codigos. 
     {
@@ -31,9 +32,10 @@ public class FairyCode : MonoBehaviour
     }
     #endregion
 
+
     public void Start()
     {
-        anim = GetComponent<animator>(); //llamos aqui la animacion, sera necesaria, ya sabes. 
+        anim = GetComponent<Animator>(); //llamos aqui la animacion, sera necesaria, ya sabes. 
         StartCoroutine(FMSCoroutine()); //y aqui la courtina para que siempre ejecute los enum. 
     }
 
@@ -55,7 +57,7 @@ public class FairyCode : MonoBehaviour
                     break;
             }
             //ahora vamos a ejecutar las transiciones. 
-            if (currentStatesIs(FairyStates.Patrol))
+            if (CurrentStatesIs(FairyStates.Patrol))
             {
                 if (DistanceToPlayer() < chaseRange)
                 {
@@ -72,11 +74,11 @@ public class FairyCode : MonoBehaviour
                         SwitchStateTo(FairyStates.Attack);
                     }
                 }
-                else if (currentStatesIs(FairyStates.Attack))
+                else if (CurrentStatesIs(FairyStates.Attack))
                 {
                     if (HasAttackFinished())
                     {
-                        SwithStateTo(FairyStates.Chase);
+                        SwitchStateTo(FairyStates.Chase);
                     }
                 }
             }
@@ -86,8 +88,8 @@ public class FairyCode : MonoBehaviour
 
     bool CurrentStatesIs(FairyStates stateToCheck)
     {
-        return currentStates == stataToCheck)
-        }
+        return currentStates == stateToCheck;
+    }
     float DistanceToPlayer()
     {
         return Vector3.Distance(this.transform.position, IllayPlayer.Instance.transform.position);
@@ -150,6 +152,23 @@ public class FairyCode : MonoBehaviour
             Instantiate(bulletLeftFairyPrefab, this.transform.position + new Vector3(-3, -2f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
                                                                                                                          //hemos puesto que tenga un vector 3 porque la bala nos salia muy arriba, con esto la estamos desplazando un poco para que salga en donde nosotros consideramos. 
         }
+        hasAttackFinished = true; //y se termina el ataque. 
+        yield return null; //y volvemos a empezar. 
+    }
+    IEnumerator FlashColor(SpriteRenderer spriteRender) //esto es un coroutine que sirve para esperar X tiempo. ES COMO UN CONTADOR.
+    {
+        spriteRender.color = Color.red;
+        yield return new WaitForSeconds(0.1f); //esto es para esperar un tiempo determinado, en este caso, 0.1f segundos.
+                                               // yield return null; // Espera 1 frame
+        spriteRender.color = Color.white;
+    }
+
+    private void OnDrawGizmos() //esto nos hace ayudas visuales para el rango de ataque y el rango de perseguir del enemigo. SOLO SIRVEN COMO AYUDA VISUAL Y NO SE VEN EN LA PANTALLA DE GAME.
+    {
+        Gizmos.color = new Color(1f, 0f, 0f, 0.3f); //esto es el R G B A (rojo semi transparente)
+        Gizmos.DrawSphere(this.transform.position, attackRange);
+        Gizmos.color = new Color(1f, 0f, 1f, 0.3f); // y esto es una especie de morado.
+        Gizmos.DrawSphere(this.transform.position, chaseRange);
 
     }
 
