@@ -159,7 +159,7 @@ public class FairyCode : MonoBehaviour
         }
 
 
-        yield return new WaitForSeconds(Random.Range(4f, 8f));
+        yield return new WaitForSeconds(Random.Range(2f, 6f)); //esto hara que las balas salgan aleatoriamente entre 2 y 6 segundos
         hasAttackFinished = true; //y se termina el ataque. 
         yield return null; //y volvemos a empezar. 
     }
