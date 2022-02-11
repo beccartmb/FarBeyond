@@ -64,23 +64,23 @@ public class FairyCode : MonoBehaviour
                 {
                     SwitchStateTo(FairyStates.Chase);
                 }
-                else if (CurrentStatesIs(FairyStates.Chase))
+            }
+            else if (CurrentStatesIs(FairyStates.Chase))
+            {
+                if (DistanceToPlayer() > chaseRange)
                 {
-                    if (DistanceToPlayer() > chaseRange)
-                    {
-                        SwitchStateTo(FairyStates.Patrol);
-                    }
-                    else if (DistanceToPlayer() < attackRange)
-                    {
-                        SwitchStateTo(FairyStates.Attack);
-                    }
+                    SwitchStateTo(FairyStates.Patrol);
                 }
-                else if (CurrentStatesIs(FairyStates.Attack))
+                else if (DistanceToPlayer() < attackRange)
                 {
-                    if (HasAttackFinished())
-                    {
-                        SwitchStateTo(FairyStates.Chase);
-                    }
+                    SwitchStateTo(FairyStates.Attack);
+                }
+            }
+            else if (CurrentStatesIs(FairyStates.Attack))
+            {
+                if (HasAttackFinished())
+                {
+                    SwitchStateTo(FairyStates.Chase);
                 }
             }
         }
@@ -158,6 +158,7 @@ public class FairyCode : MonoBehaviour
             Instantiate(bulletLeftFairyPrefab, this.transform.position + new Vector3(-3, -2f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
                                                                                                                          //hemos puesto que tenga un vector 3 porque la bala nos salia muy arriba, con esto la estamos desplazando un poco para que salga en donde nosotros consideramos. 
         }
+        yield return new WaitForSeconds(1.0f);
         hasAttackFinished = true; //y se termina el ataque. 
         yield return null; //y volvemos a empezar. 
     }
