@@ -9,8 +9,6 @@ public enum BossesStates //recordamos de nuevo que el enum sirve para hacer esta
 public class FinalBossesCode : MonoBehaviour
 {
 
-
-
     public float chaseRange;
     public float attackRange;
     public float speedBoss = 8f;
@@ -99,26 +97,79 @@ public class FinalBossesCode : MonoBehaviour
     {
         if (target.x > this.transform.position.x) //si el punto esta mas a la derecha que dicho personaje, la escala estara en positivo.
         {
-            this.transform.localScale = new Vector3(1f, 1f, 1f);
+            this.transform.localScale = new Vector3(-2f, 2f, 1f);
         }
         else
         {
-            this.transform.localScale = new Vector3(-1f, 1f, 1f);
+            this.transform.localScale = new Vector3(2f, 2f, 1f);
         }
         this.transform.position = Vector3.MoveTowards(this.transform.position, target, speedBoss * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        IllayPlayer player = collision.collider.GetComponent<IllayPlayer>();
+        if (player != null)
+        {
+            //this.transform.position = new Vector3(transform.position.x - 1, this.transform.position.y, this.transform.position.z); //esto hace que se mueva EL SLIME uno hacia atras cuando COLISIONAN. 
+            //debera cambiarse en vez de player, bola de fuego.
+            Vector3 direction = (player.transform.position - this.transform.position).normalized; //esto nos va a permitir empujar AL JUGADOR si choca contra el slime.
+            player.transform.position += direction * 1.0f;//el 1.0 es la distancia que empuja al jugador, cuanto mas grande, mas le va a empujar. 
+            StartCoroutine(FlashColor(player.GetComponent<SpriteRenderer>()));//aqui lo llamos como si fuese un metodo dentro de un coroutine.
+                                                                              //si el jugador entra dentro del daño, el jugador se pone rojo.
+            GameManager.Instance.playerLife--;
+
+        }
     }
     void OnTriggerEnter2D(Collider2D other)//esto es para las colisiones EN AREA 2D. 
     {
         secureZoneBoss nestBoss= other.GetComponent<secureZoneBoss>(); //aqui hemos detectado los colisionadores que tengan el script indicado como SecureZoneSirens.
-
+        IllayBullet illayBullet = other.GetComponent<IllayBullet>();
+        IllayFlame illayFlame = other.GetComponent<IllayFlame>();
         if (nestBoss != null) //null significa algo que no existe //esto permite que al colisionar contra la pared derecha. vaya a la cordenada en X -9,4 apareciendo asi por el otro lado.
         {
             secureZoneBoss = nestBoss.transform.position;                                              //cada vez que pase por un "saveZone" se guardará la nueva posicion.
         }
+       
+        if (illayBullet != null)
+        {
+
+            bossLife--; //si le toca la bala, -1 de vida. //recuerda que en vector 3 hay que cambiar quien choca con el. 
+            Vector3 direction = (illayBullet.transform.position - this.transform.position).normalized;
+            this.gameObject.transform.position += direction * 1.0f;//el 1.0 es la distancia que empuja al jugador, cuanto mas grande, mas le va a empujar. 
+            StartCoroutine(FlashColor(this.GetComponent<SpriteRenderer>()));//aqui lo llamos como si fuese un metodo dentro de un coroutine.
+                                                                            //si la bala choca contra el slime, este se pondra rojo??.
+
+
+            illayBullet.anim.Play("Bullet_die"); //Esto es para llamar el anim desde la bala. Como es una animacion creada en bullet la tenemos que llamar desde allí.
+            Destroy(illayBullet.gameObject, 0.6f); //Esto es para que la bala deje de exixtir.
+                                                   //Para que le de tiempo a hacerse la animación ponemos ese tiempo de espera antes de que muera.
+            Die();
+
+            //Para que se pueda llamar las animaciones hay que arrastrar el animator de unity al script del cual llamamos por ejm aqui en el de bala o flame.
+        }
+        if (illayFlame != null)
+        {
+            bossLife -= 3; //si le toca la llamarada, menos 3 de vida. 
+            Vector3 direction = (illayFlame.transform.position - this.transform.position).normalized; //he cambiado para que la LLAMARADA lo mate. 
+            this.gameObject.transform.position += direction * 1.0f;//el 1.0 es la distancia que empuja al jugador, cuanto mas grande, mas le va a empujar. 
+            StartCoroutine(FlashColor(this.GetComponent<SpriteRenderer>()));//aqui lo llamos como si fuese un metodo dentro de un coroutine.
+                                                                            //si la bala choca contra el slime, este se pondra rojo??.
+
+            illayFlame.anim.Play("Flame_die"); //Esto es para llamar el anim desde la bala. Como es una animacion creada en bullet la tenemos que llamar desde allí.
+            Destroy(illayFlame.gameObject, 1.0f); //Esto es para que la bala deje de exixtir.
+                                                  //Para que le de tiempo a hacerse la animación ponemos ese tiempo de espera antes de que muera.
+            Die();
+
+
+        }
     }
     IEnumerator Patrol()
     {
-        MoveTowardsPoint(secureZoneBoss);
+        if (Vector3.Distance(this.transform.position, secureZoneBoss) > 1.0f)// que se mueva a la zona segura siempre y cuando esté a una distancia de 1 metro.
+        {                                                                    // de esta forma hacemos que la zona de seguridad tenga un metro más de margen al detectar la zona segura. 
+            MoveTowardsPoint(secureZoneBoss);
+        }
         yield return null;
     }
     IEnumerator Chase()
@@ -130,10 +181,14 @@ public class FinalBossesCode : MonoBehaviour
     IEnumerator Attack()
     {
         hasAttackFinished = false; //aqui empieza el ataque.
-        GameManager.Instance.playerLife = 0; //lo mata.
-        hasAttackFinished = true; //y se termina el ataque. 
+        anim.Play("Final_boss_charge");
+        //GameManager.Instance.playerLife = 0; //si ponemos esto nos mata de un toque.
+        hasAttackFinished = true; //y se termina el ataque.
+        
+
         yield return null; //y volvemos a empezar. 
     }
+
 
 
     IEnumerator FlashColor(SpriteRenderer spriteRender) //esto es un coroutine que sirve para esperar X tiempo. ES COMO UN CONTADOR.
@@ -151,5 +206,13 @@ public class FinalBossesCode : MonoBehaviour
         Gizmos.color = new Color(1f, 0f, 1f, 0.3f); // y esto es una especie de morado.
         Gizmos.DrawSphere(this.transform.position, chaseRange);
 
+    }
+
+    public void Die()
+    {
+        if (bossLife <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
