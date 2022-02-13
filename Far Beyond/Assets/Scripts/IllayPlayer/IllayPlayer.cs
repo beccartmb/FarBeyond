@@ -163,7 +163,7 @@ public class IllayPlayer : MonoBehaviour
                 velocity.x = -speed; //necesitamos que sea negativo para que te muevas hacia la izquierda, es la manera de moverte en 2D. 
 
             }
-            else if (Keyboard.current.upArrowKey.isPressed) //esto me permite no volver a saltar una segunda vez. 
+            else if (Keyboard.current.spaceKey.isPressed) //esto me permite no volver a saltar una segunda vez. 
             {
                 velocity.y = speed; //necesitamos que sea negativo para que te muevas hacia la izquierda, es la manera de moverte en 2D. 
             }
