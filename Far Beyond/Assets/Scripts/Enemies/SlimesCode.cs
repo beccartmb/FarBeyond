@@ -82,8 +82,6 @@ public class SlimesCode : MonoBehaviour
         }
     }
 
-
-
     //si estoy en un estado, ejecuto dicho estado, y asi los tenemos totalmente separado de las demas cosas. 
 
     bool CurrentStateIs(EnemyStates stateToCheck) //esto chequea a cuanto esta del estado. 

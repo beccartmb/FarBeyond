@@ -5,7 +5,7 @@ using UnityEngine;
 public class IllayBullet : MonoBehaviour
 {
     //si la bala sale de los limites, que se destruya. 
-    public float speedBullet = 5.0f;
+    public float speedBullet = 8.0f;
     public float lifeTime = 3.0f;
     public Animator anim; 
 

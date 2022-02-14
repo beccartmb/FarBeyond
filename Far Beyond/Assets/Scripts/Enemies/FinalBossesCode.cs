@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum BossesStates //recordamos de nuevo que el enum sirve para hacer estados.
 {
@@ -26,6 +27,13 @@ public class FinalBossesCode : MonoBehaviour
     {
         anim = GetComponent<Animator>(); //para que se ejecuten todas las animaciones nada mas empezar debera de estar esto aqui. 
         StartCoroutine(FMSCoroutine());
+    }
+    public void Update()
+    {
+        if(bossLife<=5)
+        {
+            SceneManager.LoadScene("EndMenu"); //si le metes de hostias hasta que el boss llegue a 5 de vida, te lleva al "EndMenu".
+        }
     }
 
     IEnumerator FMSCoroutine()

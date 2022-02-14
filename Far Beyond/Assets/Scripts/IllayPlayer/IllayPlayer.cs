@@ -18,7 +18,7 @@ public class IllayPlayer : MonoBehaviour
     public GameObject flameObject;
     public Vector3 newSaveZone;
     Animator anim; //ESTO NOS VA A PERMITIR METER Y MODIFICAR ANIMACIONES.
-    bool isInCameraZoomZone;
+    
 
     #region SINGLETON
     public static IllayPlayer Instance { get; private set; }
@@ -37,6 +37,8 @@ public class IllayPlayer : MonoBehaviour
     public bool isInWater; //aqui permite hace un codigo de booleana que detecte si esta en el agua o no. 
     public bool isInTeleportGraveyard; //aqui designamos los teleport para otras escenas. 
     public bool passedSaveZone;
+    bool isInCameraZoomZone;
+    public bool waitShoot;
 
 
     private void Start()
@@ -49,8 +51,6 @@ public class IllayPlayer : MonoBehaviour
         if (isInWater) //si esta en el agua, que haga este movimiento. 
         {
             MovementIllayWater(); //AQUI SE LLAMA SI ESTA EN EL AGUA.
-
-
         }
         else //sino, que haga el movimiento que hace cuando esta en suelo.
         {
@@ -60,15 +60,6 @@ public class IllayPlayer : MonoBehaviour
         Animate();
         //aqui dentro ira el metodo de movimiento.
         Shoot();
-        if (isInCameraZoomZone)
-        {
-            //mete la animacion grande.
-            //CameraZoomZone.anim.Play("Big_camera_water");
-        }
-        else
-        {
-            //mete la animacion hacia la camara pequeña.
-        }
     }
 
     void Animate() //Vamos a crear un void separado para configurar las animaciones. Debe ser llamado en el Update
@@ -260,20 +251,24 @@ public class IllayPlayer : MonoBehaviour
     { //si se echa para atras el jugador al disparar, mueve la bala, el collider esta haciendo que se mueva. 
         if (Keyboard.current.wKey.wasPressedThisFrame) //PARA DISPARAR TECLA W.
         {
+
             if (this.transform.localScale.x > 0) //si la tranformacion del local scale EN X es mayor que 0 inmediatamente se lee como derecha. Sino, es izquierda. NECESITARAS DOS IMAGENES DISTINTAS, bala derecha y bala izquierda. 
             {
-                Instantiate(bulletIllayPrefab, this.transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
+                Instantiate(bulletIllayPrefab, this.transform.position + new Vector3(1f, 0f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
             }
             else //como hemos designado arriba que la derecha es mayor que 0, <0 es inmediatamente izquierda. 
             {
-                Instantiate(bulletLeftIllayPrefab, this.transform.position + new Vector3(0, 0f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
+                Instantiate(bulletLeftIllayPrefab, this.transform.position + new Vector3(-1f, 0f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
                                                                                                                            //hemos puesto que tenga un vector 3 porque la bala nos salia muy arriba, con esto la estamos desplazando un poco para que salga en donde nosotros consideramos. 
             }
 
         }
         //las rotaciones se hablan con Quaternion, el identity que le sigue es la rotación por defecto.
 
-        if (Keyboard.current.eKey.isPressed && GameManager.Instance.stamina > 0) //si la municion de la estamina es 1, disparar MANTENIENDO PULSADO PARA GASTARSE. 
+
+        if (Keyboard.current.eKey.isPressed && GameManager.Instance.stamina > 0 && !IllayPlayer.Instance.isInWater) //esto me permite no disparar si no estoy dentro del agua?
+            
+            //si la municion de la estamina es 1, disparar MANTENIENDO PULSADO PARA GASTARSE. 
         {
             //FlameShoot();
 
