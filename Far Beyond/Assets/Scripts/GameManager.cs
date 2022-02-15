@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     public float stamina = 0;
     public float maxStaminaO2 = 10.0f; //esto debera ser decimal para que baje con el tiempo, es decir, time.deltatime. 
     public float staminaO2 = 0;
+    public float maxPowerUpGrade = 4f; //esto va a ser aquello que llamemos desde el powerUpGRADE que te permitira crecer por 6 segundos.
+    public float staminaUpGrade = 0;
 
 
     public SaveData currentSave = new SaveData(); //esto permite tener TODA la informacion de la partida GUARDADA. Esto permitirá poder acceder a ello en cualquier momento. 
@@ -62,6 +64,10 @@ public class GameManager : MonoBehaviour
         if (staminaO2>maxStaminaO2) // esto permite sumar estamina hasta llegar al maximo.Si llega al maximo de estamina SIEMPRE SERA EL MAXIMO.
         {
             staminaO2 = maxStaminaO2; 
+        }
+        if(staminaUpGrade>maxPowerUpGrade) //esto, al igual que todas las estaminas las gestionamos desde illay y el script de power up.
+        {
+            staminaUpGrade = maxPowerUpGrade; //si toca varios iguales, la estamina sera la misma que la maxima, es decir, 6, no se acumula.
         }
 
     }

@@ -247,6 +247,16 @@ public class IllayPlayer : MonoBehaviour
         wallOnRight.Remove(collision.collider);
         wallOnLeft.Remove(collision.collider);
     }
+
+    public void UpGrade() //esto me permitira escalar volviendome mas grande. EN TEORIA
+    {
+        if (GameManager.Instance.staminaUpGrade > 0 && !IllayPlayer.Instance.isInWater)
+        {
+            this.transform.localScale = new Vector3(3f, 3f, transform.localScale.z); //Esto es para que se gire.
+            GameManager.Instance.staminaUpGrade -= Time.deltaTime;
+        }
+    }
+
     void Shoot()
     { //si se echa para atras el jugador al disparar, mueve la bala, el collider esta haciendo que se mueva. 
         if (Keyboard.current.wKey.wasPressedThisFrame) //PARA DISPARAR TECLA W.
@@ -265,13 +275,10 @@ public class IllayPlayer : MonoBehaviour
         }
         //las rotaciones se hablan con Quaternion, el identity que le sigue es la rotación por defecto.
 
-
         if (Keyboard.current.eKey.isPressed && GameManager.Instance.stamina > 0 && !IllayPlayer.Instance.isInWater) //esto me permite no disparar si no estoy dentro del agua?
             
             //si la municion de la estamina es 1, disparar MANTENIENDO PULSADO PARA GASTARSE. 
         {
-            //FlameShoot();
-
             flameObject.SetActive(true); //Esto nos sirve para que no salga de dentro sino que active la animacion mediante una imagen ya impuesta. 
             GameManager.Instance.stamina -= Time.deltaTime; //que al disparar se reste una. QUIERO PONERLE TIEMPO A DICHO DISPARO
         }
