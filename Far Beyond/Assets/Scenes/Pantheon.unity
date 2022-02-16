@@ -202,7 +202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227175349}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 59.3, y: 14.7, z: -10}
+  m_LocalPosition: {x: 59.3, y: 10.9, z: -10}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -222,10 +222,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1533854493}
   offset: {x: 0, y: 0, z: -10}
+  offsetZoomOut: {x: 0, y: 17.05, z: -10}
+  isZoomedOut: 0
   minX: 18
   maxX: 144.74
-  minY: 31
-  maxY: 14.7
+  minY: 14.7
+  maxY: 31
+  minXZoomOut: 18
+  maxXZoomOut: 144.74
+  minYZoomOut: 21.7
+  maxYZoomOut: 41.1
   shakeTime: 0
   shakeAmount: 0
   maxShakeTime: 0
@@ -689,7 +695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7670538073248881627, guid: cfbc09e9ecabcb541af8fd4786fc4c04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 44.4
       objectReference: {fileID: 0}
     - target: {fileID: 7670538073248881627, guid: cfbc09e9ecabcb541af8fd4786fc4c04, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1455,7 +1461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 639304951293335490, guid: 4b553e27041c1f94ba7cfb40c68554d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 83.25
+      value: 134.3
       objectReference: {fileID: 0}
     - target: {fileID: 639304951293335490, guid: 4b553e27041c1f94ba7cfb40c68554d8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1512,6 +1518,10 @@ PrefabInstance:
     - target: {fileID: 5310031773658909989, guid: 4b553e27041c1f94ba7cfb40c68554d8, type: 3}
       propertyPath: m_Name
       value: Fairy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5310031773658909989, guid: 4b553e27041c1f94ba7cfb40c68554d8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7421711355143986815, guid: 4b553e27041c1f94ba7cfb40c68554d8, type: 3}
       propertyPath: illayTransform

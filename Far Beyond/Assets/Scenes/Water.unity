@@ -940,12 +940,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1271412753}
   offset: {x: 0, y: 0, z: -10}
-  offsetZoomOut: {x: 0, y: 10, z: -10}
+  offsetZoomOut: {x: 0, y: -8, z: -10}
   isZoomedOut: 0
   minX: -282
   maxX: 2.294583
   minY: 89.9
   maxY: 48.37
+  minXZoomOut: -200
+  maxXZoomOut: 2.3
+  minYZoomOut: 90
+  maxYZoomOut: -76.5
   shakeTime: 0
   shakeAmount: 0
   maxShakeTime: 0
