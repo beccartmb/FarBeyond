@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -24,13 +25,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int playerLife = 4; //Y aqui hemos designado que el jugador tendra 3 vidas. 
+    //--------------------------------------------------------------------------------------
+    //todo lo comentado está comentado es porque hemos guardado la informacion en SaveDATA. en caso de no tener dicho escript, borra la linea de codigo "GameManager.Instance.currentSave." de todos los objetos que lo tengan y quita el comentario de las variables.
+    //--------------------------------------------------------------------------------------
+
+
+    //public int playerLife = 4; //Y aqui hemos designado que el jugador tendra 3 vidas. 
     public float maxStamina = 4f; //ESTE ES EL MAXIMO DE ESTAMINA QUE DEBERA TENER PARA LANZAR LA LLAMARADA. SE PONDRA COMO FLOAT PARA QUE PUEDAS RESTARLE EL TIEMPO.
-    public float stamina = 0;
+    //public float stamina = 0;
     public float maxStaminaO2 = 10.0f; //esto debera ser decimal para que baje con el tiempo, es decir, time.deltatime. 
-    public float staminaO2 = 0;
+    //public float staminaO2 = 0;
     public float maxPowerUpGrade = 4f; //esto va a ser aquello que llamemos desde el powerUpGRADE que te permitira crecer por 6 segundos.
-    public float staminaUpGrade = 0;
+    //public float staminaUpGrade = 0;
 
 
     public SaveData currentSave = new SaveData(); //esto permite tener TODA la informacion de la partida GUARDADA. Esto permitirá poder acceder a ello en cualquier momento. 
@@ -52,24 +58,30 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (playerLife < 0) //aqui hemos designado que si la vida del  jugador llega a 0, que reinicie el nivel en el que está. EN EL JUGADOR RESTAMOS UNA CADA VEZ QUE TOCAS LA DEATHZONE.
+        if (GameManager.Instance.currentSave.playerLife <= 0) //aqui hemos designado que si la vida del  jugador llega a 0, que reinicie el nivel en el que está. EN EL JUGADOR RESTAMOS UNA CADA VEZ QUE TOCAS LA DEATHZONE.
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); //esto sirve para reinciar la escena EN LA QUE EL PERSONAJE DESAPAREZCA/muera.
-            playerLife = 3;
+
+            GameManager.Instance.currentSave.playerLife = 4;
         }
-        if (stamina > maxStamina) //esto permite sumar estamina hasta llegar al maximo. Si llega al maximo de estamina SIEMPRE SERA EL MAXIMO.
+        if (GameManager.Instance.currentSave.stamina > maxStamina) //esto permite sumar estamina hasta llegar al maximo. Si llega al maximo de estamina SIEMPRE SERA EL MAXIMO.
         {
-            stamina = maxStamina;
+            GameManager.Instance.currentSave.stamina = maxStamina;
         }
-        if (staminaO2>maxStaminaO2) // esto permite sumar estamina hasta llegar al maximo.Si llega al maximo de estamina SIEMPRE SERA EL MAXIMO.
+        if (GameManager.Instance.currentSave.staminaO2 > maxStaminaO2) // esto permite sumar estamina hasta llegar al maximo.Si llega al maximo de estamina SIEMPRE SERA EL MAXIMO.
         {
-            staminaO2 = maxStaminaO2; 
+            GameManager.Instance.currentSave.staminaO2 = maxStaminaO2;
         }
-        if(staminaUpGrade>maxPowerUpGrade) //esto, al igual que todas las estaminas las gestionamos desde illay y el script de power up.
+        if (GameManager.Instance.currentSave.staminaUpGrade > maxPowerUpGrade) //esto, al igual que todas las estaminas las gestionamos desde illay y el script de power up.
         {
-            staminaUpGrade = maxPowerUpGrade; //si toca varios iguales, la estamina sera la misma que la maxima, es decir, 6, no se acumula.
+            GameManager.Instance.currentSave.staminaUpGrade = maxPowerUpGrade; //si toca varios iguales, la estamina sera la misma que la maxima, es decir, 6, no se acumula.
         }
 
+        if (Keyboard.current.rightCtrlKey.wasPressedThisFrame) //si el control derecho de abajo se pulsa, la escena se guarda. ESTO NO SERA NECESARIO SI NO TENEMOS CODIGO DE SAVEDATA.
+        {
+            GameManager.Instance.currentSave.currentScene = SceneManager.GetActiveScene().name; //esto me permite guardar la escena en la que el jugador esté.
+            SaveGame();
+        }
     }
 }
 

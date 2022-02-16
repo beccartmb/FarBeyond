@@ -226,7 +226,7 @@ MonoBehaviour:
   isZoomedOut: 0
   minX: 18
   maxX: 144.74
-  minY: 14.7
+  minY: 12
   maxY: 31
   minXZoomOut: 18
   maxXZoomOut: 144.74
@@ -695,7 +695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7670538073248881627, guid: cfbc09e9ecabcb541af8fd4786fc4c04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 44.4
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 7670538073248881627, guid: cfbc09e9ecabcb541af8fd4786fc4c04, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1461,7 +1461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 639304951293335490, guid: 4b553e27041c1f94ba7cfb40c68554d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 134.3
+      value: 82.4
       objectReference: {fileID: 0}
     - target: {fileID: 639304951293335490, guid: 4b553e27041c1f94ba7cfb40c68554d8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1521,7 +1521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5310031773658909989, guid: 4b553e27041c1f94ba7cfb40c68554d8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7421711355143986815, guid: 4b553e27041c1f94ba7cfb40c68554d8, type: 3}
       propertyPath: illayTransform

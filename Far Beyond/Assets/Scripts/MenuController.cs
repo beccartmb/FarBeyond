@@ -33,5 +33,10 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene(nextScene);//esto sirve para que cargue la escena que tu designes dentro de los botones. Tendras que escribir a la perfeccion dicho nombre. 
     }
 
+   public void ContinueGame() 
+    {
+        GameManager.Instance.LoadGame(); //esto me permitirá cargar todo aquello que este metido en la escena.
+        SceneManager.LoadScene(GameManager.Instance.currentSave.currentScene); //esto me permite cargar la escena en la que el jugador se ha quedado.
+    }
 
 }

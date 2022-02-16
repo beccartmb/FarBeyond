@@ -732,7 +732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7670538073248881627, guid: cfbc09e9ecabcb541af8fd4786fc4c04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -75.3
+      value: -76.13
       objectReference: {fileID: 0}
     - target: {fileID: 7670538073248881627, guid: cfbc09e9ecabcb541af8fd4786fc4c04, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2134,10 +2134,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1937652176}
   offset: {x: 0, y: 0, z: -10}
+  offsetZoomOut: {x: 0, y: 0, z: 0}
+  isZoomedOut: 0
   minX: -57
   maxX: 362
   minY: 6.85
   maxY: 52.5
+  minXZoomOut: 0
+  maxXZoomOut: 0
+  minYZoomOut: 0
+  maxYZoomOut: 0
   shakeTime: 0
   shakeAmount: 0
   maxShakeTime: 0

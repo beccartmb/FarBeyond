@@ -14,7 +14,10 @@ public class PowerUpUpGrade : MonoBehaviour
         if (player != null)
         {
             GameManager.Instance.StartCoroutine(Respawn()); //ESTO SERA IMPORTANTE PARA QUE RESPAUNÉ ES DECIR, SIN ESTO, NUNCA DESAPARECE EL POWER UP NI TAMPOCO SE REGENERA.
-            GameManager.Instance.staminaUpGrade += 6; //cuando se quiere añadir un numero mayor a 1 (lo que seria ++) hay que poner += X. TENDRAS 5 segundos para crecer de golpe.
+            GameManager.Instance.currentSave.staminaUpGrade += 6; //cuando se quiere añadir un numero mayor a 1 (lo que seria ++) hay que poner += X. TENDRAS 5 segundos para crecer de golpe.    MIRA LA LINEA DE ABAJO.
+            //------------------------------------------------------------------------
+            //EN CASO DE ERROR, QUITA DEL CODIGO DE ARRIBA "currentSave" ESTO SE DEBE A QUE DICHA INFORMACION SE ESTÁ ALMACENANDO EN EL SCRIPT SaveData". REVISA TAMBIEN EL GAME MANAGER.
+            //------------------------------------------------------------------------
         }
     }
 

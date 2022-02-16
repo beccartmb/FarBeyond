@@ -167,9 +167,28 @@ public class FairyCode : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) //eso nos va a permitir detectar dentro de un empty vacio con un collider que genere un area. 
     {
         IllayPlayer player = other.GetComponent<IllayPlayer>();
-        IllayBullet illayBullet = other.GetComponent<IllayBullet>();
         IllayFlame illayFlame = other.GetComponent<IllayFlame>();
 
+       
+        if (illayFlame != null)
+        {
+            FairyLife -= 3; //si le toca la llamarada, menos 3 de vida. 
+            Vector3 direction = (illayFlame.transform.position - this.transform.position).normalized; //he cambiado para que la LLAMARADA lo mate. 
+            this.gameObject.transform.position += direction * 1.0f;//el 1.0 es la distancia que empuja al jugador, cuanto mas grande, mas le va a empujar. 
+            StartCoroutine(FlashColor(this.GetComponent<SpriteRenderer>()));//aqui lo llamos como si fuese un metodo dentro de un coroutine.
+                                                                            //si la bala choca contra el slime, este se pondra rojo??.
+
+            illayFlame.anim.Play("Flame_die"); //Esto es para llamar el anim desde la bala. Como es una animacion creada en bullet la tenemos que llamar desde allí.
+            Destroy(illayFlame.gameObject, 1.0f); //Esto es para que la bala deje de exixtir.
+                                                  //Para que le de tiempo a hacerse la animación ponemos ese tiempo de espera antes de que muera.
+            Die();
+
+
+        }
+    }
+    void OnCollisionEnter2D(Collision2D collision) //hemos tenido que poner LAS BALAS en collision porque tenian rigidbody y sino lo empujaba.
+    {
+        IllayBullet illayBullet = collision.collider.GetComponent<IllayBullet>();
         if (illayBullet != null)
         {
 
@@ -187,22 +206,8 @@ public class FairyCode : MonoBehaviour
 
             //Para que se pueda llamar las animaciones hay que arrastrar el animator de unity al script del cual llamamos por ejm aqui en el de bala o flame.
         }
-        if (illayFlame != null)
-        {
-            FairyLife -= 3; //si le toca la llamarada, menos 3 de vida. 
-            Vector3 direction = (illayFlame.transform.position - this.transform.position).normalized; //he cambiado para que la LLAMARADA lo mate. 
-            this.gameObject.transform.position += direction * 1.0f;//el 1.0 es la distancia que empuja al jugador, cuanto mas grande, mas le va a empujar. 
-            StartCoroutine(FlashColor(this.GetComponent<SpriteRenderer>()));//aqui lo llamos como si fuese un metodo dentro de un coroutine.
-                                                                            //si la bala choca contra el slime, este se pondra rojo??.
-
-            illayFlame.anim.Play("Flame_die"); //Esto es para llamar el anim desde la bala. Como es una animacion creada en bullet la tenemos que llamar desde allí.
-            Destroy(illayFlame.gameObject, 1.0f); //Esto es para que la bala deje de exixtir.
-                                                  //Para que le de tiempo a hacerse la animación ponemos ese tiempo de espera antes de que muera.
-            Die();
-
-
-        }
     }
+
     IEnumerator FlashColor(SpriteRenderer spriteRender) //esto es un coroutine que sirve para esperar X tiempo. ES COMO UN CONTADOR.
     {
         spriteRender.color = Color.red;

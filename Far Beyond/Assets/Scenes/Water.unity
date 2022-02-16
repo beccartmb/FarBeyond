@@ -944,8 +944,8 @@ MonoBehaviour:
   isZoomedOut: 0
   minX: -282
   maxX: 2.294583
-  minY: 89.9
-  maxY: 48.37
+  minY: 48.37
+  maxY: 89.9
   minXZoomOut: -200
   maxXZoomOut: 2.3
   minYZoomOut: 90
@@ -2375,11 +2375,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7670538073248881627, guid: cfbc09e9ecabcb541af8fd4786fc4c04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.36
+      value: -298.43
       objectReference: {fileID: 0}
     - target: {fileID: 7670538073248881627, guid: cfbc09e9ecabcb541af8fd4786fc4c04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 77.09
+      value: 85.85
       objectReference: {fileID: 0}
     - target: {fileID: 7670538073248881627, guid: cfbc09e9ecabcb541af8fd4786fc4c04, type: 3}
       propertyPath: m_LocalPosition.z

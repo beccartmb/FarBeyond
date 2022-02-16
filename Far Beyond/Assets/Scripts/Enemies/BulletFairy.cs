@@ -43,7 +43,13 @@ public class BulletFairy : MonoBehaviour
             player.transform.position += direction * 1.0f;//el 1.0 es la distancia que empuja al jugador, cuanto mas grande, mas le va a empujar. 
             StartCoroutine(FlashColor(player.GetComponent<SpriteRenderer>()));//aqui lo llamos como si fuese un metodo dentro de un coroutine.
                                                                               //si el jugador entra dentro del daño, el jugador se pone rojo.
-            GameManager.Instance.playerLife--;
+
+
+            GameManager.Instance.currentSave.playerLife--; //FIJATE EN LA LINEA DE ABAJO.
+
+            //----------------------------------------------------------------------------------------------
+            //EN CASO DE QUE TE DE ERROR, QUITA EL CURRENTSAVE, SIGNIFICA QUE SE ESTA GUARDANDO DICHA INFORMACION EN SAVE DATA. REVISA TAMBIEN EL GAME MANAGER.
+            //----------------------------------------------------------------------------------------
         }
     }
 

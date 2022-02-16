@@ -61,7 +61,7 @@ public class IllayPlayer : MonoBehaviour
         Animate();
         //aqui dentro ira el metodo de movimiento.
         Shoot();
-        
+
 
     }
 
@@ -132,17 +132,26 @@ public class IllayPlayer : MonoBehaviour
     {
         rbody.gravityScale = 0.099f; //esto significa que dentro del agua NO VA A HABER GRAVEDAD. 
         Vector2 velocity = rbody.velocity; //aqui volvemos a determinar la velocidad para el movimiento. 
-        if (GameManager.Instance.staminaO2 <= 0) //si ILLAY entra dentro del agua y la estamina esta a 0, muere y le manda a la zona segura. 
+        if (GameManager.Instance.currentSave.staminaO2 <= 0) //si ILLAY entra dentro del agua y la estamina esta a 0, muere y le manda a la zona segura. 
+        //------------------------------------------------------------------------
+        //EN CASO DE ERROR, QUITA DEL CODIGO DE ARRIBA "currentSave" ESTO SE DEBE A QUE DICHA INFORMACION SE ESTÁ ALMACENANDO EN EL SCRIPT SaveData". REVISA TAMBIEN EL GAME MANAGER.
+        //------------------------------------------------------------------------
+
         {
             //ESTO ME PERMITIRA RESTARLE UNO DE VIDA Y 
-            GameManager.Instance.playerLife--;
+            GameManager.Instance.currentSave.playerLife--; //MIRA EN LA LINEA DE PUNTOS,.
             transform.position = newSaveZone;
             rbody.velocity = Vector2.zero;
-            GameManager.Instance.staminaO2 = 0.1f; //esto hara que vuelvas a tener estamina. hara que no mueran 18 veces seguidas. 
+            GameManager.Instance.currentSave.staminaO2 = 0.1f; //esto hara que vuelvas a tener estamina. hara que no mueran 18 veces seguidas.  MIRA LA LINEA DE ABAJO.
+            //------------------------------------------------------------------------
+            //EN CASO DE ERROR, QUITA DEL CODIGO DE ARRIBA "currentSave" ESTO SE DEBE A QUE DICHA INFORMACION SE ESTÁ ALMACENANDO EN EL SCRIPT SaveData". REVISA TAMBIEN EL GAME MANAGER.
+            //------------------------------------------------------------------------
+
+
         }
         else
         {
-            GameManager.Instance.staminaO2 -= Time.deltaTime;
+            GameManager.Instance.currentSave.staminaO2 -= Time.deltaTime; //MIRA LA LINEA DE PUNTOS. 
             if (Keyboard.current.rightArrowKey.isPressed) //esto me permite no volver a saltar una segunda vez. 
             {
                 this.transform.localScale = new Vector3(1f, transform.localScale.y, transform.localScale.z);
@@ -229,7 +238,10 @@ public class IllayPlayer : MonoBehaviour
         }
         if (deathZone != null)
         {
-            GameManager.Instance.playerLife--; //aqui  hemos designado mediante el GAME MANAGER que si toca la deathzone, te reste uno de vida.
+            //------------------------------------------------------------------------
+            //EN CASO DE ERROR, QUITA DEL CODIGO DE ARRIBA "currentSave" ESTO SE DEBE A QUE DICHA INFORMACION SE ESTÁ ALMACENANDO EN EL SCRIPT SaveData". REVISA TAMBIEN EL GAME MANAGER.
+            //------------------------------------------------------------------------
+            GameManager.Instance.currentSave.playerLife--; //aqui  hemos designado mediante el GAME MANAGER que si toca la deathzone, te reste uno de vida.  MIRA LA LINEA DE PUNTOS.
             transform.position = newSaveZone; //si toca una deathzone que tenga metido el script, te llevara a la posicion del ultimo SaveZone guardado por la variable de arriba.
             rbody.velocity = Vector2.zero; //asi quitamos la deceleracion para que no se te cuele por el mapa.
         }
@@ -268,12 +280,12 @@ public class IllayPlayer : MonoBehaviour
         }
         //las rotaciones se hablan con Quaternion, el identity que le sigue es la rotación por defecto.
 
-        if (Keyboard.current.eKey.isPressed && GameManager.Instance.stamina > 0 && !IllayPlayer.Instance.isInWater) //esto me permite no disparar si no estoy dentro del agua?
+        if (Keyboard.current.eKey.isPressed && GameManager.Instance.currentSave.stamina > 0 && !IllayPlayer.Instance.isInWater) //esto me permite no disparar si no estoy dentro del agua. MIRA LA LINEA DE PUNTOS.
 
         //si la municion de la estamina es 1, disparar MANTENIENDO PULSADO PARA GASTARSE. 
         {
             flameObject.SetActive(true); //Esto nos sirve para que no salga de dentro sino que active la animacion mediante una imagen ya impuesta. 
-            GameManager.Instance.stamina -= Time.deltaTime; //que al disparar se reste una. QUIERO PONERLE TIEMPO A DICHO DISPARO
+            GameManager.Instance.currentSave.stamina -= Time.deltaTime; //que al disparar se reste una. QUIERO PONERLE TIEMPO A DICHO DISPARO.    MIRA LA LINEA DE PUNTOS.
         }
         else
         {
@@ -282,15 +294,19 @@ public class IllayPlayer : MonoBehaviour
     }
     public void UpGrade() //esto me permitira escalar volviendome mas grande. EN TEORIA
     {
-        if (GameManager.Instance.staminaUpGrade > 0 && !IllayPlayer.Instance.isInWater)
+        if (GameManager.Instance.currentSave.staminaUpGrade > 0 && !IllayPlayer.Instance.isInWater) //MIRA LA LINEA DE PUNTOS.
         {//mathf.Sing es para coger el signo anterior de escala para ponerlo en +1 o -1
-            this.transform.localScale = new Vector3(Mathf.Sign(this.transform.localScale.x) * 3f, 3f, transform.localScale.z); //Esto es para que se gire.
-            GameManager.Instance.staminaUpGrade -= Time.deltaTime;
+            this.transform.localScale = new Vector3(Mathf.Sign(this.transform.localScale.x) * 3f, 3f, transform.localScale.z); //Esto es para que se gire. //MIRA LA LINEA DE PUNTOS.
+            GameManager.Instance.currentSave.staminaUpGrade -= Time.deltaTime;
         }
-        else if(GameManager.Instance.staminaUpGrade <= 0 && !IllayPlayer.Instance.isInWater)
+        else if (GameManager.Instance.currentSave.staminaUpGrade <= 0 && !IllayPlayer.Instance.isInWater)
         {
             this.transform.localScale = new Vector3(Mathf.Sign(this.transform.localScale.x) * 1f, 1f, transform.localScale.z); //Esto es para que se gire.
         }
+
+        //------------------------------------------------------------------------
+        //EN CASO DE ERROR, QUITA DEL CODIGO DE ARRIBA "currentSave" ESTO SE DEBE A QUE DICHA INFORMACION SE ESTÁ ALMACENANDO EN EL SCRIPT SaveData". REVISA TAMBIEN EL GAME MANAGER.
+        //------------------------------------------------------------------------
     }
     void FlameShoot()
     {

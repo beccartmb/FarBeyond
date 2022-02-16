@@ -30,7 +30,7 @@ public class FinalBossesCode : MonoBehaviour
     }
     public void Update()
     {
-        if(bossLife<=5)
+        if (bossLife <= 5)
         {
             SceneManager.LoadScene("EndMenu"); //si le metes de hostias hasta que el boss llegue a 5 de vida, te lleva al "EndMenu".
         }
@@ -117,28 +117,8 @@ public class FinalBossesCode : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) //Esto lo ponemos aquí para que el jugador se ponga rojo cuando COLISIONE y para que muera.
     {
         IllayPlayer player = collision.collider.GetComponent<IllayPlayer>();
-        if (player != null)
-        {
-            //this.transform.position = new Vector3(transform.position.x - 1, this.transform.position.y, this.transform.position.z); //esto hace que se mueva EL SLIME uno hacia atras cuando COLISIONAN. 
-            //debera cambiarse en vez de player, bola de fuego.
-            Vector3 direction = (player.transform.position - this.transform.position).normalized; //esto nos va a permitir empujar AL JUGADOR si choca contra el slime.
-            player.transform.position += direction * 1.0f;//el 1.0 es la distancia que empuja al jugador, cuanto mas grande, mas le va a empujar. 
-            StartCoroutine(FlashColor(player.GetComponent<SpriteRenderer>()));//aqui lo llamos como si fuese un metodo dentro de un coroutine.
-                                                                              //si el jugador entra dentro del daño, el jugador se pone rojo.
-            GameManager.Instance.playerLife--;
+        IllayBullet illayBullet = collision.collider.GetComponent<IllayBullet>(); //hemos tenido que meter tambien las balas porque sino empujaban al enemigo.
 
-        }
-    }
-    void OnTriggerEnter2D(Collider2D other)//esto es para las colisiones EN AREA 2D. 
-    {
-        secureZoneBoss nestBoss= other.GetComponent<secureZoneBoss>(); //aqui hemos detectado los colisionadores que tengan el script indicado como SecureZoneSirens.
-        IllayBullet illayBullet = other.GetComponent<IllayBullet>();
-        IllayFlame illayFlame = other.GetComponent<IllayFlame>();
-        if (nestBoss != null) //null significa algo que no existe //esto permite que al colisionar contra la pared derecha. vaya a la cordenada en X -9,4 apareciendo asi por el otro lado.
-        {
-            secureZoneBoss = nestBoss.transform.position;                                              //cada vez que pase por un "saveZone" se guardará la nueva posicion.
-        }
-       
         if (illayBullet != null)
         {
 
@@ -156,6 +136,33 @@ public class FinalBossesCode : MonoBehaviour
 
             //Para que se pueda llamar las animaciones hay que arrastrar el animator de unity al script del cual llamamos por ejm aqui en el de bala o flame.
         }
+        if (player != null)
+        {
+            //this.transform.position = new Vector3(transform.position.x - 1, this.transform.position.y, this.transform.position.z); //esto hace que se mueva EL SLIME uno hacia atras cuando COLISIONAN. 
+            //debera cambiarse en vez de player, bola de fuego.
+            Vector3 direction = (player.transform.position - this.transform.position).normalized; //esto nos va a permitir empujar AL JUGADOR si choca contra el slime.
+            player.transform.position += direction * 1.0f;//el 1.0 es la distancia que empuja al jugador, cuanto mas grande, mas le va a empujar. 
+            StartCoroutine(FlashColor(player.GetComponent<SpriteRenderer>()));//aqui lo llamos como si fuese un metodo dentro de un coroutine.
+                                                                              //si el jugador entra dentro del daño, el jugador se pone rojo.
+
+
+            GameManager.Instance.currentSave.playerLife--; //FIJATE EN LA LINEA DE ABAJO.
+            //-------------------------------------------------------------------------------------------------------------
+            //EN CASO DE QUERER QUE DEJE DE GUARDARSE EL CODIGO COMO SAVE DATA Y TE SALE ERROR, QUITA EL CURRENTSAVE. REVISA TAMBIEN EL GAME MANAGER.
+            //----------------------------------------------------------------------------------------------------------------------------
+
+        }
+    }
+    void OnTriggerEnter2D(Collider2D other)//esto es para las colisiones EN AREA 2D. 
+    {
+        secureZoneBoss nestBoss = other.GetComponent<secureZoneBoss>(); //aqui hemos detectado los colisionadores que tengan el script indicado como SecureZoneSirens.
+        IllayFlame illayFlame = other.GetComponent<IllayFlame>();
+        if (nestBoss != null) //null significa algo que no existe //esto permite que al colisionar contra la pared derecha. vaya a la cordenada en X -9,4 apareciendo asi por el otro lado.
+        {
+            secureZoneBoss = nestBoss.transform.position;                                              //cada vez que pase por un "saveZone" se guardará la nueva posicion.
+        }
+
+        
         if (illayFlame != null)
         {
             bossLife -= 3; //si le toca la llamarada, menos 3 de vida. 
@@ -172,6 +179,7 @@ public class FinalBossesCode : MonoBehaviour
 
         }
     }
+
     IEnumerator Patrol()
     {
         if (Vector3.Distance(this.transform.position, secureZoneBoss) > 1.0f)// que se mueva a la zona segura siempre y cuando esté a una distancia de 1 metro.
@@ -192,7 +200,7 @@ public class FinalBossesCode : MonoBehaviour
         anim.Play("Final_boss_charge");
         //GameManager.Instance.playerLife = 0; //si ponemos esto nos mata de un toque.
         hasAttackFinished = true; //y se termina el ataque.
-        
+
 
         yield return null; //y volvemos a empezar. 
     }

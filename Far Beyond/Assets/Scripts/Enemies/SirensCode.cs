@@ -112,10 +112,13 @@ public class SirensCode : MonoBehaviour
             secureZoneSirens = nestSiren.transform.position; //hemos hecho una variable ARRIBA que me permite guardar la informacion del vector 3 del objeto. 
                                                              //cada vez que pase por un "saveZone" se guardará la nueva posicion.
         }
-        if(player!=null)
+        if (player != null)
         {
-            GameManager.Instance.playerLife--;
+            GameManager.Instance.currentSave.playerLife--; //FIJATE EN LA LINEA DE ABAJO.
         }
+        //----------------------------------------------------------------------------------
+        //EN CASO DE QUE TE DE ERROR ES PORQUE DICHA INFORMACION LA ESTAS GUARDANDO EN UN SCRIPT saveDATA. ESTO SIGNIFICA QUE SI QUIERES QUE EL JUEGO NO ESTE GUARDADO EN SAVE DATA DEBERAS QUITAR EL "currentSAVE"
+        //------------------------------------------------------------------------------------
 
     }
     IEnumerator Patrol()
@@ -132,7 +135,10 @@ public class SirensCode : MonoBehaviour
     IEnumerator Attack()
     {
         hasAttackFinished = false; //aqui empieza el ataque.
-        GameManager.Instance.playerLife = 0; //lo mata.
+        GameManager.Instance.currentSave.playerLife = 0; //lo mata. //MIRA LA LINEA DE ABAJO.
+        //------------------------------------------------------------------------
+        //EN CASO DE ERROR, QUITA DEL CODIGO DE ARRIBA "currentSave" ESTO SE DEBE A QUE DICHA INFORMACION SE ESTÁ ALMACENANDO EN EL SCRIPT SaveData". REVISA TAMBIEN EL GAME MANAGER.
+        //------------------------------------------------------------------------
         hasAttackFinished = true; //y se termina el ataque. 
         yield return null; //y volvemos a empezar. 
     }
