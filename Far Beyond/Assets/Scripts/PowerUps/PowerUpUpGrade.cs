@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PowerUpUpGrade : MonoBehaviour
 {
-    //el numero menos time.Deltatime. 
     public void Die()
     {
         Destroy(this.gameObject);
@@ -14,6 +13,7 @@ public class PowerUpUpGrade : MonoBehaviour
         IllayPlayer player = other.GetComponent<IllayPlayer>();
         if (player != null)
         {
+            GameManager.Instance.StartCoroutine(Respawn()); //ESTO SERA IMPORTANTE PARA QUE RESPAUNÉ ES DECIR, SIN ESTO, NUNCA DESAPARECE EL POWER UP NI TAMPOCO SE REGENERA.
             GameManager.Instance.staminaUpGrade += 6; //cuando se quiere añadir un numero mayor a 1 (lo que seria ++) hay que poner += X. TENDRAS 5 segundos para crecer de golpe.
         }
     }

@@ -940,6 +940,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1271412753}
   offset: {x: 0, y: 0, z: -10}
+  offsetZoomOut: {x: 0, y: 10, z: -10}
+  isZoomedOut: 0
   minX: -282
   maxX: 2.294583
   minY: 89.9
@@ -2369,11 +2371,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7670538073248881627, guid: cfbc09e9ecabcb541af8fd4786fc4c04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.79
+      value: -26.36
       objectReference: {fileID: 0}
     - target: {fileID: 7670538073248881627, guid: cfbc09e9ecabcb541af8fd4786fc4c04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 78.14
+      value: 77.09
       objectReference: {fileID: 0}
     - target: {fileID: 7670538073248881627, guid: cfbc09e9ecabcb541af8fd4786fc4c04, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6495,6 +6497,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7f9f0d6098b1349af905d5e478488c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1271412753}
+  offset: {x: 0, y: 0, z: 0}
+  minXZoom: 0
+  maxXZoom: 0
+  minYZoom: 0
+  maxYZoom: 0
   nameAnimationSmall: Small_camera_water
   nameAnimationBig: Big_camera_water
   anim: {fileID: 180569782}
@@ -6532,7 +6540,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812253740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.05, y: 76.31, z: -38.890102}
+  m_LocalPosition: {x: -23.2, y: 76.31, z: -38.890102}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

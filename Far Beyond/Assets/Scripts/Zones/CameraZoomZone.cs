@@ -22,9 +22,8 @@ public class CameraZoomZone : MonoBehaviour
 
         if (player != null)
         {
-            //Offsetcamera();
             anim.Play(nameAnimationBig);
-            CameraController.Instance.minY = 21f;
+            CameraController.Instance.isZoomedOut = true; //como hay un bool en la camara que dice si esta dentro o fuera, Aqui activamos todo lo relacionado con el zoom OUT.
         }
     }
 
@@ -34,31 +33,10 @@ public class CameraZoomZone : MonoBehaviour
 
         if (player != null)
         {
-            //Offsetcamera();
             anim.Play(nameAnimationSmall);
+            CameraController.Instance.isZoomedOut = false; //como hay un bool de si esta dentro del area de zoom out aqui decimos que no. Que ha salido y por ende cogemos los parametros fuera del zoom out. 
         }
     }
-    /*void Offsetcamera()     //COMO NO FUNCIONA POR AHORA NO LO METO.
-    {
-        transform.position = new Vector3(player.position.x + offset.x, player.position.y + offset.y, offset.z); // Camera follows the player with specified offset position
-        if (transform.position.x < minXZoom)
-        {
-            transform.position = new Vector3(minXZoom, transform.position.y, transform.position.z); // el minimo de "X" es la cordenada que aparece cuando la camara esta lo mas a la izquierda posible.
-        }
-
-        if (transform.position.x > maxXZoom)
-        {
-            transform.position = new Vector3(maxXZoom, transform.position.y, transform.position.z); // el maximo de "X" es la cordenada que aparece cuando la camara esta lo mas a la derecha posible.
-        }
-        if (transform.position.y > minYZoom)
-        {
-            transform.position = new Vector3(transform.position.x, minYZoom, transform.position.z); //  el minimo de "Y" es la cordenada que aparece cuando la camara esta lo mas bajo que tu quieras. 
-        }
-        if (transform.position.y < maxYZoom)
-        {
-            transform.position = new Vector3(transform.position.x, maxYZoom, transform.position.z); // el maximo de "Y" es la cordenada que aparece cuando la camara esta lo mas alto que tu quieres asignar.
-        }
-    */
 }
 
 

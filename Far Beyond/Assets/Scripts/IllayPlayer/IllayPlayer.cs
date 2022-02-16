@@ -73,12 +73,9 @@ public class IllayPlayer : MonoBehaviour
         {
             anim.Play("Illay_swim");
         }
-        if (Mathf.Abs(rbody.velocity.y) > 0.001f) // si la velocidad en y es mayor que 0.1 significa que está saltando. 
-        {
-            //anim.Play("Illay_jump"); Lo he puesto en el movimiento del jugador porque como cuando nada no había suelo ambas animaciones se hacían a la vez.
-            //El salto tiene prioridad porque si se está desplazando en y es siempre porque está saltando.
-        }
-        else if (Mathf.Abs(rbody.velocity.x) > 0.001f)
+        else if (Mathf.Abs(rbody.velocity.x) > 0.001f) //Mathf.Abs es para quitar el signo, es decir, LAS COSAS SIEMPRE SERAN POSITIVO. 
+        //si illay fuera un coche, te daria si va hacia derecha o hacia izquierda, sino que solo te importa a la velocidad. Es decir, te calcula tanto positivo como negativo inmediatamente. 
+        //else if (rbody.velocity.x > 0.001f || rbody.velocity.x < -0.001f)
         {
             anim.Play("Illay_running");
         }
@@ -286,13 +283,13 @@ public class IllayPlayer : MonoBehaviour
     public void UpGrade() //esto me permitira escalar volviendome mas grande. EN TEORIA
     {
         if (GameManager.Instance.staminaUpGrade > 0 && !IllayPlayer.Instance.isInWater)
-        {
-            this.transform.localScale = new Vector3(3f, 3f, transform.localScale.z); //Esto es para que se gire.
+        {//mathf.Sing es para coger el signo anterior de escala para ponerlo en +1 o -1
+            this.transform.localScale = new Vector3(Mathf.Sign(this.transform.localScale.x) * 3f, 3f, transform.localScale.z); //Esto es para que se gire.
             GameManager.Instance.staminaUpGrade -= Time.deltaTime;
         }
         else if(GameManager.Instance.staminaUpGrade <= 0 && !IllayPlayer.Instance.isInWater)
         {
-            this.transform.localScale = new Vector3(1f, 1f, transform.localScale.z); //Esto es para que se gire.
+            this.transform.localScale = new Vector3(Mathf.Sign(this.transform.localScale.x) * 1f, 1f, transform.localScale.z); //Esto es para que se gire.
         }
     }
     void FlameShoot()
