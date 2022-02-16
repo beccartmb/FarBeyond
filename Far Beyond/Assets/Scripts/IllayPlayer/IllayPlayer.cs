@@ -18,7 +18,7 @@ public class IllayPlayer : MonoBehaviour
     public GameObject flameObject;
     public Vector3 newSaveZone;
     Animator anim; //ESTO NOS VA A PERMITIR METER Y MODIFICAR ANIMACIONES.
-    
+
 
     #region SINGLETON
     public static IllayPlayer Instance { get; private set; }
@@ -56,10 +56,13 @@ public class IllayPlayer : MonoBehaviour
         {
             MovementIllay();
             DigThroughFloor();
+            UpGrade();
         }
         Animate();
         //aqui dentro ira el metodo de movimiento.
         Shoot();
+        
+
     }
 
     void Animate() //Vamos a crear un void separado para configurar las animaciones. Debe ser llamado en el Update
@@ -248,14 +251,7 @@ public class IllayPlayer : MonoBehaviour
         wallOnLeft.Remove(collision.collider);
     }
 
-    public void UpGrade() //esto me permitira escalar volviendome mas grande. EN TEORIA
-    {
-        if (GameManager.Instance.staminaUpGrade > 0 && !IllayPlayer.Instance.isInWater)
-        {
-            this.transform.localScale = new Vector3(3f, 3f, transform.localScale.z); //Esto es para que se gire.
-            GameManager.Instance.staminaUpGrade -= Time.deltaTime;
-        }
-    }
+
 
     void Shoot()
     { //si se echa para atras el jugador al disparar, mueve la bala, el collider esta haciendo que se mueva. 
@@ -269,15 +265,15 @@ public class IllayPlayer : MonoBehaviour
             else //como hemos designado arriba que la derecha es mayor que 0, <0 es inmediatamente izquierda. 
             {
                 Instantiate(bulletLeftIllayPrefab, this.transform.position + new Vector3(-1f, 0f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
-                                                                                                                           //hemos puesto que tenga un vector 3 porque la bala nos salia muy arriba, con esto la estamos desplazando un poco para que salga en donde nosotros consideramos. 
+                                                                                                                             //hemos puesto que tenga un vector 3 porque la bala nos salia muy arriba, con esto la estamos desplazando un poco para que salga en donde nosotros consideramos. 
             }
 
         }
         //las rotaciones se hablan con Quaternion, el identity que le sigue es la rotación por defecto.
 
         if (Keyboard.current.eKey.isPressed && GameManager.Instance.stamina > 0 && !IllayPlayer.Instance.isInWater) //esto me permite no disparar si no estoy dentro del agua?
-            
-            //si la municion de la estamina es 1, disparar MANTENIENDO PULSADO PARA GASTARSE. 
+
+        //si la municion de la estamina es 1, disparar MANTENIENDO PULSADO PARA GASTARSE. 
         {
             flameObject.SetActive(true); //Esto nos sirve para que no salga de dentro sino que active la animacion mediante una imagen ya impuesta. 
             GameManager.Instance.stamina -= Time.deltaTime; //que al disparar se reste una. QUIERO PONERLE TIEMPO A DICHO DISPARO
@@ -285,6 +281,18 @@ public class IllayPlayer : MonoBehaviour
         else
         {
             flameObject.SetActive(false); //cuando no tienes estamina ni tampoco mantienes pulsada la E cuando la tienes, la animacion para. 
+        }
+    }
+    public void UpGrade() //esto me permitira escalar volviendome mas grande. EN TEORIA
+    {
+        if (GameManager.Instance.staminaUpGrade > 0 && !IllayPlayer.Instance.isInWater)
+        {
+            this.transform.localScale = new Vector3(3f, 3f, transform.localScale.z); //Esto es para que se gire.
+            GameManager.Instance.staminaUpGrade -= Time.deltaTime;
+        }
+        else if(GameManager.Instance.staminaUpGrade <= 0 && !IllayPlayer.Instance.isInWater)
+        {
+            this.transform.localScale = new Vector3(1f, 1f, transform.localScale.z); //Esto es para que se gire.
         }
     }
     void FlameShoot()
