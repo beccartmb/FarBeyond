@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class MenuPausee : MonoBehaviour
 {
     public GameObject CanvasMenuPause;
-    void Update()
+    void Update() //para que esto no se quede desactivado, crea un empty vacio al que llamaras (por ejemplo) PauseManager, ahi meterás este codigo, para que se active y desactive sin problemas.
     {
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
