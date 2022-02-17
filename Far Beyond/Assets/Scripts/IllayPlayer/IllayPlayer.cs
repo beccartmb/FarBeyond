@@ -17,7 +17,7 @@ public class IllayPlayer : MonoBehaviour
     public GameObject flameBulletPrefab;
     public GameObject flameObject;
     public Vector3 newSaveZone;
-    Animator anim; //ESTO NOS VA A PERMITIR METER Y MODIFICAR ANIMACIONES.
+    public Animator anim; //ESTO NOS VA A PERMITIR METER Y MODIFICAR ANIMACIONES.
 
 
     #region SINGLETON
@@ -73,16 +73,24 @@ public class IllayPlayer : MonoBehaviour
         {
             anim.Play("Illay_swim");
         }
+
+        else if (Mathf.Abs(rbody.velocity.y) > 0.001f)// si la velocidad de y es mayor a 0 salta.
+        {
+            anim.Play("Illay_jump"); 
+        }
+
         else if (Mathf.Abs(rbody.velocity.x) > 0.001f) //Mathf.Abs es para quitar el signo, es decir, LAS COSAS SIEMPRE SERAN POSITIVO. 
         //si illay fuera un coche, te daria si va hacia derecha o hacia izquierda, sino que solo te importa a la velocidad. Es decir, te calcula tanto positivo como negativo inmediatamente. 
         //else if (rbody.velocity.x > 0.001f || rbody.velocity.x < -0.001f)
         {
             anim.Play("Illay_running");
         }
-        else
+      
+        else 
         {
             anim.Play("Illay_idle"); //aqui designaremos la animacion a la que quiere cambiar. RECUERDA QUE LA VARIABLE SE TIENE QUE DECLARAR ARRIBA.
         }
+
     }
     #region MovementIllay
 
@@ -120,7 +128,6 @@ public class IllayPlayer : MonoBehaviour
         {
             velocity.y = jumpSpeed;
             Instantiate(Illay_jump); //Esto es para que cuando se pulse el salto se reproduzca el sonido.
-            anim.Play("Illay_jump");
         }
 
         rbody.velocity = velocity; //esto lo utilizamos para RESETEAR el movimiento, es decir, que si no estas pulsando las flechas, que no se mueva. 
@@ -139,7 +146,7 @@ public class IllayPlayer : MonoBehaviour
 
         {
             //ESTO ME PERMITIRA RESTARLE UNO DE VIDA Y 
-            GameManager.Instance.currentSave.playerLife--; //MIRA EN LA LINEA DE PUNTOS,.
+            GameManager.Instance.currentSave.playerLife--; //MIRA EN LA LINEA DE PUNTOS,. Siempre que queramos llamar algo del Game Manager ponerlo con Instance.
             transform.position = newSaveZone;
             rbody.velocity = Vector2.zero;
             GameManager.Instance.currentSave.staminaO2 = 0.1f; //esto hara que vuelvas a tener estamina. hara que no mueran 18 veces seguidas.  MIRA LA LINEA DE ABAJO.
@@ -199,7 +206,7 @@ public class IllayPlayer : MonoBehaviour
             }
         }
     }
-    IEnumerator ReactivateFloorCollider(Collider2D collider) //esto es una cortina que nos permite reactivar los collider en 0,5 segundos. LUEGO HAY QUE LLAMARLA AL TERMINAR LO DEL FLOOR WITH EFFECTOR
+    IEnumerator ReactivateFloorCollider(Collider2D collider) //esto es una corrutina que nos permite reactivar los collider en 0,5 segundos. LUEGO HAY QUE LLAMARLA AL TERMINAR LO DEL FLOOR WITH EFFECTOR
     {
         yield return new WaitForSeconds(0.5f);
         collider.enabled = true; //esto sirve PARA ACTIVAR EL COLLIDER.

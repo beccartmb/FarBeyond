@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     //public float staminaO2 = 0;
     public float maxPowerUpGrade = 4f; //esto va a ser aquello que llamemos desde el powerUpGRADE que te permitira crecer por 6 segundos.
     //public float staminaUpGrade = 0;
-
+    Animator anim;
 
     public SaveData currentSave = new SaveData(); //esto permite tener TODA la informacion de la partida GUARDADA. Esto permitirá poder acceder a ello en cualquier momento. 
 
@@ -56,12 +56,19 @@ public class GameManager : MonoBehaviour
         currentSave = bf.Deserialize(stream) as SaveData;
     }
 
+    public void Start()
+    {
+        anim = GetComponent<Animator>(); //SIEMPRE HAY QUE PONER ESTO EN LOS ESTAR SIEMPRE Y CUANDO HAYA ANIMACIONES DE POR MEDIO.
+
+    }
+
     private void Update()
     {
         if (GameManager.Instance.currentSave.playerLife <= 0) //aqui hemos designado que si la vida del  jugador llega a 0, que reinicie el nivel en el que está. EN EL JUGADOR RESTAMOS UNA CADA VEZ QUE TOCAS LA DEATHZONE.
         {
+            IllayDie();
+            StartCoroutine(WaitingDeath());
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); //esto sirve para reinciar la escena EN LA QUE EL PERSONAJE DESAPAREZCA/muera.
-
             GameManager.Instance.currentSave.playerLife = 4;
         }
         if (GameManager.Instance.currentSave.stamina > maxStamina) //esto permite sumar estamina hasta llegar al maximo. Si llega al maximo de estamina SIEMPRE SERA EL MAXIMO.
@@ -83,6 +90,19 @@ public class GameManager : MonoBehaviour
             SaveGame();
         }*/
     }
+    public void IllayDie()
+
+    {
+        IllayPlayer.Instance.anim.Play("Illay_die");
+       
+
+    }
+    IEnumerator WaitingDeath() //esto es una corrutina que nos permite reactivar los collider en 0,5 segundos. LUEGO HAY QUE LLAMARLA AL TERMINAR LO DEL FLOOR WITH EFFECTOR
+    {
+        yield return new WaitForSeconds(2.0f);
+
+    }
+
     public void saveGameScene()
     {
         GameManager.Instance.currentSave.currentScene = SceneManager.GetActiveScene().name; //esto me permite guardar la escena en la que el jugador esté.
