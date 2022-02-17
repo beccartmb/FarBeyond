@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void saveGameScene()
+    public void SaveGameScene()
     {
         GameManager.Instance.currentSave.currentScene = SceneManager.GetActiveScene().name; //esto me permite guardar la escena en la que el jugador esté.
         SaveGame();

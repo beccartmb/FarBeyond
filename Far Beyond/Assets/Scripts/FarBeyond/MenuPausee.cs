@@ -56,7 +56,7 @@ public class MenuPausee : MonoBehaviour
     }
     public void PauseButtonMenu()
     {
-        SceneManager.LoadScene("MenuStart");//esto sirve para que pueda ir a la pestaña menú si tienes metido el script . 
+        SceneManager.LoadScene("StartMenu");//esto sirve para que pueda ir a la pestaña menú si tienes metido el script . 
     }
     public void PauseButtonQuickGame()
     {
@@ -64,6 +64,6 @@ public class MenuPausee : MonoBehaviour
     }
     public void SaveGame()
     {
-        GameManager.Instance.saveGameScene(); //aqui he llamado al guardar partida puesto en el GameManager. nos permitirá guardar la ubicacion del jugador y crear una escena de guardado.
+        GameManager.Instance.SaveGameScene(); //aqui he llamado al guardar partida puesto en el GameManager. nos permitirá guardar la ubicacion del jugador y crear una escena de guardado.
     }
 }
