@@ -68,8 +68,6 @@ public class GameManager : MonoBehaviour
         {
             IllayDie();
             StartCoroutine(WaitingDeath());
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); //esto sirve para reinciar la escena EN LA QUE EL PERSONAJE DESAPAREZCA/muera.
-            GameManager.Instance.currentSave.playerLife = 4;
         }
         if (GameManager.Instance.currentSave.stamina > maxStamina) //esto permite sumar estamina hasta llegar al maximo. Si llega al maximo de estamina SIEMPRE SERA EL MAXIMO.
         {
@@ -100,7 +98,8 @@ public class GameManager : MonoBehaviour
     IEnumerator WaitingDeath() //esto es una corrutina que nos permite reactivar los collider en 0,5 segundos. LUEGO HAY QUE LLAMARLA AL TERMINAR LO DEL FLOOR WITH EFFECTOR
     {
         yield return new WaitForSeconds(2.0f);
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //esto sirve para reinciar la escena EN LA QUE EL PERSONAJE DESAPAREZCA/muera.
+        GameManager.Instance.currentSave.playerLife = 4;
     }
 
     public void saveGameScene()
