@@ -155,7 +155,7 @@ public class FairyCode : MonoBehaviour
         else //como hemos designado arriba que la derecha es mayor que 0, <0 es inmediatamente izquierda. 
         {
             Instantiate(bulletLeftFairyPrefab, this.transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
-                                                                                                                     //hemos puesto que tenga un vector 3 porque la bala nos salia muy arriba, con esto la estamos desplazando un poco para que salga en donde nosotros consideramos. 
+             //CUIDADO CON EL NOMBRE DE LAS BALAS QUE ASIGNAMOS A CADA LADO                                            //hemos puesto que tenga un vector 3 porque la bala nos salia muy arriba, con esto la estamos desplazando un poco para que salga en donde nosotros consideramos. 
         }
 
 
