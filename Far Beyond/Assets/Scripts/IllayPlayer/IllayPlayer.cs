@@ -48,20 +48,22 @@ public class IllayPlayer : MonoBehaviour
     }
     private void Update()
     {
-        if (isInWater) //si esta en el agua, que haga este movimiento. 
+        if (GameManager.Instance.currentSave.playerLife > 0) // Esto es para que solo se haga cuando tiene al menos una vida
         {
-            MovementIllayWater(); //AQUI SE LLAMA SI ESTA EN EL AGUA.
+            if (isInWater) //si esta en el agua, que haga este movimiento. 
+            {
+                MovementIllayWater(); //AQUI SE LLAMA SI ESTA EN EL AGUA.
+            }
+            else //sino, que haga el movimiento que hace cuando esta en suelo.
+            {
+                MovementIllay();
+                DigThroughFloor();
+                UpGrade();
+            }
+            Animate();
+            //aqui dentro ira el metodo de movimiento.
+            Shoot();
         }
-        else //sino, que haga el movimiento que hace cuando esta en suelo.
-        {
-            MovementIllay();
-            DigThroughFloor();
-            UpGrade();
-        }
-        Animate();
-        //aqui dentro ira el metodo de movimiento.
-        Shoot();
-
 
     }
 
@@ -76,7 +78,7 @@ public class IllayPlayer : MonoBehaviour
 
         else if (Mathf.Abs(rbody.velocity.y) > 0.001f)// si la velocidad de y es mayor a 0 salta.
         {
-            anim.Play("Illay_jump"); 
+            //Aquí se tendría que poner la animación de correr si queremos ponerlas todas juntas PERO al tener plataformas flotantes en movimiento hace que pase de iddle a jump.
         }
 
         else if (Mathf.Abs(rbody.velocity.x) > 0.001f) //Mathf.Abs es para quitar el signo, es decir, LAS COSAS SIEMPRE SERAN POSITIVO. 
@@ -128,6 +130,7 @@ public class IllayPlayer : MonoBehaviour
         {
             velocity.y = jumpSpeed;
             Instantiate(Illay_jump); //Esto es para que cuando se pulse el salto se reproduzca el sonido.
+            anim.Play("Illay_jump"); 
         }
 
         rbody.velocity = velocity; //esto lo utilizamos para RESETEAR el movimiento, es decir, que si no estas pulsando las flechas, que no se mueva. 

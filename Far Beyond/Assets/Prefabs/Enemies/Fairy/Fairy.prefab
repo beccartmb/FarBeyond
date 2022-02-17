@@ -153,8 +153,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   FairyLife: 16
-  bulletFairyPrefab: {fileID: 1407445409140749276, guid: 50d781e0682514149885e3a9f6f4b429, type: 3}
-  bulletLeftFairyPrefab: {fileID: 1407445409140749276, guid: 5da6a7827cb667743bb412ca941d8f37, type: 3}
+  bulletFairyPrefab: {fileID: 1407445409140749276, guid: 5da6a7827cb667743bb412ca941d8f37, type: 3}
+  bulletLeftFairyPrefab: {fileID: 1407445409140749276, guid: 50d781e0682514149885e3a9f6f4b429, type: 3}
   illayTransform: {fileID: 0}
   currentStates: 0
 --- !u!95 &8460297868083753280

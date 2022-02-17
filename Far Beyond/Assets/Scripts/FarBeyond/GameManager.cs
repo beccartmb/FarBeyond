@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     public float maxPowerUpGrade = 4f; //esto va a ser aquello que llamemos desde el powerUpGRADE que te permitira crecer por 6 segundos.
     //public float staminaUpGrade = 0;
     Animator anim;
+    bool dieCoroutineInExecution; //Esto es para crear la corrutina para esperar un tiempo determinado.
 
     public SaveData currentSave = new SaveData(); //esto permite tener TODA la informacion de la partida GUARDADA. Esto permitirá poder acceder a ello en cualquier momento. 
 
@@ -97,9 +98,14 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator WaitingDeath() //esto es una corrutina que nos permite reactivar los collider en 0,5 segundos. LUEGO HAY QUE LLAMARLA AL TERMINAR LO DEL FLOOR WITH EFFECTOR
     {
-        yield return new WaitForSeconds(2.0f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //esto sirve para reinciar la escena EN LA QUE EL PERSONAJE DESAPAREZCA/muera.
-        GameManager.Instance.currentSave.playerLife = 4;
+        if (!dieCoroutineInExecution)
+        {
+            dieCoroutineInExecution = true; //A veces las corrutinas se repiten de forma ilimitada. Con esto hacemos que solo se repita una vez. Ya que cuando entra en este if hace el true y se frena al llegar al false.
+            yield return new WaitForSeconds(2.0f);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); //esto sirve para reinciar la escena EN LA QUE EL PERSONAJE DESAPAREZCA/muera.
+            GameManager.Instance.currentSave.playerLife = 4;
+            dieCoroutineInExecution = false;
+        }
     }
 
     public void saveGameScene()

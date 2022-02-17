@@ -136,22 +136,30 @@ public class SlimesCode : MonoBehaviour
     }
     IEnumerator Chase()
     {
-        MoveTowardsPoint(IllayPlayer.Instance.transform.position);
-        //esto permite perseguir al jugador, mediante la velocidad asignada en las variables de arriba y luego esperar un fotograma.
-        yield return null; //si el siguiente fotograma sigue en chase el jugador, perseguir. 
+        if (GameManager.Instance.currentSave.playerLife > 0)
+        {
+            MoveTowardsPoint(IllayPlayer.Instance.transform.position);
+            //esto permite perseguir al jugador, mediante la velocidad asignada en las variables de arriba y luego esperar un fotograma.
+            yield return null; //si el siguiente fotograma sigue en chase el jugador, perseguir.
+        }
+            
     }
     IEnumerator Attack()
     {
-        hasAttackFinished = false;
-        GetComponent<SpriteRenderer>().color = Color.green; // AQUI METEREMOS LAS ANIMACIONES por ahora cambiamos a verde
-        yield return new WaitForSeconds(2.0f);
-        GetComponent<SpriteRenderer>().color = Color.white; //cuando termine el ataque, vuelve a blanco (color predeterminado)
-        while (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 0.98f)
+        if (GameManager.Instance.currentSave.playerLife > 0)//Si ponemos esto aquí hacemos que cuando Illay esté muerto no nos ataquen y nos dejen morir sin desplazarnos.
         {
+            hasAttackFinished = false;
+            GetComponent<SpriteRenderer>().color = Color.green; // AQUI METEREMOS LAS ANIMACIONES por ahora cambiamos a verde
+            yield return new WaitForSeconds(2.0f);
+            GetComponent<SpriteRenderer>().color = Color.white; //cuando termine el ataque, vuelve a blanco (color predeterminado)
+            while (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 0.98f)
+            {
+                yield return null;
+            }
+            hasAttackFinished = true;
             yield return null;
         }
-        hasAttackFinished = true;
-        yield return null;
+            
     }
 
     void OnTriggerEnter2D(Collider2D other) //eso nos va a permitir detectar dentro de un empty vacio con un collider que genere un area. 

@@ -190,17 +190,23 @@ public class FinalBossesCode : MonoBehaviour
     }
     IEnumerator Chase()
     {
-        /*yield return new WaitForSeconds(0.2f);*/
-        MoveTowardsPoint(IllayPlayer.Instance.transform.position); //esto nos permitira seguir al jugador a su posicion.
-        yield return null;
+        if (GameManager.Instance.currentSave.playerLife > 0)//Si ponemos esto aquí hacemos que cuando Illay esté muerto no nos ataquen y nos dejen morir sin desplazarnos.
+        {
+            /*yield return new WaitForSeconds(0.2f);*/
+            MoveTowardsPoint(IllayPlayer.Instance.transform.position); //esto nos permitira seguir al jugador a su posicion.
+            yield return null;
+        }
+           
     }
     IEnumerator Attack()
     {
-        hasAttackFinished = false; //aqui empieza el ataque.
-        anim.Play("Final_boss_charge");
-        //GameManager.Instance.playerLife = 0; //si ponemos esto nos mata de un toque.
-        hasAttackFinished = true; //y se termina el ataque.
-
+        if (GameManager.Instance.currentSave.playerLife > 0)//Si ponemos esto aquí hacemos que cuando Illay esté muerto no nos ataquen y nos dejen morir sin desplazarnos.
+        {
+            hasAttackFinished = false; //aqui empieza el ataque.
+            anim.Play("Final_boss_charge");
+            //GameManager.Instance.playerLife = 0; //si ponemos esto nos mata de un toque.
+            hasAttackFinished = true; //y se termina el ataque.
+        }
 
         yield return null; //y volvemos a empezar. 
     }

@@ -305,7 +305,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227175349}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 59.3, y: 10.9, z: -10}
+  m_LocalPosition: {x: 146.3, y: 10.9, z: -10}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 85659325}
@@ -329,7 +329,7 @@ MonoBehaviour:
   offsetZoomOut: {x: 0, y: 17.05, z: -10}
   isZoomedOut: 0
   minX: 18
-  maxX: 144.74
+  maxX: 146.6
   minY: 12
   maxY: 31
   minXZoomOut: 18
@@ -2001,6 +2001,14 @@ PrefabInstance:
       propertyPath: illayTransform
       value: 
       objectReference: {fileID: 1533854493}
+    - target: {fileID: 7421711355143986815, guid: 4b553e27041c1f94ba7cfb40c68554d8, type: 3}
+      propertyPath: bulletFairyPrefab
+      value: 
+      objectReference: {fileID: 1407445409140749276, guid: 5da6a7827cb667743bb412ca941d8f37, type: 3}
+    - target: {fileID: 7421711355143986815, guid: 4b553e27041c1f94ba7cfb40c68554d8, type: 3}
+      propertyPath: bulletLeftFairyPrefab
+      value: 
+      objectReference: {fileID: 1407445409140749276, guid: 50d781e0682514149885e3a9f6f4b429, type: 3}
     - target: {fileID: 7421711355143986815, guid: 4b553e27041c1f94ba7cfb40c68554d8, type: 3}
       propertyPath: PatroPointsFairy.Array.data[0]
       value: 
