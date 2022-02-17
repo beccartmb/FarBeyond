@@ -6,19 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class MenuPausee : MonoBehaviour
 {
-    public GameObject CanvasMenuPause;
+    public GameObject canvasMenuPause;
+    public GameObject canvasCredits;
+    public GameObject canvasControls;
+
     void Update() //para que esto no se quede desactivado, crea un empty vacio al que llamaras (por ejemplo) PauseManager, ahi meterás este codigo, para que se active y desactive sin problemas.
     {
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (Keyboard.current.escapeKey.wasPressedThisFrame) //aqui conseguimos que si lo pulsa una vez, aparezca, y si pulsa otra vez escape, desaparezca. es otra solucion de cerrar el menú.
         {
-            if (CanvasMenuPause.activeSelf)
+            if (canvasMenuPause.activeSelf)
             {
-                CanvasMenuPause.SetActive(false); //esto hara que no este activado el canvas si no se pulsa la letra ESCAPE.
+                canvasMenuPause.SetActive(false); //esto hara que no este activado el canvas si no se pulsa la letra ESCAPE.
                 Time.timeScale = 1;
             }
             else
             {
-                CanvasMenuPause.SetActive(true); //¿POR QUE NO FUNCIOOOOONAAAAAA? 
+                canvasMenuPause.SetActive(true);
                 Time.timeScale = 0; //con esto paramos el juego de fuera, permitiendo entrar al menu.
             }
 
@@ -26,12 +29,30 @@ public class MenuPausee : MonoBehaviour
     }
     public void PauseButtonX()
     {
-        CanvasMenuPause.SetActive(false); //esto hara que no este activado el canvas si no se pulsa la letra ESCAPE.
+        canvasMenuPause.SetActive(false); //esto hara que no este activado el canvas si no se pulsa la letra ESCAPE.
         Time.timeScale = 1; //si le das a la X, el videojuego se retoma.
     }
     public void PauseButtonCredits()
     {
-        //cuando funcione la parte en la que sale el canvas, hago esto.
+        if (canvasCredits.activeSelf) //que si pulsas el boton CREDITS se active.
+        {
+            canvasCredits.SetActive(false);
+        }
+        else
+        {
+            canvasCredits.SetActive(true); 
+        }
+    }
+    public void PauseButtonControls()
+    {
+        if (canvasControls.activeSelf) //que si pulsas el boton CREDITS se active.
+        {
+            canvasControls.SetActive(false);
+        }
+        else
+        {
+            canvasControls.SetActive(true);
+        }
     }
     public void PauseButtonMenu()
     {
