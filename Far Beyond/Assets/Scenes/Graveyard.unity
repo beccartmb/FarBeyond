@@ -1810,7 +1810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1903252545}
-  offset: {x: 0, y: 0, z: -10}
+  offset: {x: 0, y: 1.11, z: -10}
   offsetZoomOut: {x: 0, y: 0, z: 0}
   isZoomedOut: 0
   minX: -301
