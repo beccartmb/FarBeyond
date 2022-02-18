@@ -1780,6 +1780,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e0a579e731db7c499b25da4132a9b48, type: 3}
+--- !u!1 &363426634 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8749614388801783124, guid: cfbc09e9ecabcb541af8fd4786fc4c04, type: 3}
+  m_PrefabInstance: {fileID: 576923213}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &431738087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2682,6 +2687,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6679455876982182916, guid: cfbc09e9ecabcb541af8fd4786fc4c04, type: 3}
+      propertyPath: fireVFX
+      value: 
+      objectReference: {fileID: 363426634}
     - target: {fileID: 7670538073248881573, guid: cfbc09e9ecabcb541af8fd4786fc4c04, type: 3}
       propertyPath: m_Name
       value: Illay 1

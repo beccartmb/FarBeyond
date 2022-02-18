@@ -19,7 +19,7 @@ public class IllayPlayer : MonoBehaviour
     public GameObject fireVFX;
     public Vector3 newSaveZone;
     public Animator anim; //ESTO NOS VA A PERMITIR METER Y MODIFICAR ANIMACIONES.
-    public Animator fireAnimator;
+    public Animator fireAnimator;// esto es el animador de el fuego, el anim es el animator de illay. Cada objeto necesita un anim distinto. 
 
 
     #region SINGLETON
@@ -86,7 +86,7 @@ public class IllayPlayer : MonoBehaviour
         {
             dieCoroutineInExecution = true; //A veces las corrutinas se repiten de forma ilimitada. Con esto hacemos que solo se repita una vez. Ya que cuando entra en este if hace el true y se frena al llegar al false.
             yield return new WaitForSeconds(0.35f);
-            anim.Play("Fire_die");
+            fireAnimator.Play("Fire_die");
             dieCoroutineInExecution = false;
         }
     }
