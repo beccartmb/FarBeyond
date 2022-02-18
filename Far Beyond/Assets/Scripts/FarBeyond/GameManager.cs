@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
 
     //public int playerLife = 4; //Y aqui hemos designado que el jugador tendra 3 vidas. 
+    public int maxPlayerLife = 4;
     public float maxStamina = 4f; //ESTE ES EL MAXIMO DE ESTAMINA QUE DEBERA TENER PARA LANZAR LA LLAMARADA. SE PONDRA COMO FLOAT PARA QUE PUEDAS RESTARLE EL TIEMPO.
     //public float stamina = 0;
     public float maxStaminaO2 = 10.0f; //esto debera ser decimal para que baje con el tiempo, es decir, time.deltatime. 
@@ -69,6 +70,10 @@ public class GameManager : MonoBehaviour
         {
             IllayDie();
             StartCoroutine(WaitingDeath());
+        }
+        if(GameManager.Instance.currentSave.playerLife>maxPlayerLife)
+        {
+            GameManager.Instance.currentSave.playerLife = maxPlayerLife;
         }
         if (GameManager.Instance.currentSave.stamina > maxStamina) //esto permite sumar estamina hasta llegar al maximo. Si llega al maximo de estamina SIEMPRE SERA EL MAXIMO.
         {
