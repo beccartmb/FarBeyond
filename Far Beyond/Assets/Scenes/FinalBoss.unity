@@ -2181,7 +2181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644641797}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 362.3, y: 52.3, z: -10}
+  m_LocalPosition: {x: -61, y: 51.884, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 304884820}
@@ -2204,13 +2204,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1937652176}
-  offset: {x: 0, y: 0, z: -10}
+  offset: {x: 0, y: 6.73, z: -10}
   offsetZoomOut: {x: 0, y: 0, z: 0}
   isZoomedOut: 0
-  minX: -57
+  minX: -61
   maxX: 362
   minY: 6.85
-  maxY: 52.5
+  maxY: 52.3
   minXZoomOut: 0
   maxXZoomOut: 0
   minYZoomOut: 0
