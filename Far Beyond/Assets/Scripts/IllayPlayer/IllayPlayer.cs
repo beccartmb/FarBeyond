@@ -85,7 +85,7 @@ public class IllayPlayer : MonoBehaviour
         if (!dieCoroutineInExecution)
         {
             dieCoroutineInExecution = true; //A veces las corrutinas se repiten de forma ilimitada. Con esto hacemos que solo se repita una vez. Ya que cuando entra en este if hace el true y se frena al llegar al false.
-            yield return new WaitForSeconds(0.35f);
+            yield return new WaitForSeconds(1.0f);
             fireAnimator.Play("Fire_die");
             dieCoroutineInExecution = false;
         }
