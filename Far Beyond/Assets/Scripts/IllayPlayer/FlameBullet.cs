@@ -6,8 +6,10 @@ public class FlameBullet : MonoBehaviour
 {
     //si la bala sale de los limites, que se destruya. 
     public float lifeTime = 7.0f;
+    public Animator anim;
 
-    void Update()
+   
+   /* void Update()
     {
         lifeTime -= Time.deltaTime;
         if (lifeTime <= 0)
@@ -29,5 +31,5 @@ public class FlameBullet : MonoBehaviour
             SlimesCode.Instance.SlimeLife -= 3;
         }
         */
-    }
+   /* }*/
 }

@@ -16,8 +16,10 @@ public class IllayPlayer : MonoBehaviour
     public GameObject bulletLeftIllayPrefab; //esto será necesario para mover la bala del jugador hacia la izquierda. 
     public GameObject flameBulletPrefab;
     public GameObject flameObject;
+    public GameObject fireVFX;
     public Vector3 newSaveZone;
     public Animator anim; //ESTO NOS VA A PERMITIR METER Y MODIFICAR ANIMACIONES.
+    public Animator fireAnimator;
 
 
     #region SINGLETON
@@ -39,12 +41,13 @@ public class IllayPlayer : MonoBehaviour
     public bool passedSaveZone;
     bool isInCameraZoomZone;
     public bool waitShoot;
-
+    bool dieCoroutineInExecution;
 
     private void Start()
     {
         rbody = GetComponent<Rigidbody2D>(); //esto permite que te detecte el RIGIDBODY para detectar suelos y paredes desde el minuto 0.
         anim = GetComponent<Animator>();
+
     }
     private void Update()
     {
@@ -64,7 +67,28 @@ public class IllayPlayer : MonoBehaviour
             //aqui dentro ira el metodo de movimiento.
             Shoot();
         }
+        if (GameManager.Instance.currentSave.stamina > 0f)// esto es para que cuando haya al menos 1sec de llama que Illay arda. Hace que desaparezca del hierarchy o no.
+        {
+            fireVFX.SetActive(true); //variable declarada arriba.
 
+        }
+        else
+        {
+            //Podemos meter una corrutina aquí para que espere un tiempo
+            StartCoroutine(WaitingDeathFire());
+            fireVFX.SetActive(false);
+        }
+    }
+
+    IEnumerator WaitingDeathFire() //esto es una corrutina que nos permite reactivar los collider en 0,5 segundos. LUEGO HAY QUE LLAMARLA AL TERMINAR LO DEL FLOOR WITH EFFECTOR
+    {
+        if (!dieCoroutineInExecution)
+        {
+            dieCoroutineInExecution = true; //A veces las corrutinas se repiten de forma ilimitada. Con esto hacemos que solo se repita una vez. Ya que cuando entra en este if hace el true y se frena al llegar al false.
+            yield return new WaitForSeconds(0.35f);
+            anim.Play("Fire_die");
+            dieCoroutineInExecution = false;
+        }
     }
 
     void Animate() //Vamos a crear un void separado para configurar las animaciones. Debe ser llamado en el Update
@@ -87,8 +111,8 @@ public class IllayPlayer : MonoBehaviour
         {
             anim.Play("Illay_running");
         }
-      
-        else 
+
+        else
         {
             anim.Play("Illay_idle"); //aqui designaremos la animacion a la que quiere cambiar. RECUERDA QUE LA VARIABLE SE TIENE QUE DECLARAR ARRIBA.
         }
@@ -130,7 +154,7 @@ public class IllayPlayer : MonoBehaviour
         {
             velocity.y = jumpSpeed;
             Instantiate(Illay_jump); //Esto es para que cuando se pulse el salto se reproduzca el sonido.
-            anim.Play("Illay_jump"); 
+            anim.Play("Illay_jump");
         }
 
         rbody.velocity = velocity; //esto lo utilizamos para RESETEAR el movimiento, es decir, que si no estas pulsando las flechas, que no se mueva. 
@@ -188,6 +212,8 @@ public class IllayPlayer : MonoBehaviour
             }
             rbody.velocity = velocity;
         }
+
+        
     }
     #region GoThrought //CODIGO PARA ATRAVESAR PLATAFORMAS. MEDIANTE "PlatforEffector2D"
     public void DigThroughFloor() //para que pueda atravesar ciertos suelos, como por ejemplo, escaleras una detras de otras. 
@@ -322,7 +348,7 @@ public class IllayPlayer : MonoBehaviour
     {
         Instantiate(flameBulletPrefab, this.transform.position + new Vector3(6f, -4f, 0f), Quaternion.identity); //designamos el rayo como bala en RayShoot.
         //aqui hemos designado, al igual que en bala, la posicion de la llamarada dado que nos salia muy arriba. 
-
+        
     }
 
     public void ResetScene()
@@ -330,4 +356,7 @@ public class IllayPlayer : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); //
     }
     //animator.play para acceder a las animaciones. 
+
+    
+
 }

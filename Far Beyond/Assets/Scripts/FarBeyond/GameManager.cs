@@ -87,6 +87,7 @@ public class GameManager : MonoBehaviour
         {
             GameManager.Instance.currentSave.staminaUpGrade = maxPowerUpGrade; //si toca varios iguales, la estamina sera la misma que la maxima, es decir, 6, no se acumula.
         }
+       
 
         /*if (Keyboard.current.rightCtrlKey.wasPressedThisFrame) //si el control derecho de abajo se pulsa, la escena se guarda. ESTO NO SERA NECESARIO SI NO TENEMOS CODIGO DE SAVEDATA.
         {
