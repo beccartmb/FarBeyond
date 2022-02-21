@@ -69,14 +69,20 @@ public class IllayPlayer : MonoBehaviour
         }
         if (GameManager.Instance.currentSave.stamina > 0f)// esto es para que cuando haya al menos 1sec de llama que Illay arda. Hace que desaparezca del hierarchy o no.
         {
-            fireVFX.SetActive(true); //variable declarada arriba.
+            if (!fireVFX.activeSelf)//Si llega a >0 y esta desactivado, la activa y hace la animación
+            {
+                fireVFX.SetActive(true); //variable declarada arriba.
+                fireAnimator.Play("Fire_birth");
+            }
 
         }
         else
         {
-            //Podemos meter una corrutina aquí para que espere un tiempo
-            StartCoroutine(WaitingDeathFire());
-            fireVFX.SetActive(false);
+            if (fireVFX.activeSelf)//si está activado el tic de visible pasa a la corrutina
+            {
+                //Podemos meter una corrutina aquí para que espere un tiempo
+                StartCoroutine(WaitingDeathFire());
+            }
         }
     }
 
@@ -85,8 +91,9 @@ public class IllayPlayer : MonoBehaviour
         if (!dieCoroutineInExecution)
         {
             dieCoroutineInExecution = true; //A veces las corrutinas se repiten de forma ilimitada. Con esto hacemos que solo se repita una vez. Ya que cuando entra en este if hace el true y se frena al llegar al false.
+            fireAnimator.Play("Fire_die");//Primero se hace la animación mientras espera y al acabar la espera se desactiva el fuego y la corrutina se acaba.
             yield return new WaitForSeconds(1.0f);
-            fireAnimator.Play("Fire_die");
+            fireVFX.SetActive(false);
             dieCoroutineInExecution = false;
         }
     }
