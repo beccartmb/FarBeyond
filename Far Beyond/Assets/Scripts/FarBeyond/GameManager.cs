@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
         {
             IllayDie();
             StartCoroutine(WaitingDeath());
+            ChargeSceneIllay();
         }
         if (GameManager.Instance.currentSave.playerHearts > maxPlayerHearts)
         {
@@ -116,7 +117,7 @@ public class GameManager : MonoBehaviour
             dieCoroutineInExecution = false;
         }
     }
-    public void ChargeSceneIllay()
+    public void ChargeSceneIllay() //AQUI ES CUANDO ILLAY SE MUERE, DEBERÁ SER LLAMADO CUANDO SE LE ACABAN LOS CORAZONES. 
     {
         if (GameManager.Instance.currentSave.countdownLifes <= 0)
         {
