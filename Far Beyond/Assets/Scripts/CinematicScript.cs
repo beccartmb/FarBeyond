@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class CinematicScript : MonoBehaviour
 {
     float cooldown;
-    public float timeToPlayCinematic = 10.0f; //aqui pondremos lo que dura el video de la cinematica. 
+    public float timeToPlayCinematic = 180.0f; //aqui pondremos lo que dura el video de la cinematica. 
 
     public void Update()
     {
