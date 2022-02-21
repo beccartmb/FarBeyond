@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class IllayPlayer : MonoBehaviour
 {
 
-    private Rigidbody2D rbody;
+    public Rigidbody2D rbody;
     public float speed = 3.0f;
     public float jumpSpeed = 5.0f;
     public float jumpSpeedWater = 2.0f;

@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
     public float maxPowerUpGrade = 4f; //esto va a ser aquello que llamemos desde el powerUpGRADE que te permitira crecer por 6 segundos.
                                        //public float staminaUpGrade = 0;
     public int countdownLifesMax = 4;
-    private Rigidbody2D rbody;
 
     Animator anim;
     bool dieCoroutineInExecution; //Esto es para crear la corrutina para esperar un tiempo determinado.
@@ -48,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        rbody = GetComponent<Rigidbody2D>(); //esto permite que te detecte el RIGIDBODY para detectar suelos y paredes desde el minuto 0.
+        //rbody = GetComponent<Rigidbody2D>(); //esto permite que te detecte el RIGIDBODY para detectar suelos y paredes desde el minuto 0.
     }
 
     public void SaveGame() //esto nos permite meter en una caja toda la informacion, almacenandola en un archivo. PODEMOS TENER VARIOS SAVEGAMES CON DISTINTO NOMBRE, AL IGUAL QUE MAS LOADGAME.
@@ -70,9 +69,7 @@ public class GameManager : MonoBehaviour
     {
         if (GameManager.Instance.currentSave.playerHearts <= 0) //aqui hemos designado que si la vida del  jugador llega a 0, que reinicie el nivel en el que está. EN EL JUGADOR RESTAMOS UNA CADA VEZ QUE TOCAS LA DEATHZONE.
         {
-            IllayDie();
             StartCoroutine(WaitingDeath());
-            ChargeSceneIllay();
         }
         if (GameManager.Instance.currentSave.playerHearts > maxPlayerHearts)
         {
@@ -111,24 +108,26 @@ public class GameManager : MonoBehaviour
         if (!dieCoroutineInExecution)
         {
             dieCoroutineInExecution = true; //A veces las corrutinas se repiten de forma ilimitada. Con esto hacemos que solo se repita una vez. Ya que cuando entra en este if hace el true y se frena al llegar al false.
+            IllayDie();
             yield return new WaitForSeconds(2.0f);
             GameManager.Instance.currentSave.countdownLifes--; //aqui le estoy quitando una vida al contador de vidas(con un maximo de 4 para asi poder tener reinicio de escena y reaparicion en los save points.
             GameManager.Instance.currentSave.playerHearts = 4;
+            if (GameManager.Instance.currentSave.countdownLifes <= 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name); //esto sirve para reinciar la escena EN LA QUE EL PERSONAJE DESAPAREZCA/muera.
+            }
+            else
+            {
+                IllayPlayer.Instance.transform.position = IllayPlayer.Instance.newSaveZone; //si toca una deathzone que tenga metido el script, te llevara a la posicion del ultimo SaveZone guardado por la variable de arriba.
+                IllayPlayer.Instance.rbody.velocity = Vector2.zero; //asi quitamos la deceleracion para que no se te cuele por el mapa.
+            }
             dieCoroutineInExecution = false;
         }
     }
-    public void ChargeSceneIllay() //AQUI ES CUANDO ILLAY SE MUERE, DEBERÁ SER LLAMADO CUANDO SE LE ACABAN LOS CORAZONES. 
+    /*public void ChargeSceneIllay() //AQUI ES CUANDO ILLAY SE MUERE, DEBERÁ SER LLAMADO CUANDO SE LE ACABAN LOS CORAZONES. 
     {
-        if (GameManager.Instance.currentSave.countdownLifes <= 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); //esto sirve para reinciar la escena EN LA QUE EL PERSONAJE DESAPAREZCA/muera.
-        }
-        else
-        {
-            transform.position = IllayPlayer.Instance.newSaveZone; //si toca una deathzone que tenga metido el script, te llevara a la posicion del ultimo SaveZone guardado por la variable de arriba.
-            rbody.velocity = Vector2.zero; //asi quitamos la deceleracion para que no se te cuele por el mapa.
-        }
-    }
+        
+    }*/
 
     public void SaveGameScene()
     {
