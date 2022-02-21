@@ -146,7 +146,7 @@ public class FinalBossesCode : MonoBehaviour
                                                                               //si el jugador entra dentro del daño, el jugador se pone rojo.
 
 
-            GameManager.Instance.currentSave.playerLife--; //FIJATE EN LA LINEA DE ABAJO.
+            GameManager.Instance.currentSave.playerHearts--; //FIJATE EN LA LINEA DE ABAJO.
             //-------------------------------------------------------------------------------------------------------------
             //EN CASO DE QUERER QUE DEJE DE GUARDARSE EL CODIGO COMO SAVE DATA Y TE SALE ERROR, QUITA EL CURRENTSAVE. REVISA TAMBIEN EL GAME MANAGER.
             //----------------------------------------------------------------------------------------------------------------------------
@@ -190,7 +190,7 @@ public class FinalBossesCode : MonoBehaviour
     }
     IEnumerator Chase()
     {
-        if (GameManager.Instance.currentSave.playerLife > 0)//Si ponemos esto aquí hacemos que cuando Illay esté muerto no nos ataquen y nos dejen morir sin desplazarnos.
+        if (GameManager.Instance.currentSave.playerHearts > 0)//Si ponemos esto aquí hacemos que cuando Illay esté muerto no nos ataquen y nos dejen morir sin desplazarnos.
         {
             /*yield return new WaitForSeconds(0.2f);*/
             MoveTowardsPoint(IllayPlayer.Instance.transform.position); //esto nos permitira seguir al jugador a su posicion.
@@ -200,7 +200,7 @@ public class FinalBossesCode : MonoBehaviour
     }
     IEnumerator Attack()
     {
-        if (GameManager.Instance.currentSave.playerLife > 0)//Si ponemos esto aquí hacemos que cuando Illay esté muerto no nos ataquen y nos dejen morir sin desplazarnos.
+        if (GameManager.Instance.currentSave.playerHearts > 0)//Si ponemos esto aquí hacemos que cuando Illay esté muerto no nos ataquen y nos dejen morir sin desplazarnos.
         {
             hasAttackFinished = false; //aqui empieza el ataque.
             anim.Play("Final_boss_charge");

@@ -51,7 +51,7 @@ public class IllayPlayer : MonoBehaviour
     }
     private void Update()
     {
-        if (GameManager.Instance.currentSave.playerLife > 0) // Esto es para que solo se haga cuando tiene al menos una vida
+        if (GameManager.Instance.currentSave.playerHearts > 0) // Esto es para que solo se haga cuando tiene al menos una vida
         {
             if (isInWater) //si esta en el agua, que haga este movimiento. 
             {
@@ -173,7 +173,7 @@ public class IllayPlayer : MonoBehaviour
 
         {
             //ESTO ME PERMITIRA RESTARLE UNO DE VIDA Y 
-            GameManager.Instance.currentSave.playerLife--; //MIRA EN LA LINEA DE PUNTOS,. Siempre que queramos llamar algo del Game Manager ponerlo con Instance.
+            GameManager.Instance.currentSave.playerHearts--; //MIRA EN LA LINEA DE PUNTOS,. Siempre que queramos llamar algo del Game Manager ponerlo con Instance.
             transform.position = newSaveZone;
             rbody.velocity = Vector2.zero;
             GameManager.Instance.currentSave.staminaO2 = 0.1f; //esto hara que vuelvas a tener estamina. hara que no mueran 18 veces seguidas.  MIRA LA LINEA DE ABAJO.
@@ -277,7 +277,7 @@ public class IllayPlayer : MonoBehaviour
             //------------------------------------------------------------------------
             //EN CASO DE ERROR, QUITA DEL CODIGO DE ARRIBA "currentSave" ESTO SE DEBE A QUE DICHA INFORMACION SE ESTÁ ALMACENANDO EN EL SCRIPT SaveData". REVISA TAMBIEN EL GAME MANAGER.
             //------------------------------------------------------------------------
-            GameManager.Instance.currentSave.playerLife--; //aqui  hemos designado mediante el GAME MANAGER que si toca la deathzone, te reste uno de vida.  MIRA LA LINEA DE PUNTOS.
+            GameManager.Instance.currentSave.countdownLifes--;//aqui  hemos designado mediante el GAME MANAGER que si toca la deathzone, te reste uno de vida.  MIRA LA LINEA DE PUNTOS.
             transform.position = newSaveZone; //si toca una deathzone que tenga metido el script, te llevara a la posicion del ultimo SaveZone guardado por la variable de arriba.
             rbody.velocity = Vector2.zero; //asi quitamos la deceleracion para que no se te cuele por el mapa.
         }

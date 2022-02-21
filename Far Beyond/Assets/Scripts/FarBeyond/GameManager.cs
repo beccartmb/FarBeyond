@@ -31,17 +31,25 @@ public class GameManager : MonoBehaviour
 
 
     //public int playerLife = 4; //Y aqui hemos designado que el jugador tendra 3 vidas. 
-    public int maxPlayerLife = 4;
+    public int maxPlayerHearts = 4;
     public float maxStamina = 4f; //ESTE ES EL MAXIMO DE ESTAMINA QUE DEBERA TENER PARA LANZAR LA LLAMARADA. SE PONDRA COMO FLOAT PARA QUE PUEDAS RESTARLE EL TIEMPO.
     //public float stamina = 0;
     public float maxStaminaO2 = 10.0f; //esto debera ser decimal para que baje con el tiempo, es decir, time.deltatime. 
     //public float staminaO2 = 0;
     public float maxPowerUpGrade = 4f; //esto va a ser aquello que llamemos desde el powerUpGRADE que te permitira crecer por 6 segundos.
-    //public float staminaUpGrade = 0;
+                                       //public float staminaUpGrade = 0;
+    public int countdownLifesMax = 4;
+    private Rigidbody2D rbody;
+
     Animator anim;
     bool dieCoroutineInExecution; //Esto es para crear la corrutina para esperar un tiempo determinado.
 
     public SaveData currentSave = new SaveData(); //esto permite tener TODA la informacion de la partida GUARDADA. Esto permitirá poder acceder a ello en cualquier momento. 
+
+    private void Start()
+    {
+        rbody = GetComponent<Rigidbody2D>(); //esto permite que te detecte el RIGIDBODY para detectar suelos y paredes desde el minuto 0.
+    }
 
     public void SaveGame() //esto nos permite meter en una caja toda la informacion, almacenandola en un archivo. PODEMOS TENER VARIOS SAVEGAMES CON DISTINTO NOMBRE, AL IGUAL QUE MAS LOADGAME.
     {
@@ -58,22 +66,16 @@ public class GameManager : MonoBehaviour
         currentSave = bf.Deserialize(stream) as SaveData;
     }
 
-    public void Start()
-    {
-        anim = GetComponent<Animator>(); //SIEMPRE HAY QUE PONER ESTO EN LOS ESTAR SIEMPRE Y CUANDO HAYA ANIMACIONES DE POR MEDIO.
-
-    }
-
     private void Update()
     {
-        if (GameManager.Instance.currentSave.playerLife <= 0) //aqui hemos designado que si la vida del  jugador llega a 0, que reinicie el nivel en el que está. EN EL JUGADOR RESTAMOS UNA CADA VEZ QUE TOCAS LA DEATHZONE.
+        if (GameManager.Instance.currentSave.playerHearts <= 0) //aqui hemos designado que si la vida del  jugador llega a 0, que reinicie el nivel en el que está. EN EL JUGADOR RESTAMOS UNA CADA VEZ QUE TOCAS LA DEATHZONE.
         {
             IllayDie();
             StartCoroutine(WaitingDeath());
         }
-        if(GameManager.Instance.currentSave.playerLife>maxPlayerLife)
+        if (GameManager.Instance.currentSave.playerHearts > maxPlayerHearts)
         {
-            GameManager.Instance.currentSave.playerLife = maxPlayerLife;
+            GameManager.Instance.currentSave.playerHearts = maxPlayerHearts;
         }
         if (GameManager.Instance.currentSave.stamina > maxStamina) //esto permite sumar estamina hasta llegar al maximo. Si llega al maximo de estamina SIEMPRE SERA EL MAXIMO.
         {
@@ -87,7 +89,8 @@ public class GameManager : MonoBehaviour
         {
             GameManager.Instance.currentSave.staminaUpGrade = maxPowerUpGrade; //si toca varios iguales, la estamina sera la misma que la maxima, es decir, 6, no se acumula.
         }
-       
+
+
 
         /*if (Keyboard.current.rightCtrlKey.wasPressedThisFrame) //si el control derecho de abajo se pulsa, la escena se guarda. ESTO NO SERA NECESARIO SI NO TENEMOS CODIGO DE SAVEDATA.
         {
@@ -99,7 +102,7 @@ public class GameManager : MonoBehaviour
 
     {
         IllayPlayer.Instance.anim.Play("Illay_die");
-       
+
 
     }
     IEnumerator WaitingDeath() //esto es una corrutina que nos permite reactivar los collider en 0,5 segundos. LUEGO HAY QUE LLAMARLA AL TERMINAR LO DEL FLOOR WITH EFFECTOR
@@ -108,9 +111,21 @@ public class GameManager : MonoBehaviour
         {
             dieCoroutineInExecution = true; //A veces las corrutinas se repiten de forma ilimitada. Con esto hacemos que solo se repita una vez. Ya que cuando entra en este if hace el true y se frena al llegar al false.
             yield return new WaitForSeconds(2.0f);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); //esto sirve para reinciar la escena EN LA QUE EL PERSONAJE DESAPAREZCA/muera.
-            GameManager.Instance.currentSave.playerLife = 4;
+            GameManager.Instance.currentSave.countdownLifes--; //aqui le estoy quitando una vida al contador de vidas(con un maximo de 4 para asi poder tener reinicio de escena y reaparicion en los save points.
+            GameManager.Instance.currentSave.playerHearts = 4;
             dieCoroutineInExecution = false;
+        }
+    }
+    public void ChargeSceneIllay()
+    {
+        if (GameManager.Instance.currentSave.countdownLifes <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); //esto sirve para reinciar la escena EN LA QUE EL PERSONAJE DESAPAREZCA/muera.
+        }
+        else
+        {
+            transform.position = IllayPlayer.Instance.newSaveZone; //si toca una deathzone que tenga metido el script, te llevara a la posicion del ultimo SaveZone guardado por la variable de arriba.
+            rbody.velocity = Vector2.zero; //asi quitamos la deceleracion para que no se te cuele por el mapa.
         }
     }
 
@@ -119,6 +134,7 @@ public class GameManager : MonoBehaviour
         GameManager.Instance.currentSave.currentScene = SceneManager.GetActiveScene().name; //esto me permite guardar la escena en la que el jugador esté.
         SaveGame();
     }
+
 }
 
 

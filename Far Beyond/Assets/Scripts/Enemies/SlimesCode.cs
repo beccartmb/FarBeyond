@@ -136,7 +136,7 @@ public class SlimesCode : MonoBehaviour
     }
     IEnumerator Chase()
     {
-        if (GameManager.Instance.currentSave.playerLife > 0)
+        if (GameManager.Instance.currentSave.playerHearts > 0)
         {
             MoveTowardsPoint(IllayPlayer.Instance.transform.position);
             //esto permite perseguir al jugador, mediante la velocidad asignada en las variables de arriba y luego esperar un fotograma.
@@ -146,7 +146,7 @@ public class SlimesCode : MonoBehaviour
     }
     IEnumerator Attack()
     {
-        if (GameManager.Instance.currentSave.playerLife > 0)//Si ponemos esto aquí hacemos que cuando Illay esté muerto no nos ataquen y nos dejen morir sin desplazarnos.
+        if (GameManager.Instance.currentSave.playerHearts > 0)//Si ponemos esto aquí hacemos que cuando Illay esté muerto no nos ataquen y nos dejen morir sin desplazarnos.
         {
             hasAttackFinished = false;
             GetComponent<SpriteRenderer>().color = Color.green; // AQUI METEREMOS LAS ANIMACIONES por ahora cambiamos a verde
@@ -175,7 +175,7 @@ public class SlimesCode : MonoBehaviour
             player.transform.position += direction * 1.0f;//el 1.0 es la distancia que empuja al jugador, cuanto mas grande, mas le va a empujar. 
             StartCoroutine(FlashColor(player.GetComponent<SpriteRenderer>()));//aqui lo llamos como si fuese un metodo dentro de un coroutine.
                                                                               //si el jugador entra dentro del daño, el jugador se pone rojo.
-            GameManager.Instance.currentSave.playerLife--; //MIRA LA LINEA DE ABAJO.
+            GameManager.Instance.currentSave.playerHearts--; //MIRA LA LINEA DE ABAJO.
             //------------------------------------------------------------------------
             //EN CASO DE ERROR, QUITA DEL CODIGO DE ARRIBA "currentSave" ESTO SE DEBE A QUE DICHA INFORMACION SE ESTÁ ALMACENANDO EN EL SCRIPT SaveData". REVISA TAMBIEN EL GAME MANAGER.
             //------------------------------------------------------------------------

@@ -114,7 +114,7 @@ public class SirensCode : MonoBehaviour
         }
         if (player != null)
         {
-            GameManager.Instance.currentSave.playerLife--; //FIJATE EN LA LINEA DE ABAJO.
+            GameManager.Instance.currentSave.playerHearts--; //FIJATE EN LA LINEA DE ABAJO.
         }
         //----------------------------------------------------------------------------------
         //EN CASO DE QUE TE DE ERROR ES PORQUE DICHA INFORMACION LA ESTAS GUARDANDO EN UN SCRIPT saveDATA. ESTO SIGNIFICA QUE SI QUIERES QUE EL JUEGO NO ESTE GUARDADO EN SAVE DATA DEBERAS QUITAR EL "currentSAVE"
@@ -135,7 +135,7 @@ public class SirensCode : MonoBehaviour
     IEnumerator Attack()
     {
         hasAttackFinished = false; //aqui empieza el ataque.
-        GameManager.Instance.currentSave.playerLife = 0; //lo mata. //MIRA LA LINEA DE ABAJO.
+        GameManager.Instance.currentSave.playerHearts = 0; //lo mata. //MIRA LA LINEA DE ABAJO.
         //------------------------------------------------------------------------
         //EN CASO DE ERROR, QUITA DEL CODIGO DE ARRIBA "currentSave" ESTO SE DEBE A QUE DICHA INFORMACION SE ESTÁ ALMACENANDO EN EL SCRIPT SaveData". REVISA TAMBIEN EL GAME MANAGER.
         //------------------------------------------------------------------------

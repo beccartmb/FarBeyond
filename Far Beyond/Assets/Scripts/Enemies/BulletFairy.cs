@@ -45,7 +45,7 @@ public class BulletFairy : MonoBehaviour
                                                                               //si el jugador entra dentro del daño, el jugador se pone rojo.
 
 
-            GameManager.Instance.currentSave.playerLife--; //FIJATE EN LA LINEA DE ABAJO.
+            GameManager.Instance.currentSave.playerHearts--; //FIJATE EN LA LINEA DE ABAJO.
 
             //----------------------------------------------------------------------------------------------
             //EN CASO DE QUE TE DE ERROR, QUITA EL CURRENTSAVE, SIGNIFICA QUE SE ESTA GUARDANDO DICHA INFORMACION EN SAVE DATA. REVISA TAMBIEN EL GAME MANAGER.

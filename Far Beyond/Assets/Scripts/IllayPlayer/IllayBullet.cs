@@ -11,7 +11,7 @@ public class IllayBullet : MonoBehaviour
     float bouncePower = 0.5f;
     float bounceCount = 0.5f; //esto es el contador de tiempo que rebota. 
     public Animator anim;
-    private List<Collider2D> floors = new List<Collider2D>(); //necesaria para detectar los suelos. 
+    private List<Collider2D> floors = new List<Collider2D>(); //necesaria para detectar los suelos. F
 
     void Update()
     {

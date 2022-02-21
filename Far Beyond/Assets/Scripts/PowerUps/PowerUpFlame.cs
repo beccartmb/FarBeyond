@@ -14,7 +14,7 @@ public class PowerUpFlame : MonoBehaviour
         if (player != null)
         {
             Die();
-            GameManager.Instance.currentSave.playerLife++;
+            GameManager.Instance.currentSave.playerHearts++;
             GameManager.Instance.currentSave.stamina++; //cuando el powe up muere, stamine + 1 con la posibilidad de llegar a 4. //MIRA LA LINEA DE ABAJO.
             //-----------------------------------------------------------------------
             //EN CASO DE ERROR, POR FAVOR, QUITA DEL CODIGO DE ARRIBA EL "currentSave", ESTO ES PORQUE SE ESTA ALMACENANDO LA INFORMACION EN UN SCRIPT LLAMADO "SaveData" QUE TE PERMITE CARGAR ESCENAS. REVISA TAMBIEN EL GAME MANAGER.
