@@ -6,6 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class MenuPausee : MonoBehaviour
 {
+    #region SINGLETON
+    public static MenuPausee Instance { get; private set; }
+
+    private void Awake() //esto junto con el intance de arriba convierte nuestro personaje en un singleton (mucho mas comodo para juegos de un jugador) ya que nos permite acceder a este codigo desde otros codigos. 
+    {
+        Instance = this;
+    }
+    #endregion
     public GameObject canvasMenuPause;
     public GameObject canvasCredits;
     public GameObject canvasControls;

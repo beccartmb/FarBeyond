@@ -63,6 +63,11 @@ public class GameManager : MonoBehaviour
         MemoryStream stream = new MemoryStream(File.ReadAllBytes("save"));
         BinaryFormatter bf = new BinaryFormatter();
         currentSave = bf.Deserialize(stream) as SaveData;
+        //aqui deberiamos llamar para que al cargar la escena, el menu de pause aparezca desactivado.
+        
+        MenuPausee.Instance.canvasMenuPause.SetActive(false); //esto hara que no este activado el canvas si no se pulsa la letra ESCAPE.
+                Time.timeScale = 1;
+
     }
 
     private void Update()
