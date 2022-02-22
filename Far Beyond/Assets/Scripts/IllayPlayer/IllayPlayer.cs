@@ -72,7 +72,22 @@ public class IllayPlayer : MonoBehaviour
             if (!fireVFX.activeSelf)//Si llega a >0 y esta desactivado, la activa y hace la animación
             {
                 fireVFX.SetActive(true); //variable declarada arriba.
-                fireAnimator.Play("Fire_birth");
+                //fireAnimator.Play("Fire_birth");  Esto sería correcto y así se podría llamar la animación(mira más abajo para saber como funciona este en concreto)
+                //funciona bien si le quitas los // pero para este objeto en concreto no es necesario meterle la animación porque lo hace por si sola nada más aparecer.
+                //Para ver mejor esto abre la pestaña ANIMATOR no animation. En naranja te sale lo que hace el objeto nada más aparecer en escena. En nuestro caso birth
+                //que pasa a movement. Este bool lo que hace es que el fuego aparezca y desaparezca, por lo cual al coger el power up y no gastarlo te aparece el fuego,
+                //como este tiene establecido que nada mas salir lo primero que hace es birth, lo hace automáticamente. 
+                //Nuestro código siempre ha tenido este fireAnimator.Play("Fire_birth"); activo y no ha petado pero al revisarlo e he dado cuenta de que no hace falta. 
+                //En principio dejarlo activo no hace que el archivo pete pero te lo dejo escrito por si acaso. Aprovecho que está todo lo de las animaciones aquí para 
+                //explicar todo. Si son animaciones enteras como las tuyas pero que hemos dividido en partes, como la del fuego, en settings del ANIMATOR pon 1 en exit time
+                // y el resto es 0. Esto te sale si pinchas en las flechas que unen las animaciones. Puedes modificar las transiciones de todas excepto de la de partida con 
+                //tu animación naranja. Si en vez de birth queremos que movement sea lo primero que haga solo segundo boton en movement y set as layer default.
+                //Para frenar una animación de golpe existe un truco que es crear un estado nuevo vacío y unirlo. Para crear un nuevo estado segundo boton en el canvas de animator
+                //create state, empty y para crear transiciones segundo botón en nuestra animacion y make transition. EJEMPLO. Fire die se repite dos veces antes de morir porque 
+                //el tiempo de espera de la muerte es 2f y la animacion dura 1f. Obviamente se puede bajar los 2f y ya pero si ves que peta y no sabes por qué creas un new state
+                // segundo boton en fire die make transition y lo unes al vacío. También se soluciona quitando el loop porque por definición vienen con eso activado. Para quitarlo:
+                //busca el nombre de la animacion y en el triángulo segundo botón y a la derecha te sale un menu, quita el loop.
+                //ME QUEDA POR EXPLICAR COMO HACER SPRITES SHEETS Y COMO CORTARLAS. COMO Y VUELVO
             }
 
         }
@@ -92,6 +107,9 @@ public class IllayPlayer : MonoBehaviour
         {
             dieCoroutineInExecution = true; //A veces las corrutinas se repiten de forma ilimitada. Con esto hacemos que solo se repita una vez. Ya que cuando entra en este if hace el true y se frena al llegar al false.
             fireAnimator.Play("Fire_die");//Primero se hace la animación mientras espera y al acabar la espera se desactiva el fuego y la corrutina se acaba.
+            //NO TE DEJES ENGAÑAR POR LA FORMA EN LA QUE SE ESTÁ LLAMANDO ESTA ANIMACIÓN. Se pueden llamar de dos formas. Creando otra variable de animacion y arrastrándole en unity el animador que quieres que corresponda o
+            // poniendo el nombre del Script junto con el nombre que le hemos puesto a la variable y el nombre de la animación:illayBullet.anim.Play("Bullet_die");
+            //Para este último caso es necesario que en illayBullet se haya declarado ese animator y que sea PUBLICO.
             yield return new WaitForSeconds(1.0f);
             fireVFX.SetActive(false);
             dieCoroutineInExecution = false;
