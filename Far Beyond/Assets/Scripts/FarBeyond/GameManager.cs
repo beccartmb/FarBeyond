@@ -64,10 +64,8 @@ public class GameManager : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         currentSave = bf.Deserialize(stream) as SaveData;
         //aqui deberiamos llamar para que al cargar la escena, el menu de pause aparezca desactivado.
-        
-        MenuPausee.Instance.canvasMenuPause.SetActive(false); //esto hara que no este activado el canvas si no se pulsa la letra ESCAPE.
-                Time.timeScale = 1;
-
+        //MenuPausee.Instance.canvasMenuPause.SetActive(false); //esto hara que no este activado el canvas si no se pulsa la letra ESCAPE.
+        //Time.timeScale = 1;  lo veria como una solucion pero no me la hace.
     }
 
     private void Update()
@@ -129,10 +127,6 @@ public class GameManager : MonoBehaviour
             dieCoroutineInExecution = false;
         }
     }
-    /*public void ChargeSceneIllay() //AQUI ES CUANDO ILLAY SE MUERE, DEBERÁ SER LLAMADO CUANDO SE LE ACABAN LOS CORAZONES. 
-    {
-        
-    }*/
 
     public void SaveGameScene()
     {
