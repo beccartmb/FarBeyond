@@ -87,7 +87,10 @@ public class IllayPlayer : MonoBehaviour
                 //el tiempo de espera de la muerte es 2f y la animacion dura 1f. Obviamente se puede bajar los 2f y ya pero si ves que peta y no sabes por qué creas un new state
                 // segundo boton en fire die make transition y lo unes al vacío. También se soluciona quitando el loop porque por definición vienen con eso activado. Para quitarlo:
                 //busca el nombre de la animacion y en el triángulo segundo botón y a la derecha te sale un menu, quita el loop.
-                //ME QUEDA POR EXPLICAR COMO HACER SPRITES SHEETS Y COMO CORTARLAS. COMO Y VUELVO
+                //Sprite sheets: Recomiendo que siepre hagas 4x4 aunque te sobre espacio. Ejm el monstruo final es 4x4 es decir tamaño de lienzo de 2048. Photoshop tiene la opción de
+                //desplazar y ahí le pones cuanto, en nuestro caso pues el tañamo del bicho. Cuando lo llevas a unity pincha en ella. Lo de pixels per unit es el tamaño del dibujo
+                // Sprite mode en multiple apply. Sprite editor te sale una pantalla. Al lado de sprite editor hay dos flechas hacia abajo, le das a la segunda y sale otra ventana.
+                //Type Gird by cell count y poner 4x4. Slice y apply. De esta forma las tienes divididas por igual y las puedes arrastrar para hacer la animación.
             }
 
         }
