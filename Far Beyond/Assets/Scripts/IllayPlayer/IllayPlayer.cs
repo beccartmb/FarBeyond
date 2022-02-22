@@ -382,6 +382,4 @@ public class IllayPlayer : MonoBehaviour
     }
     //animator.play para acceder a las animaciones. 
 
-
-
 }
