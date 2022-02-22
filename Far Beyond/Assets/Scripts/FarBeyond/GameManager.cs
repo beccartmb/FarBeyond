@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     public float maxStamina = 4f; //ESTE ES EL MAXIMO DE ESTAMINA QUE DEBERA TENER PARA LANZAR LA LLAMARADA. SE PONDRA COMO FLOAT PARA QUE PUEDAS RESTARLE EL TIEMPO.
     //public float stamina = 0;
     public float maxStaminaO2 = 10.0f; //esto debera ser decimal para que baje con el tiempo, es decir, time.deltatime. 
-    //public float staminaO2 = 0;
+    //public float staminaO2 = 0.1;
     public float maxPowerUpGrade = 4f; //esto va a ser aquello que llamemos desde el powerUpGRADE que te permitira crecer por 6 segundos.
                                        //public float staminaUpGrade = 0;
     public int countdownLifesMax = 4;
