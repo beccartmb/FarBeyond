@@ -5,7 +5,7 @@ using UnityEngine;
 public class FlameBullet : MonoBehaviour
 {
     //si la bala sale de los limites, que se destruya. 
-    public float lifeTime = 7.0f; //aqui determinamos la vida de la bala.(7 segundos)
+    public float lifeTime = 7.0f; //aqui determinamos la vida de la flame bullet(7 segundos) aunque luego durara el tiempo de stamina que el jugador tenga. 
     public Animator anim;//y aqui designamos un anim de cada objeto que sera necesario para llamarlo en otro script.
 
    

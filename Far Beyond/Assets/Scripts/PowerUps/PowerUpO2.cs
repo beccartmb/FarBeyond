@@ -5,7 +5,7 @@ using UnityEngine;
 public class PowerUpO2 : MonoBehaviour
 {
     //el numero menos time.Deltatime. 
-    public void Die()
+    public void Die() //esto no se va a usar dado que tenemos un respawn debajo. en caso de que quieras que dicho objeto solo se coja una vez, destruyelo. 
     {
         Destroy(this.gameObject);
     }

@@ -5,18 +5,18 @@ using UnityEngine;
 public class IllayBullet : MonoBehaviour
 {
     //si la bala sale de los limites, que se destruya. 
-    public Vector3 speedBullet = new Vector3(0, 0, 0);
+    public Vector3 speedBullet = new Vector3(0, 0, 0); //necesita esto para que rebote en el suelo.
     //public float speedBullett = 50;
-    public float lifeTime = 3.0f;
-    float bouncePower = 0.5f;
+    public float lifeTime = 3.0f;//la vida de la bala.
+    float bouncePower = 0.5f;//esto es la fuerza con la que va a rebotar. 
     float bounceCount = 0.5f; //esto es el contador de tiempo que rebota. 
     public Animator anim;
-    private List<Collider2D> floors = new List<Collider2D>(); //necesaria para detectar los suelos. F
+    private List<Collider2D> floors = new List<Collider2D>(); //necesaria para detectar los suelos, al igual que en illay.
 
     void Update()
     {
-        movementBullet();
-        if (lifeTime <= 0)
+        movementBullet(); //aqui designamos el movimiento de la bala.
+        if (lifeTime <= 0) //si la vida de la bala es menor que 0, destruirla con el metodo "destroyBullet" en el cual existe una animacion.
         {
             DestroyBullet();
         }
@@ -25,7 +25,7 @@ public class IllayBullet : MonoBehaviour
     void DestroyBullet() //esto nos hara la animacion de destruir la bala.
     {
         anim.Play("Bullet_die");
-        Destroy(this.gameObject, 0.6f);
+        Destroy(this.gameObject, 0.6f); //el 0.6 es para que despues de destruirse se espere menos de un segundo para que se pueda efectuar bien la animacion de destruccion de la bala.
     }
     public void movementBullet() //y esto nos hara el movimiento.
     {
@@ -51,11 +51,11 @@ public class IllayBullet : MonoBehaviour
     {
         if (collision.GetContact(0).normal.y > 0.5f) //ponemos "0" al lado de contact porque recuerda que en programacion se empieza a contar desde 0. 
         {
-            floors.Add(collision.collider);
+            floors.Add(collision.collider);// aqui añadimos los suelos a la lista. todo aquel suelo con el que choque. 
             speedBullet.y = Mathf.Abs(speedBullet.y); // ABS lo que hace es quitarle el valor a cualquier signo, con esto nos aseguramos que vaya hacia arriba a cierta velocidad. 
 
-            bounceCount = bouncePower; //aqui es cuando le decimos CUANTO TIEMPO VA A REBOTAR.
-            bouncePower *= 0.5f; //aqui se va multiplicando por la mitad, que es equivalente a dividr entre dos y hara que progresivamente rebote menos. 
+            bounceCount = bouncePower; //aqui es cuando le decimos CUANTO TIEMPO VA A REBOTAR y con que fuerza. .
+            bouncePower *= 0.5f; //aqui se va multiplicando por la mitad, que es equivalente a dividir entre dos y hara que progresivamente rebote menos. 
         }
         if (collision.GetContact(0).normal.x < -0.5f && collision.collider.GetComponent<PlatformEffector2D>() == null) //Aqui usamos normal.x porque determinamos que es la pared DERECHA mediante el rebote que haria al chocar con ella. 
         {

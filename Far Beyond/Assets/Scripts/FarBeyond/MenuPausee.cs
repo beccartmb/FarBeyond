@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuPausee : MonoBehaviour
 {
+    //-------------------------------------------------------------------------------------------------
+    //Deberemos crear un empty vacio al que llamaremos (por ejemplo) menu controller y al cual meteremos este script, para que cuando se desactiven o activen las cosas, no haya conflictos, asi lo llamaremos desde el GameManager
+    //-------------------------------------------------------------------------------------------------
     #region SINGLETON
     public static MenuPausee Instance { get; private set; }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUpUpGrade : MonoBehaviour
 {
-    public void Die()
+    public void Die()//esto no se va a usar dado que tenemos un respawn debajo. en caso de que quieras que dicho objeto solo se coja una vez, destruyelo.
     {
         Destroy(this.gameObject);
     }
