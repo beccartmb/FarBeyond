@@ -241,7 +241,7 @@ public class IllayPlayer : MonoBehaviour
             rbody.velocity = velocity;
         }
 
-        
+
     }
     #region GoThrought //CODIGO PARA ATRAVESAR PLATAFORMAS. MEDIANTE "PlatforEffector2D"
     public void DigThroughFloor() //para que pueda atravesar ciertos suelos, como por ejemplo, escaleras una detras de otras. 
@@ -305,7 +305,7 @@ public class IllayPlayer : MonoBehaviour
             //------------------------------------------------------------------------
             //EN CASO DE ERROR, QUITA DEL CODIGO DE ARRIBA "currentSave" ESTO SE DEBE A QUE DICHA INFORMACION SE ESTÁ ALMACENANDO EN EL SCRIPT SaveData". REVISA TAMBIEN EL GAME MANAGER.
             //------------------------------------------------------------------------
-            GameManager.Instance.currentSave.countdownLifes--;//aqui  hemos designado mediante el GAME MANAGER que si toca la deathzone, te reste uno de vida.  MIRA LA LINEA DE PUNTOS.
+            GameManager.Instance.currentSave.countdownLifes--;//aqui  hemos designado mediante el GAME MANAGER que si toca la deathzone, te reste una vida, que no un corazon. EN CASO DE QUERER QUE TE RESTE UN CORAZON SERA PlaterHearts--.  MIRA LA LINEA DE PUNTOS.
             transform.position = newSaveZone; //si toca una deathzone que tenga metido el script, te llevara a la posicion del ultimo SaveZone guardado por la variable de arriba.
             rbody.velocity = Vector2.zero; //asi quitamos la deceleracion para que no se te cuele por el mapa.
         }
@@ -324,8 +324,6 @@ public class IllayPlayer : MonoBehaviour
         wallOnLeft.Remove(collision.collider);
     }
 
-
-
     void Shoot()
     { //si se echa para atras el jugador al disparar, mueve la bala, el collider esta haciendo que se mueva. 
         if (Keyboard.current.wKey.wasPressedThisFrame) //PARA DISPARAR TECLA W.
@@ -340,8 +338,8 @@ public class IllayPlayer : MonoBehaviour
                 Instantiate(bulletLeftIllayPrefab, this.transform.position + new Vector3(-1f, 0f, 0f), Quaternion.identity); //crear una bala (BulletPlayer) en la posicion en la que esta el jugador.
                                                                                                                              //hemos puesto que tenga un vector 3 porque la bala nos salia muy arriba, con esto la estamos desplazando un poco para que salga en donde nosotros consideramos. 
             }
-
         }
+
         //las rotaciones se hablan con Quaternion, el identity que le sigue es la rotación por defecto.
 
         if (Keyboard.current.eKey.isPressed && GameManager.Instance.currentSave.stamina > 0 && !IllayPlayer.Instance.isInWater) //esto me permite no disparar si no estoy dentro del agua. MIRA LA LINEA DE PUNTOS.
@@ -349,23 +347,23 @@ public class IllayPlayer : MonoBehaviour
         //si la municion de la estamina es 1, disparar MANTENIENDO PULSADO PARA GASTARSE. 
         {
             flameObject.SetActive(true); //Esto nos sirve para que no salga de dentro sino que active la animacion mediante una imagen ya impuesta. 
-            GameManager.Instance.currentSave.stamina -= Time.deltaTime; //que al disparar se reste una. QUIERO PONERLE TIEMPO A DICHO DISPARO.    MIRA LA LINEA DE PUNTOS.
+            GameManager.Instance.currentSave.stamina -= Time.deltaTime; //que al disparar se reste a medida que pasa el tiempo.    MIRA LA LINEA DE PUNTOS.
         }
         else
         {
-            flameObject.SetActive(false); //cuando no tienes estamina ni tampoco mantienes pulsada la E cuando la tienes, la animacion para. 
+            flameObject.SetActive(false); //cuando no tienes estamina, no puedes activar la animacion. 
         }
     }
     public void UpGrade() //esto me permitira escalar volviendome mas grande. EN TEORIA
     {
         if (GameManager.Instance.currentSave.staminaUpGrade > 0 && !IllayPlayer.Instance.isInWater) //MIRA LA LINEA DE PUNTOS.
         {//mathf.Sing es para coger el signo anterior de escala para ponerlo en +1 o -1
-            this.transform.localScale = new Vector3(Mathf.Sign(this.transform.localScale.x) * 3f, 3f, transform.localScale.z); //Esto es para que se gire. //MIRA LA LINEA DE PUNTOS.
-            GameManager.Instance.currentSave.staminaUpGrade -= Time.deltaTime;
+            this.transform.localScale = new Vector3(Mathf.Sign(this.transform.localScale.x) * 3f, 3f, transform.localScale.z); //Esto es para que se gire y se escale.Mathf.Sign lo que hace es cambiarle el signo a lo que ya tenias, por ello se gira, y se multiplica la escala por 3. //MIRA LA LINEA DE PUNTOS.
+            GameManager.Instance.currentSave.staminaUpGrade -= Time.deltaTime; //aqui empieza a bajar la estamina del upgrade segun pasa el tiempo en la vida real (time.deltatime)
         }
         else if (GameManager.Instance.currentSave.staminaUpGrade <= 0 && !IllayPlayer.Instance.isInWater)
         {
-            this.transform.localScale = new Vector3(Mathf.Sign(this.transform.localScale.x) * 1f, 1f, transform.localScale.z); //Esto es para que se gire.
+            this.transform.localScale = new Vector3(Mathf.Sign(this.transform.localScale.x) * 1f, 1f, transform.localScale.z); //aqui, si no tienes estamina del upgrade, se puede girar gracias al transform local escale del final, pero todo vuelve a tener una escala de 1-.
         }
 
         //------------------------------------------------------------------------
@@ -375,16 +373,15 @@ public class IllayPlayer : MonoBehaviour
     void FlameShoot()
     {
         Instantiate(flameBulletPrefab, this.transform.position + new Vector3(6f, -4f, 0f), Quaternion.identity); //designamos el rayo como bala en RayShoot.
-        //aqui hemos designado, al igual que en bala, la posicion de la llamarada dado que nos salia muy arriba. 
-        
+                                                                                                                 //aqui hemos designado, al igual que en bala, la posicion de la llamarada dado que nos salia muy arriba. 
     }
 
     public void ResetScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // esto reseteara la escena en la que el jugador esté.
     }
     //animator.play para acceder a las animaciones. 
 
-    
+
 
 }

@@ -51,13 +51,13 @@ public class MenuPausee : MonoBehaviour
             canvasCredits.SetActive(true); 
         }
     }
-    public void PauseButtonControls()
+    public void PauseButtonControls() //boton del menu de pause de los controles. 
     {
         if (canvasControls.activeSelf) //que si pulsas el boton CREDITS se active.
         {
             canvasControls.SetActive(false);
         }
-        else
+        else //y sino que este desactivado.
         {
             canvasControls.SetActive(true);
         }
@@ -66,10 +66,12 @@ public class MenuPausee : MonoBehaviour
     {
         SceneManager.LoadScene("StartMenu");//esto sirve para que pueda ir a la pestaña menú si tienes metido el script . 
     }
+
     public void PauseButtonQuickGame()
     {
         Application.Quit(); //esto sirve para que dentro del build sitting puedas quitar el videojuego pulsando la tecla "escape".
     }
+
     public void SaveGame()
     {
         GameManager.Instance.SaveGameScene(); //aqui he llamado al guardar partida puesto en el GameManager. nos permitirá guardar la ubicacion del jugador y crear una escena de guardado.
