@@ -200,7 +200,7 @@ public class IllayPlayer : MonoBehaviour
         //------------------------------------------------------------------------
 
         {
-            //ESTO ME PERMITIRA RESTARLE UNO DE VIDA Y 
+            //ESTO ME PERMITIRA RESTARLE UNO DE VIDA 
             GameManager.Instance.currentSave.playerHearts--; //MIRA EN LA LINEA DE PUNTOS,. Siempre que queramos llamar algo del Game Manager ponerlo con Instance.
             transform.position = newSaveZone;
             rbody.velocity = Vector2.zero;
