@@ -11,7 +11,7 @@ public class PowerUpUpGrade : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) //eso nos va a permitir detectar dentro de un empty vacio con un collider que genere un area. 
     {
         IllayPlayer player = other.GetComponent<IllayPlayer>();
-        if (player != null)
+        if (player != null) //si player choca contra este power up, este se desactiva porque comienza la courtina. 
         {
             //ponemos this.gameobject para que no de problemas.
             GameManager.Instance.StartCoroutine(Respawn(this.gameObject)); //ESTO SERA IMPORTANTE PARA QUE RESPAUNÉ ES DECIR, SIN ESTO, NUNCA DESAPARECE EL POWER UP NI TAMPOCO SE REGENERA.
@@ -25,8 +25,8 @@ public class PowerUpUpGrade : MonoBehaviour
     IEnumerator Respawn(GameObject go) //en vez de que muera, hacemos que se desactive y luego se active GRACIAS AL GAME MANAGER.
     {
         //creamos un nombre el gameobject y lo llamamos abajo, en este caso se llamara GO. ESto evitara problemas futuros.
-        go.SetActive(false); //esto permitira que el power up respauné.
-        yield return new WaitForSeconds(12.0f);
-        go.SetActive(true);
+        go.SetActive(false); //esto permitira que el power up respauné. es decir, esto permite que se desactive el objeto (POR EL SETACTIVE)
+        yield return new WaitForSeconds(12.0f);//pasan 12 segundos.
+        go.SetActive(true); //y se activa. es decir, NUNCA SE BORRA DICHO OBJETO.
     }
 }
