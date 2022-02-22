@@ -30,15 +30,19 @@ public class GameManager : MonoBehaviour
     //--------------------------------------------------------------------------------------
 
 
-    //public int playerLife = 4; //Y aqui hemos designado que el jugador tendra 3 vidas. 
+    //public int playerHearts = 4; //Y aqui hemos designado que el jugador tendra 3 vidas. 
     public int maxPlayerHearts = 4;
     public float maxStamina = 4f; //ESTE ES EL MAXIMO DE ESTAMINA QUE DEBERA TENER PARA LANZAR LA LLAMARADA. SE PONDRA COMO FLOAT PARA QUE PUEDAS RESTARLE EL TIEMPO.
     //public float stamina = 0;
     public float maxStaminaO2 = 10.0f; //esto debera ser decimal para que baje con el tiempo, es decir, time.deltatime. 
+    //public float staminaO2 = 0.1f;
+    //public int countdownLifes = 4; 
+    public int countdownLifesMax = 4;
     //public float staminaO2 = 0.1;
     public float maxPowerUpGrade = 4f; //esto va a ser aquello que llamemos desde el powerUpGRADE que te permitira crecer por 6 segundos.
                                        //public float staminaUpGrade = 0;
-    public int countdownLifesMax = 4;
+                                       //public float staminaUpGrade = 0;
+
 
     Animator anim;
     bool dieCoroutineInExecution; //Esto es para crear la corrutina para esperar un tiempo determinado.
@@ -91,8 +95,6 @@ public class GameManager : MonoBehaviour
             GameManager.Instance.currentSave.staminaUpGrade = maxPowerUpGrade; //si toca varios iguales, la estamina sera la misma que la maxima, es decir, 6, no se acumula.
         }
 
-
-
         /*if (Keyboard.current.rightCtrlKey.wasPressedThisFrame) //si el control derecho de abajo se pulsa, la escena se guarda. ESTO NO SERA NECESARIO SI NO TENEMOS CODIGO DE SAVEDATA.
         {
             GameManager.Instance.currentSave.currentScene = SceneManager.GetActiveScene().name; //esto me permite guardar la escena en la que el jugador esté.
@@ -103,9 +105,8 @@ public class GameManager : MonoBehaviour
 
     {
         IllayPlayer.Instance.anim.Play("Illay_die");
-
-
     }
+
     IEnumerator WaitingDeath() //esto es una corrutina que nos permite reactivar los collider en 0,5 segundos. LUEGO HAY QUE LLAMARLA AL TERMINAR LO DEL FLOOR WITH EFFECTOR
     {
         if (!dieCoroutineInExecution)

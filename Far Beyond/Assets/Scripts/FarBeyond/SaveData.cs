@@ -15,7 +15,7 @@ public class SaveData
     public int countdownLifes = 4; //aqui vamos a gestionar el contador de vidas para que, cuando muera 4 veces, se reinicie la escena.
     public float stamina = 0;
     public float staminaO2 = 0.1f; //esto lo he puesto como 0.1 para que no haya problemas de compatibilidad, sino siempre se detecta que estas muerto.
-    public float staminaUpGrade = 0; 
+    public float staminaUpGrade = 0;  
     
     //en caso de querer quitar el SCRIPT de SAVEDATA necesitas quitar el currentSave DE TODOS LOS CODIGOs.
 }
