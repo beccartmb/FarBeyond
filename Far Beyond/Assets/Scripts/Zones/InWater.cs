@@ -24,7 +24,7 @@ public class InWater : MonoBehaviour
         if (player != null)
         {
             player.isInWater = false;//si no esta en el agua.
-            player.GetComponent<Rigidbody2D>().velocity = Vector2.up * 10.0f; //aqui detectamos que cuando este fuera del agua en el movimiento del agua, que su salto se multiplique por 10. 
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.up * 10.0f; //Aqui detectamos que cuando este fuera del agua en el movimiento del agua, que su salto se multiplique por 10. 
         }
     }
 }
