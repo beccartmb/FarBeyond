@@ -16,7 +16,8 @@ public class PowerUpO2 : MonoBehaviour
         {
             //ponemos this.gameobject para que no de problemas.
             GameManager.Instance.StartCoroutine(Respawn(this.gameObject)); //como en la linea de abajo (en la courtine) desactivamos las cosas, vamos a pedir al game manager que nos reactive esto, evitando problemas.
-            GameManager.Instance.currentSave.staminaO2 += 6; //cuando se quiere añadir un numero mayor a 1 (lo que seria ++) hay que poner += X. TENDRAS 5 segundos para nadar a toda pastilla .     MIRA LA LINEA DE ABAJO.
+            GameManager.Instance.currentSave.staminaO2 += 6; //esto añadira 6 segundos a la estamina de aire.
+            //cuando se quiere añadir un numero mayor a 1 (lo que seria ++) hay que poner += X. TENDRAS 5 segundos para nadar a toda pastilla .     MIRA LA LINEA DE ABAJO.
             //------------------------------------------------------------------------
             //EN CASO DE ERROR, QUITA DEL CODIGO DE ARRIBA "currentSave" ESTO SE DEBE A QUE DICHA INFORMACION SE ESTÁ ALMACENANDO EN EL SCRIPT SaveData". REVISA TAMBIEN EL GAME MANAGER.
             //------------------------------------------------------------------------
@@ -26,9 +27,9 @@ public class PowerUpO2 : MonoBehaviour
     IEnumerator Respawn(GameObject go) //en vez de que muera, hacemos que se desactive y luego se active GRACIAS AL GAME MANAGER.
     {
         //creamos un nombre el gameobject y lo llamamos abajo, en este caso se llamara GO. ESto evitara problemas futuros.
-        go.SetActive(false);
-        yield return new WaitForSeconds(12.0f);
-        go.SetActive(true);
+        go.SetActive(false); //aqui se desactiva.
+        yield return new WaitForSeconds(12.0f); //espera 12 segundos.
+        go.SetActive(true);//y se vuelve a activar el objeto.
 
     }
 }

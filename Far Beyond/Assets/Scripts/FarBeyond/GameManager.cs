@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
 
 
     Animator anim;
-    bool dieCoroutineInExecution; //Esto es para crear la corrutina para esperar un tiempo determinado.
+    bool dieCoroutineInExecution; //Esto es para crear la corrutina para esperar un tiempo determinado y que solo se ejecute una vez, es decir, que no entre en bucle.
 
     public SaveData currentSave = new SaveData(); //esto permite tener TODA la informacion de la partida GUARDADA. Esto permitirá poder acceder a ello en cualquier momento. 
 
@@ -111,12 +111,12 @@ public class GameManager : MonoBehaviour
     {
         if (!dieCoroutineInExecution)
         {
-            dieCoroutineInExecution = true; //A veces las corrutinas se repiten de forma ilimitada. Con esto hacemos que solo se repita una vez. Ya que cuando entra en este if hace el true y se frena al llegar al false.
+            dieCoroutineInExecution = true; //A veces las corrutinas se repiten de forma ilimitada. Con esto hacemos que solo se repita una vez. Ya que cuando entra en este if hace el true y se frena al llegar al false.Esto será designado en las variables de arriba.
             IllayDie();
             yield return new WaitForSeconds(2.0f);
             GameManager.Instance.currentSave.countdownLifes--; //aqui le estoy quitando una vida al contador de vidas(con un maximo de 4 para asi poder tener reinicio de escena y reaparicion en los save points.
-            GameManager.Instance.currentSave.playerHearts = 4;
-            if (GameManager.Instance.currentSave.countdownLifes <= 0)
+            GameManager.Instance.currentSave.playerHearts = 4; //y aqui reseteamos cuantos corazones tiene. para que vuelva a empezar con todos.
+            if (GameManager.Instance.currentSave.countdownLifes <= 0) //si el contador de vidas (que no el de corazones) llega a 0, reseteamos la escena. 
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name); //esto sirve para reinciar la escena EN LA QUE EL PERSONAJE DESAPAREZCA/muera.
             }

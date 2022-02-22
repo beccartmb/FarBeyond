@@ -14,7 +14,7 @@ public class MenuPausee : MonoBehaviour
         Instance = this;
     }
     #endregion
-    public GameObject canvasMenuPause;
+    public GameObject canvasMenuPause; //aqui arrastraremos todos los objetos que queremos meter, es decir, el menu, los creditos y los controles. 
     public GameObject canvasCredits;
     public GameObject canvasControls;
 
@@ -44,7 +44,7 @@ public class MenuPausee : MonoBehaviour
     {
         if (canvasCredits.activeSelf) //que si pulsas el boton CREDITS se active.
         {
-            canvasCredits.SetActive(false);
+            canvasCredits.SetActive(false);//como de por si está desactivado, sera falso.
         }
         else
         {
