@@ -180,7 +180,7 @@ public class IllayPlayer : MonoBehaviour
         //movimiento del salto. 
         if (Keyboard.current.spaceKey.wasPressedThisFrame && floors.Count > 0) //cuando pulse la tecla espacio y el numero de suelos sea MAYOR que 0, SALTA!
         {
-            velocity.y = jumpSpeed;
+            velocity.y = jumpSpeed; //si quisiesemos hacer un DOBLE SALTO necesitariamos hacer tambien un contador de saltos y que al saltar se restase uno y al tocar el suelo, dicho contador se pusiese en 2.
             Instantiate(Illay_jump); //Esto es para que cuando se pulse el salto se reproduzca el sonido.
             anim.Play("Illay_jump");
         }
