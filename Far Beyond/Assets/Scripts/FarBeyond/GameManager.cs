@@ -122,6 +122,7 @@ public class GameManager : MonoBehaviour
             if (GameManager.Instance.currentSave.countdownLifes <= 0) //si el contador de vidas (que no el de corazones) llega a 0, reseteamos la escena. 
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name); //esto sirve para reinciar la escena EN LA QUE EL PERSONAJE DESAPAREZCA/muera.
+                GameManager.Instance.currentSave.countdownLifes=4;
             }
             else
             {
