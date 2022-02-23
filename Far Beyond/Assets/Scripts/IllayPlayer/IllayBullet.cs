@@ -61,6 +61,7 @@ public class IllayBullet : MonoBehaviour
         {
             DestroyBullet(); //aqui detectamos que si hay paredes, que se destruya la bala. 
         }
+        //.normal significa que esta calculando hacia donde rebota el objeto que choca contra algo, es decir, recalcula el vector de transform para ponerlo en 0,0,0 a partir de tocar lo que sea.
         if (collision.GetContact(0).normal.x > +0.5f && collision.collider.GetComponent<PlatformEffector2D>() == null) //Aqui usamos normal.x porque determinamos que es la pared IZQUIERDA mediante el rebote que haria al chocar con ella. SI NO TIENE EFFECTOR PLATAFORM SE CONSIDERA SUELO O PARED
         {
             DestroyBullet(); //aqui ponemos que si detecta paredes, que se destruya la bala. 

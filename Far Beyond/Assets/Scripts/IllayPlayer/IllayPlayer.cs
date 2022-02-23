@@ -304,10 +304,16 @@ public class IllayPlayer : MonoBehaviour
         {
             //------------------------------------------------------------------------
             //EN CASO DE ERROR, QUITA DEL CODIGO DE ARRIBA "currentSave" ESTO SE DEBE A QUE DICHA INFORMACION SE ESTÁ ALMACENANDO EN EL SCRIPT SaveData". REVISA TAMBIEN EL GAME MANAGER.
-            //------------------------------------------------------------------------
-            GameManager.Instance.currentSave.countdownLifes--;//aqui  hemos designado mediante el GAME MANAGER que si toca la deathzone, te reste una vida, que no un corazon. EN CASO DE QUERER QUE TE RESTE UN CORAZON SERA PlaterHearts--.  MIRA LA LINEA DE PUNTOS.
-            transform.position = newSaveZone; //si toca una deathzone que tenga metido el script, te llevara a la posicion del ultimo SaveZone guardado por la variable de arriba.
-            rbody.velocity = Vector2.zero; //asi quitamos la deceleracion para que no se te cuele por el mapa.
+            //------------------------------------------------------------------------   
+
+            //transform.position = newSaveZone; //si toca una deathzone que tenga metido el script, te llevara a la posicion del ultimo SaveZone guardado por la variable de arriba.
+            //rbody.velocity = Vector2.zero; //asi quitamos la deceleracion para que no se te cuele por el mapa.
+
+            //------------------------------------------------------------------------------
+            //NO HACE FALTA PONER ESTO AQUI(lo de arriba, lo de la save zone y el resetear la posicion de este pa que no se caiga del mundo) PORQUE YA SE ESTA HACIENDO DESDE EL GAME MANAGER
+            //------------------------------------------------------------------------------
+            GameManager.Instance.currentSave.playerHearts -= 10000; //hemos puesto esto para que le quite muchos corazones y por regla de 3, que le quite una vida, asi se reseteará a lo bestia y sin problema.
+            //aqui  hemos designado mediante el GAME MANAGER que si toca la deathzone, te reste una vida, que no un corazon. EN CASO DE QUERER QUE TE RESTE UN CORAZON SERA PlaterHearts--.  MIRA LA LINEA DE PUNTOS.
         }
     }
     //LA FALTA DE ESTAMINA DENTRO DEL AGUA ESTÁ DENTRO DEL MOVIMIENTO EN EL AGUA DE ILLAY. 

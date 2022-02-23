@@ -67,13 +67,15 @@ public class GameManager : MonoBehaviour
         MemoryStream stream = new MemoryStream(File.ReadAllBytes("save"));
         BinaryFormatter bf = new BinaryFormatter();
         currentSave = bf.Deserialize(stream) as SaveData;
-        //aqui deberiamos llamar para que al cargar la escena, el menu de pause aparezca desactivado.
-        //MenuPausee.Instance.canvasMenuPause.SetActive(false); //esto hara que no este activado el canvas si no se pulsa la letra ESCAPE.
-        //Time.timeScale = 1;  lo veria como una solucion pero no me la hace.
+        Time.timeScale = 1;  //esto hara que el tiempo no se pare cuando guardas en el menu de pausa, sales al menu principal y luego le das a continuar
     }
 
     private void Update()
     {
+        /*if(GameManager.Instance.currentSave.countdownLifes <= 0)
+        {
+            StartCoroutine(WaitingFinalDeath());
+        }*/
         if (GameManager.Instance.currentSave.playerHearts <= 0) //aqui hemos designado que si la vida del  jugador llega a 0, que reinicie el nivel en el que está. EN EL JUGADOR RESTAMOS UNA CADA VEZ QUE TOCAS LA DEATHZONE.
         {
             StartCoroutine(WaitingDeath());
@@ -114,6 +116,7 @@ public class GameManager : MonoBehaviour
             dieCoroutineInExecution = true; //A veces las corrutinas se repiten de forma ilimitada. Con esto hacemos que solo se repita una vez. Ya que cuando entra en este if hace el true y se frena al llegar al false.Esto será designado en las variables de arriba.
             IllayDie();
             yield return new WaitForSeconds(2.0f);
+            IllayPlayer.Instance.anim.Play("Illay_idle");
             GameManager.Instance.currentSave.countdownLifes--; //aqui le estoy quitando una vida al contador de vidas(con un maximo de 4 para asi poder tener reinicio de escena y reaparicion en los save points.
             GameManager.Instance.currentSave.playerHearts = 4; //y aqui reseteamos cuantos corazones tiene. para que vuelva a empezar con todos.
             if (GameManager.Instance.currentSave.countdownLifes <= 0) //si el contador de vidas (que no el de corazones) llega a 0, reseteamos la escena. 
